@@ -1,256 +1,89 @@
-<!DOCTYPE HTML>
-
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Home - Hemera Networks</title>
-		<link rel="icon" type="image/x-icon" href="images\wp3198040.webp">
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload homepage">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
 
-		<div id="page-wrapper">
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/11.2.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/11.2.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/11.2.0/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/11.2.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/11.2.0/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/11.2.0/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/11.2.0/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/11.2.0/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/11.2.0/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/11.2.0/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<header id="header" class="container">
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    </div>
+    <p id="load">Firebase SDK Loading&hellip;</p>
 
-						<!-- Logo -->
-							<div id="logo">
-								<a href="index.html"><img src="images\wp3198040-nobg.png", width="160px", height="100px"></img></a>
-								<h1><a href="index.html">Hemera Networks</a></h1>
-								<!-- <span class="span-align">Hemera Networks</span> -->
-							</div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li class="current"><a href="index.html">Home</a></li>
-									<li>
-										<a href="#">Dropdown</a>
-										<ul>
-											<li><a href="#">Option 1</a></li>
-											<li><a href="#">Option 2</a></li>
-											<li>
-												<a href="#">Option 3 (with drop)</a>
-												<ul>
-													<li><a href="#">Double drop 1</a></li>
-													<li><a href="#">Double drop 2</a></li>
-													<li><a href="#">Double drop 3</a></li>
-													<li><a href="#">Double drop 4</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Option 4</a></li>
-										</ul>
-									</li>
-									<li><a href="article_1 (ls).html">Article 1</a></li>
-									<!-- <li><a href="right-sidebar.html">Right Sidebar</a></li> -->
-									<li><a href="about-us.html">About Us</a></li> 
-								</ul>
-							</nav>
-
-					</header>
-				</div>
-
-			<!-- Banner -->
-				<div id="banner-wrapper">
-					<div id="banner" class="box container">
-						<div class="row">
-							<div class="col-7 col-12-medium">
-								<h2>A RainaCorp. company</h2>
-								<p>A whole new dimension of online journalism.</p>
-							</div>
-							<div class="col-5 col-12-medium">
-								<ul>
-									<li><a href="http://rainacorp.co.uk/" class="button large icon solid fa-arrow-circle-right">RainaCorp.</a></li> 
-									<!-- <li><a href="#" class="button alt large icon solid fa-question-circle">More info</a></li> -->
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Features -->
-				<div id="features-wrapper">
-					<div class="container">
-						<div class="row">
-							
-							<div class="col-4 col-12-medium">
-
-								<!-- Box -->
-									<section class="box feature">
-										<a href="Articles/28.05.24 - Skytop Concept.html" class="image featured"><img src="Articles\Images\28.05.24 - Skytop Concept\P90551572-lowRes.jpg" alt="article image" /></a>
-										<div class="inner">
-											<header>
-												<h2><a href="Articles\28.05.24 - Skytop Concept.html">BMW Skytop Concept</a></h2>
-												<p>This section seems to be finalising too.</p>
-											</header>
-											<p>This section features an article titled "Article 1". It includes an image of the Hacker News logo and a brief description. The description mentions that the section is nearing completion and provides a snippet about the content, indicating a focus on various aspects such as efficiency, interaction, and engaging formatting.</p>
-										</div>
-									</section>
-
-							</div>
-							<div class="col-4 col-12-medium">
-
-								<!-- Box -->
-									<section class="box feature">
-										<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-										<div class="inner">
-											<header>
-												<h2>An interesting title</h2>
-												<p>This is also an interesting subtitle</p>
-											</header>
-											<p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-										</div>
-									</section>
-
-							</div>
-							<div class="col-4 col-12-medium">
-
-								<!-- Box -->
-									<section class="box feature">
-										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-										<div class="inner">
-											<header>
-												<h2>Oh, and finally ...</h2>
-												<p>Here's another intriguing subtitle</p>
-											</header>
-											<p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-										</div>
-									</section>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-			<!-- Main -->
-				<div id="main-wrapper">
-					<div class="container">
-						<div class="row gtr-200">
-							<div class="col-4 col-12-medium">
-
-								<!-- Sidebar -->
-									<div id="sidebar">
-										<section class="widget thumbnails">
-											<h3>Join our community</h3>
-											<div class="grid">
-												<div class="row gtr-50">
-													<div class="col-6"><iframe src="https://discord.com/widget?id=1210599140472397844&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe></div>
-													<!--<div class="col-6"><a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a></div>
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div> -->
-												</div>
-											</div>
-											<a href="#" class="button icon fa-file-alt">More</a>
-										</section>
-									</div>
-
-							</div>
-							<div class="col-8 col-12-medium imp-medium">
-
-								<!-- Content -->
-									<div id="content">
-										<section class="last">
-											<h2>What is Hemera Networks<sup>&copy;</sup>?</h2>
-											<p>The launch of <strong>"Hemera Networks<sup>&copy;</sup>"</strong> journalism division within <a href="http://www.rainacorp.co.uk/">RainaCorp<sup>&copy;</sup></a> represents an exciting opportunity to deliver dynamic and engaging content to our audience. By starting with text-based journalism and expanding into audio and video formats, we aim to meet the evolving needs and preferences of our audience while upholding the highest standards of journalistic integrity and professionalism. Furthermore, to establish <strong>"Hemera Networks<sup>&copy;</sup>"</strong> as a trusted source of information and insight within the industry.</p>
-											
-											<p>Join our vibrant community on Discord! Whether you're a passionate automotive enthusiast, a budding journalist, or simply curious about the latest trends and news, our Discord server offers a dynamic space for engaging discussions, exclusive content, and real-time interactions with industry experts and fellow enthusiasts. Connect with us, share your insights, and be part of a growing community dedicated to exploring and celebrating the world of journalism and beyond. Click the link to join now and start the conversation!</p>
-											<a href="about-us.html" class="button icon solid fa-arrow-circle-right">Continue Reading</a>
-										</section>
-									</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-			<!-- Footer -->
-				<div id="footer-wrapper">
-					<footer id="footer" class="container">
-						<div class="row">
-							<div class="col-3 col-6-medium col-12-small">
-								<!-- Contact -->
-									<section class="widget contact last">
-										<h3>Contact Us</h3>
-										<ul>
-											<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-											<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-											<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-											<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-											<li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
-										</ul>
-										<p>Swansea, Wales<br />
-										United Kingdom<br />
-										(800) 555-0000</p>
-									</section>
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-								<!-- Links -->
-									<section class="widget links">
-										<h3>Useful Links</h3>
-										<ul class="style2">
-											<li><a href="Intellectual Property Protection.html">Intellectual Property Protection</a></li>
-											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-											<li><a href="#">Sed porttitor cras in erat nec</a></li>
-											<li><a href="#">Felis varius pellentesque potenti</a></li>
-											<li><a href="#">Nullam scelerisque blandit leo</a></li>
-										</ul>
-									</section>
-							</div>
-							<!-- <div class="col-3 col-6-medium col-12-small">
-									<section class="widget links">
-										<h3>Random Stuff</h3>
-										<ul class="style2">
-											<li><a href="#">Etiam feugiat condimentum</a></li>
-											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-											<li><a href="#">Sed porttitor cras in erat nec</a></li>
-											<li><a href="#">Felis varius pellentesque potenti</a></li>
-											<li><a href="#">Nullam scelerisque blandit leo</a></li>
-										</ul>
-									</section>
-
-							</div>
-							<div class="col-3 col-6-medium col-12-small">
-									<section class="widget links">
-										<h3>Random Stuff</h3>
-										<ul class="style2">
-											<li><a href="#">Etiam feugiat condimentum</a></li>
-											<li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-											<li><a href="#">Sed porttitor cras in erat nec</a></li>
-											<li><a href="#">Felis varius pellentesque potenti</a></li>
-											<li><a href="#">Nullam scelerisque blandit leo</a></li>
-										</ul>
-									</section>
-
-							</div> -->
-						
-						</div>
-						<div class="row">
-							<div class="col-12">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; 2024 by Raina Corporation Limited. All rights reserved</li><li><a href="http://rainacorp.co.uk/">RainaCorp<sup>&copy;</sup></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</footer>
-				</div>
-
-			</div>
-
-		<!-- Scripts -->
-
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
-
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
 </html>
