@@ -10,13 +10,7 @@
 	</head>
 	<body class="is-preload no-sidebar">
 		<div id="page-wrapper">
-            <script>
-                fetch('header.html')
-                  .then(response => response.text())
-                  .then(data => {
-                    document.getElementById('header-container').innerHTML = data;
-                  });
-                </script>    
+            <div id="header-container"></div>    
 			<!-- Main -->
 				<div id="main-wrapper">
 					<div class="container">
@@ -133,6 +127,12 @@
                     document.getElementById('footer-container').innerHTML = data;
                   });
                 </script>
-
+            <script>
+                fetch('header.html')
+                  .then(response => response.text())
+                  .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                  });
+                </script>
 	</body>
 </html>
