@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuturePress - Next-Gen Journalism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --cyber-purple: #bc13fe;
+            --dark-bg: #0a0a0f;
+            --card-bg: #15151f;
+            --text-primary: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            padding: 1.5rem 5%;
+            border-bottom: 2px solid var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main-container {
+            padding: 4rem 5%;
+        }
+
+        .featured-article {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 2rem;
+            background: var(--card-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-article::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--neon-blue), transparent);
+            animation: glow 6s linear infinite;
+        }
+
+        @keyframes glow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .article-image {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .article-image:hover {
+            transform: scale(1.02);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-blue);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888888;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">FuturePress</div>
+    </nav>
+
+    <main class="main-container">
+        <section class="featured-article">
+            <img src="https://source.unsplash.com/random/800x600?future" alt="Featured Article" class="article-image">
+            <div>
+                <h1>The Dawn of Quantum Computing</h1>
+                <p>Breaking news: Scientists achieve breakthrough in quantum entanglement, paving the way for unprecedented computational power...</p>
+                <div class="article-meta">
+                    <span>By Sarah Technova</span>
+                    <span>3 hours ago</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-grid">
+            <article class="news-card">
+                <h2>AI Journalism Revolution</h2>
+                <p>How neural networks are transforming newsrooms and creating new opportunities for investigative reporting...</p>
+                <div class="article-meta">
+                    <span>By Alex Quantum</span>
+                    <span>5 hours ago</span>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <h2>SpaceX Mars Colony Update</h2>
+                <p>Exclusive interview with Elon Musk reveals new timeline for permanent Martian settlement...</p>
+                <div class="article-meta">
+                    <span>By Maria Cosmos</span>
+                    <span>7 hours ago</span>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <h2>Neural Interface Breakthrough</h2>
+                <p>New brain-computer interface achieves record data transfer speeds, blurring the line between mind and machine...</p>
+                <div class="article-meta">
+                    <span>By Dr. Neuro</span>
+                    <span>9 hours ago</span>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
