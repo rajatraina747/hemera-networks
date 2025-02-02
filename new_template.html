@@ -176,3 +176,72 @@
         <video class="hero-video" autoplay muted loop>
             <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-car-lights-477.mp4" type="video/mp4">
         </video>
+        <div class="hero-content cyber-overlay">
+            <h1 style="font-size: 4rem;">The Future of Mobility</h1>
+            <div class="review-score">
+                <div>9.8/10</div>
+                <div style="font-size: 0.8rem;">INNOVATION SCORE</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="spec-grid">
+        <div class="spec-card">
+            <div class="spec-badge">TECH SPECS</div>
+            <h2>Neural Interface v2.3</h2>
+            <ul>
+                <li>Bandwidth: 1.2TB/s</li>
+                <li>Latency: 0.4ms</li>
+                <li>API Version: NeuroLink 4.0</li>
+            </ul>
+        </div>
+        <!-- Add more spec cards -->
+    </div>
+
+    <div class="article-grid">
+        <article class="article-card featured-card">
+            <img src="https://source.unsplash.com/random/1200x800?cybertruck" alt="Featured Article" style="width:100%;">
+            <div class="article-meta">
+                <h2>CyberTruck 2040 Deep Dive</h2>
+                <div class="spec-badge">EXCLUSIVE</div>
+            </div>
+        </article>
+        <!-- Add more article cards -->
+    </div>
+
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>0-60mph</th>
+                <th>Range</th>
+                <th>AI Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>NeuraDrive SX</td>
+                <td>1.8s</td>
+                <td>1200mi</td>
+                <td>AGI 4.2</td>
+            </tr>
+            <!-- Add more comparison rows -->
+        </tbody>
+    </table>
+
+    <script>
+        // Simple parallax effect
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            document.querySelector('.hero-video').style.transform = 
+                `translateZ(-1px) scale(2) translateY(${scrolled * 0.5}px)`;
+        });
+
+        // Video play/pause control
+        document.querySelector('.hero').addEventListener('click', function() {
+            const video = document.querySelector('.hero-video');
+            video.paused ? video.play() : video.pause();
+        });
+    </script>
+</body>
+</html>
