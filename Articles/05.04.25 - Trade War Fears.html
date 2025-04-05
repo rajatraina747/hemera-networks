@@ -154,7 +154,7 @@
                   });
             </script>
             <script>
-                fetch('article-links.html')
+                fetch('/article-links.html')
                   .then(response => response.text())
                   .then(data => {
                     document.getElementById('article-links-container').innerHTML = data;
