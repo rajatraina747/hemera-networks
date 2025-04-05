@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Articles - Hemera Networks</title>
+		<link rel="icon" type="image/x-icon" href="/images/wp3198040.webp">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+	</head>
+	<body class="is-preload articles-page">
+
+		<div id="page-wrapper">
+
+			<!-- Header-->
+			<div id="header-wrapper">
+                <header id="header" class="container">
+
+                    <!-- Logo -->
+                        <div id="logo">
+                            <a href="index.html"><img src="/images/wp3198040-nobg.png" width="160" height="100" alt="Hemera Networks Logo"></a>
+                            <h1><a href="/index.html">Hemera Networks</a></h1>
+                            <!-- <span class="span-align">Hemera Networks</span> -->
+                        </div>
+
+                    <!-- Nav -->
+                        <nav id="nav">
+                            <ul>
+                                <li class="current"><a href="/index.html">Home</a></li>
+                                <li>
+                                    <!-- <a href="#">Dropdown</a>
+                                    <ul>
+                                        <li><a href="#">Option 1</a></li>
+                                        <li><a href="#">Option 2</a></li>
+                                        <li>
+                                            <a href="#">Option 3 (with drop)</a>
+                                            <ul>
+                                                <li><a href="#">Double drop 1</a></li>
+                                                <li><a href="#">Double drop 2</a></li>
+                                                <li><a href="#">Double drop 3</a></li>
+                                                <li><a href="#">Double drop 4</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Option 4</a></li>
+                                    </ul>
+                                </li>-->
+                                <li><a href="/article-list.html">Article List</a></li>
+                                <!--<li><a href="right-sidebar.html">Right Sidebar</a></li>
+                                <li><a href="about-us.html">About Us</a></li> -->
+                            </ul>
+                        </nav>
+
+                </header>
+            </div>
+
+			<!-- Main Content -->
+			<div id="main-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<!-- Introductory Section -->
+							<section>
+								<h2>Our Articles</h2>
+								<p>
+									Welcome to Hemera Networks' collection of articles. Here you'll find a wide range of topics that cover the latest trends in online journalism, insightful analyses, and much more. Feel free to browse our articles below.
+								</p>
+							</section>
+
+							<!-- List of Articles -->
+							<section>
+								<h3>All Articles</h3>
+								<ul class="style2">
+									<li><a href="/Articles/05.04.25 - Trade War Fears.html">Trade War Fears</a></li>
+									<li><a href="/Articles/05.04.25 - Perez Cadillac F1 Return.html">Perez Cadillac F1 Return</a></li>
+									<!-- Add additional article links here -->
+								</ul>
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer (dynamically loaded) -->
+			<div id="footer-container"></div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/jquery.dropotron.min.js"></script>
+		<script src="/assets/js/browser.min.js"></script>
+		<script src="/assets/js/breakpoints.min.js"></script>
+		<script src="/assets/js/util.js"></script>
+		<script src="/assets/js/main.js"></script>
+		<script>
+			fetch('footer.html')
+			  .then(response => response.text())
+			  .then(data => {
+				document.getElementById('footer-container').innerHTML = data;
+			  });
+		</script>
+	</body>
+</html>
