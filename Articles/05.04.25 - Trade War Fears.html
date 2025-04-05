@@ -17,15 +17,15 @@
 
 						<!-- Logo -->
 						<div id="logo">
-							<a href="index.html"><img src="images\wp3198040-nobg.png", width="160px", height="100px"></img></a>
-							<h1><a href="index.html">Hemera Networks</a></h1>
+							<a href="../index.html"><img src="images\wp3198040-nobg.png", width="160px", height="100px"></img></a>
+							<h1><a href="../index.html">Hemera Networks</a></h1>
 							<!-- <span class="span-align">Hemera Networks</span> -->
 						</div>
 
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li><a href="index.html">Home</a></li>
+									<li><a href="../index.html">Home</a></li>
 									<!--<li>
 										<a href="#">Dropdown</a>
 										<ul>
@@ -145,7 +145,7 @@
 
 			<!-- Footer -->
 			
-            <!--insert footer script below and call here-->
+            <div id="footer-container"></div>
 
 			</div>
 
@@ -157,7 +157,13 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-            <!--insert footer script-->
+            <script>
+                fetch('footer.html')
+                  .then(response => response.text())
+                  .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                  });
+            </script>
 
 	</body>
 </html>
