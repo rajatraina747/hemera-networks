@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hemera Networks</title>
+  <style>
+    /* Base styles for header */
+    #header-wrapper {
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Logo */
+    #logo {
+      display: flex;
+      align-items: center;
+    }
+
+    #logo img {
+      max-width: 100%;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    #logo h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    #logo h1 a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    /* Navigation */
+    #nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    #nav li {
+      margin-left: 20px;
+    }
+
+    #nav li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+    }
+
+    /* Hamburger button hidden on larger screens */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Responsive styles for mobile */
+    @media (max-width: 768px) {
+      #nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        right: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        padding: 10px;
+        display: none;  /* Initially hidden */
+      }
+      #nav li {
+        margin: 10px 0;
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Responsive Header -->
+  <div id="header-wrapper">
+    <header id="header">
+      <!-- Logo -->
+      <div id="logo">
+        <a href="index.html">
+          <img src="/images/wp3198040-nobg.png" width="160" height="100" alt="Hemera Networks Logo">
+        </a>
+        <h1><a href="index.html">Hemera Networks</a></h1>
+      </div>
+      <!-- Navigation -->
+      <nav id="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="article-list.html">Article List</a></li>
+        </ul>
+      </nav>
+      <!-- Hamburger Menu for Mobile -->
+      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+    </header>
+  </div>
+
+  <!-- Main Page Content -->
+  <div id="content" style="padding: 20px;">
+    <h2>Welcome to Hemera Networks</h2>
+    <p>Your page content goes here.</p>
+  </div>
+
+  <!-- JavaScript for Mobile Navigation Toggle -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navUl = document.querySelector('#nav ul');
+
+      navToggle.addEventListener('click', function() {
+        // Toggle the display of the navigation menu on mobile devices
+        if (navUl.style.display === 'block') {
+          navUl.style.display = 'none';
+        } else {
+          navUl.style.display = 'block';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
