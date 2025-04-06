@@ -167,23 +167,12 @@
                   });
             </script>
             <script>
-				fetch('/header.html')
-				  .then(response => response.text())
-				  .then(data => {
-					document.getElementById('header-container').innerHTML = data;
-					
-					// Optionally attach mobile nav toggle if not included in header.html
-					const navToggle = document.querySelector('.nav-toggle');
-					const navUl = document.querySelector('#nav ul');
-					if (navToggle && navUl) {
-					  navToggle.addEventListener('click', function() {
-						// Toggle the display of the navigation menu on mobile devices
-						navUl.style.display = navUl.style.display === 'block' ? 'none' : 'block';
-					  });
-					}
-				  })
-				  .catch(error => console.error('Error loading header:', error));
-			</script>
+                fetch('/header.html')
+                  .then(response => response.text())
+                  .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                  });
+            </script>
 
 	</body>
 
