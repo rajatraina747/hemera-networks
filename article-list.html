@@ -137,8 +137,9 @@
         const filterValue = this.value.toLowerCase();
         const articles = document.querySelectorAll('.article-item');
         articles.forEach(article => {
-          const title = article.getAttribute('data-title').toLowerCase();
-          article.style.display = title.includes(filterValue) ? '' : 'none';
+          // This gets all text inside the article card (title, summary, meta, etc.)
+          const combinedText = article.textContent.toLowerCase();
+          article.style.display = combinedText.includes(filterValue) ? '' : 'none';
         });
       });
     </script>
