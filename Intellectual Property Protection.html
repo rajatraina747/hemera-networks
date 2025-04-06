@@ -11,47 +11,9 @@
 	<body class="is-preload no-sidebar">
 		<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<header id="header" class="container">
-
-						<!-- Logo -->
-						<div id="logo">
-							<a href="index.html"><img src="images\wp3198040-nobg.png", width="160px", height="100px"></img></a>
-							<h1><a href="index.html">Hemera Networks</a></h1>
-							<!-- <span class="span-align">Hemera Networks</span> -->
-						</div>
-
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li><a href="index.html">Home</a></li>
-									<!--<li>
-										<a href="#">Dropdown</a>
-										<ul>
-											<li><a href="Articles/28.05.24 - Skytop Concept.html">BMW Skytop Concept</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Lorem ipsum dolor</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
-										</ul>
-									</li>
-									<li><a href="article_1 (ls).html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="about-us.html">About Us</a></li>-->
-								</ul>
-							</nav>
-
-					</header>
-				</div>
-
+			<!-- Header (dynamically loaded) -->
+			<div id="header-container"></div>
+			
 			<!-- Main -->
 				<div id="main-wrapper">
 					<div class="container">
@@ -247,6 +209,14 @@
                     document.getElementById('footer-container').innerHTML = data;
                   });
             </script>
+			<!-- Load Header Dynamically -->
+			<script>
+				fetch('/header.html')
+				  .then(response => response.text())
+				  .then(data => {
+					document.getElementById('header-container').innerHTML = data;
+				  });
+			</script>
 
 	</body>
 </html>
