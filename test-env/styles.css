@@ -164,9 +164,12 @@ main {
   padding: 10px 0;
 }
 
+/* Updated filter bar container */
 .filter-bar .container {
   display: flex;
+  flex-wrap: wrap;      /* Allow buttons to wrap to the next line */
   gap: 10px;
+  justify-content: center; /* Center the buttons horizontally */
 }
 
 .filter-btn {
