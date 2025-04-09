@@ -358,8 +358,17 @@ footer {
 /****************************************
    ABOUT PAGE STYLES
 ****************************************/
-.about-page section {
-  margin: 40px 0;
+/* New container to layout the top two sections side-by-side on desktop */
+.about-top-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+/* Make each section take equal space */
+.about-top-row .about-us,
+.about-top-row .discord-widget {
+  flex: 1;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -377,7 +386,7 @@ footer {
   text-align: justify;
 }
 
-/* Discord Widget Section */
+/* Discord Widget Section (within about-top-row) */
 .discord-widget {
   text-align: center;
 }
@@ -394,7 +403,7 @@ footer {
 
 .discord-iframe-container iframe {
   width: 100%;
-  max-width: 350px; /* This matches your original width for the widget */
+  max-width: 350px;
   height: auto;
   border: 0;
 }
@@ -433,4 +442,11 @@ footer {
 
 .team-card p {
   font-size: 14px;
+}
+
+/* Mobile Adjustment for About Top Row */
+@media (max-width: 768px) {
+  .about-top-row {
+    flex-direction: column;
+  }
 }

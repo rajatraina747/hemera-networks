@@ -13,38 +13,40 @@
 
   <!-- MAIN CONTENT -->
   <main class="container about-page">
-    <!-- 1) About Us Section -->
-    <section class="about-us">
-      <h2>About Us</h2>
-      <p>
-        Welcome to Hemera Networks! We are dedicated to delivering high-quality news,
-        entertainment, and industry insights. Our team works relentlessly to bring you
-        the best content, with in-depth analysis and the latest updates from around the globe.
-        Replace this text with your company’s unique story, values, and mission.
-      </p>
-    </section>
+    <!-- Top Row: About Us and Discord Widget displayed side-by-side on desktop -->
+    <div class="about-top-row">
+      <!-- About Us Section -->
+      <section class="about-us">
+        <h2>About Us</h2>
+        <p>
+          Welcome to Hemera Networks! We are dedicated to delivering high-quality news,
+          entertainment, and industry insights. Our team works relentlessly to bring you
+          the best content, with in-depth analysis and the latest updates from around the globe.
+          Replace this text with your company’s unique story, values, and mission.
+        </p>
+      </section>
+      
+      <!-- Discord Widget Section -->
+      <section class="discord-widget">
+        <h2>Join Our Discord Community</h2>
+        <p>
+          Connect with us and our community on Discord for real-time updates, discussions,
+          and more.
+        </p>
+        <div class="discord-iframe-container">
+          <iframe 
+            src="https://discord.com/widget?id=1210599140472397844&theme=dark" 
+            width="350" 
+            height="500" 
+            allowtransparency="true" 
+            frameborder="0" 
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+          </iframe>
+        </div>
+      </section>
+    </div>
     
-    <!-- 2) Discord Widget Section -->
-    <section class="discord-widget">
-      <h2>Join Our Discord Community</h2>
-      <p>
-        Connect with us and the rest of our community on Discord for real-time updates, discussions,
-        and more.
-      </p>
-      <!-- Discord Widget iframe code -->
-      <div class="discord-iframe-container">
-        <iframe 
-          src="https://discord.com/widget?id=1210599140472397844&theme=dark" 
-          width="350" 
-          height="500" 
-          allowtransparency="true" 
-          frameborder="0" 
-          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-        </iframe>
-      </div>
-    </section>
-    
-    <!-- 3) Team Members Section -->
+    <!-- Bottom Row: Team Members Section (remains full width) -->
     <section class="team-members">
       <h2>Our Team</h2>
       <div class="team-grid">
@@ -63,7 +65,7 @@
           <h3>Member 3</h3>
           <p>Email: member3@example.com</p>
         </div>
-        <!-- Add more team cards as needed -->
+        <!-- Add more team cards here as needed -->
       </div>
     </section>
   </main>
