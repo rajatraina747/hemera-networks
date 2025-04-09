@@ -104,9 +104,9 @@ body {
 
 /* ----- Sub-Header (Optional) ----- */
 .sub-header {
-  background-color: #f4f4f4;
-  color: #2E2C2F;
-  padding: 10px 0;
+  background-color: #2E2C2F;
+  color: #fff;
+  padding: 5px 0;
   border-bottom: 1px solid #FFD700; /* Subtle separation line */
 }
 
