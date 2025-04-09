@@ -66,43 +66,38 @@
 
   <!-- SIMPLE JAVASCRIPT FOR FILTERING ARTICLES -->
   <script>
-    // Get all filter buttons and article items
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const articles = document.querySelectorAll('.article-item');
-
-    // Add click event for each button
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const category = btn.getAttribute('data-category');
-
-        // Show or hide articles based on their data-category attribute
-        articles.forEach(article => {
-          if (category === 'all' || article.getAttribute('data-category') === category) {
-            article.style.display = 'block';
-          } else {
-            article.style.display = 'none';
-          }
+    // Load header and then attach event listeners
+    fetch('/test-env/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
+  
+        // Now that the header is inserted into the DOM, select filter buttons
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const articles = document.querySelectorAll('.article-item');
+  
+        filterButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const category = btn.getAttribute('data-category');
+  
+            // Show/hide articles based on category
+            articles.forEach(article => {
+              article.style.display = (category === 'all' || article.getAttribute('data-category') === category) ? 'block' : 'none';
+            });
+  
+            // Update active button
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+          });
         });
-        
-        // Update active button appearance
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
       });
-    });
-  </script>
-  <script>
+  
+    // Optionally, load footer as well
     fetch('/test-env/footer.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('footer-container').innerHTML = data;
       });
   </script>
-  <script>
-    fetch('/test-env/header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-container').innerHTML = data;
-      });
-</script>
 </body>
 </html>
