@@ -157,19 +157,20 @@ main {
   }
 }
 
-/* ===== Filter Bar for Sorting Articles ===== */
+/****************************************
+   FILTER BAR FOR SORTING ARTICLES
+****************************************/
 .filter-bar {
   background-color: #f4f4f4;
   border-bottom: 1px solid #ccc;
   padding: 10px 0;
 }
 
-/* Updated filter bar container */
 .filter-bar .container {
   display: flex;
-  flex-wrap: wrap;      /* Allow buttons to wrap to the next line */
+  flex-wrap: wrap;      /* Allow buttons to wrap */
   gap: 10px;
-  justify-content: center; /* Center the buttons horizontally */
+  justify-content: center; /* Center buttons horizontally */
 }
 
 .filter-btn {
@@ -187,7 +188,9 @@ main {
   color: #fff;
 }
 
-/* ===== Hero Section ===== */
+/****************************************
+   HERO SECTION
+****************************************/
 .hero {
   position: relative;
   margin: 20px 0;
@@ -235,7 +238,9 @@ main {
   background-color: #ceb009;
 }
 
-/* ===== Articles Grid ===== */
+/****************************************
+   ARTICLES GRID
+****************************************/
 .articles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -285,9 +290,9 @@ main {
   color: #ceb009;
 }
 
-/************************************************
+/****************************************
    FOOTER STYLES
-************************************************/
+****************************************/
 footer {
   background-color: #2E2C2F;
   color: #fff;
@@ -350,26 +355,13 @@ footer {
   text-decoration: none;
 }
 
-/* ===== About Page Two-Column Layout ===== */
-.about-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  align-items: start;
-  margin: 40px 0;
-}
-
-/* Responsive adjustments: stack columns on narrow screens */
-@media (max-width: 768px) {
-  .about-columns {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Optional: you can adjust existing about-page styles if needed */
+/****************************************
+   ABOUT PAGE SPECIFIC STYLES
+****************************************/
 .about-page section {
+  margin: 40px 0;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.1); /* Adjust background as needed */
+  background-color: rgba(0, 0, 0, 0.1); /* Adjust as desired */
   border-radius: 8px;
 }
 
@@ -385,7 +377,18 @@ footer {
   text-align: justify;
 }
 
-/* Discord Widget Adjustments */
+/* Discord Widget Section in About Page */
+.discord-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.discord-widget p {
+  margin-bottom: 20px;
+}
+
 .discord-iframe-container {
   display: inline-block;
   max-width: 100%;
@@ -397,4 +400,40 @@ footer {
   max-width: 350px;
   height: auto;
   border: 0;
+}
+
+/* Team Members Section in About Page */
+.team-members {
+  text-align: center;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.team-card {
+  background-color: #2E2C2F;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.team-card img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.team-card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.team-card p {
+  font-size: 14px;
 }
