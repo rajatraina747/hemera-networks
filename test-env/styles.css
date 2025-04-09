@@ -137,46 +137,6 @@ body {
   }
 }
 
-
-/* ===== Topbar and Navigation ===== */
-/*.topbar {
-  background-color: #2E2C2F;  /* Bold red accent 
-  color: #FFD700;
-}
-
-.topbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-}
-
-.logo h1 {
-  font-size: 24px;
-  margin-left: 10px;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  margin-right: 10px;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-
-nav ul li a:hover {
-  color: #f4f4f4;
-} */
-
 /* ===== Filter Bar for Sorting Articles ===== */
 .filter-bar {
   background-color: #f4f4f4;
@@ -382,7 +342,7 @@ footer {
 
 /* ===== RESPONSIVE ADJUSTMENTS ===== */
 @media (max-width: 768px) {
-  .topbar-container {
+  .header-container {
     flex-direction: column;
     align-items: flex-start;
   }
