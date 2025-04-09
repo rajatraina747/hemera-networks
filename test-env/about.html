@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Hemera Networks</title>
+  <link rel="icon" type="image/x-icon" href="/images/HN Logo.png">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- HEADER SECTION (fetched via JS) -->
+  <div id="header-container"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="container about-page">
+    <!-- About Us Section -->
+    <section class="about-us">
+      <h2>About Us</h2>
+      <p>
+        Welcome to Hemera Networks! We are dedicated to delivering high-quality news,
+        entertainment, and industry insights. Our team works relentlessly to bring you
+        the best content, with in-depth analysis and the latest updates from around the globe.
+        Replace this text with your company’s unique story, values, and mission.
+      </p>
+    </section>
+    
+    <!-- Discord Webhook Section -->
+    <section class="discord-webhook">
+      <h2>Discord Server Webhook</h2>
+      <p>
+        To integrate our Discord server, paste your webhook URL below. (This section can be
+        used to store and process your webhook details.)
+      </p>
+      <form id="webhook-form">
+        <input type="url" id="discord-webhook-url" placeholder="Enter Discord Webhook URL" required>
+        <button type="submit">Save Webhook</button>
+      </form>
+    </section>
+    
+    <!-- Team Members Section -->
+    <section class="team-members">
+      <h2>Our Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="/path/to/member1.jpg" alt="Team Member 1">
+          <h3>Member 1</h3>
+          <p>Email: member1@example.com</p>
+        </div>
+        <div class="team-card">
+          <img src="/path/to/member2.jpg" alt="Team Member 2">
+          <h3>Member 2</h3>
+          <p>Email: member2@example.com</p>
+        </div>
+        <div class="team-card">
+          <img src="/path/to/member3.jpg" alt="Team Member 3">
+          <h3>Member 3</h3>
+          <p>Email: member3@example.com</p>
+        </div>
+        <!-- Add more team cards here as needed -->
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER SECTION (fetched via JS) -->
+  <div id="footer-container"></div>
+
+  <!-- Include your main JavaScript file -->
+  <script src="/test-env/main.js"></script>
+</body>
+</html>
