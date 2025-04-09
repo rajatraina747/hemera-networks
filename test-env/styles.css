@@ -7,8 +7,8 @@
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #fff;
-  color: #333;
+  background-color: #F5F2FA;
+  color: #6A0DAD;
   line-height: 1.6;
 }
 
@@ -21,8 +21,8 @@ body {
 
 /* ===== Topbar and Navigation ===== */
 .topbar {
-  background-color: #bb1919;  /* Bold red accent */
-  color: #fff;
+  background-color: #2E2C2F;  /* Bold red accent */
+  color: #FFD700;
 }
 
 .topbar-container {
@@ -142,8 +142,8 @@ nav ul li a:hover {
 }
 
 .article-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #2E2C2F;
+  border: 1px solid #6A0DAD;
   transition: box-shadow 0.3s;
   overflow: hidden;
 }
@@ -173,20 +173,20 @@ nav ul li a:hover {
 }
 
 .article-content a {
-  color: #bb1919;
+  color: #6A0DAD;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
 }
 
 .article-content a:hover {
-  color: #a01717;
+  color: #79a9f2;
 }
 
 /* ===== Footer ===== */
 footer {
-  background-color: #333;
-  color: #fff;
+  background-color: #2E2C2F;
+  color: #FFD700;
   text-align: center;
   padding: 20px 0;
   margin-top: 20px;
