@@ -105,14 +105,14 @@ body {
 /* ----- Sub-Header (Optional) ----- */
 .sub-header {
   background-color: #f4f4f4;
-  color: #333;
-  padding: 20px 0;
-  border-bottom: 1px solid #ccc; /* Subtle separation line */
+  color: #2E2C2F;
+  padding: 10px 0;
+  border-bottom: 1px solid #FFD700; /* Subtle separation line */
 }
 
 .sub-header h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 18px;
 }
 
 /****************************************
