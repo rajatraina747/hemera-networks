@@ -9,35 +9,7 @@
 </head>
 <body>
   <!-- HEADER SECTION -->
-  <header>
-    <div class="topbar">
-      <div class="container topbar-container">
-        <div class="logo">
-          <h1>Hemera Networks</h1>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Opinion</a></li>
-            <li><a href="#">Culture</a></li>
-            <li><a href="#">Features</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <!-- FILTER BAR FOR SORTING ARTICLES -->
-    <div class="filter-bar">
-      <div class="container">
-        <button class="filter-btn active" data-category="all">All</button>
-        <button class="filter-btn" data-category="news">News</button>
-        <button class="filter-btn" data-category="opinion">Opinion</button>
-        <button class="filter-btn" data-category="culture">Culture</button>
-        <button class="filter-btn" data-category="features">Features</button>
-      </div>
-    </div>
-  </header>
+  <div id="header-container"></div>
 
   <!-- MAIN CONTENT -->
   <main class="container">
@@ -123,6 +95,13 @@
       .then(response => response.text())
       .then(data => {
         document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
+  <script>
+    fetch('/test-env/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
       });
 </script>
 </body>
