@@ -331,6 +331,30 @@ footer {
   text-decoration: none;
 }
 
+html, body {
+  margin: 0; 
+  padding: 0;
+  height: 100%;
+}
+
+/* 
+   Make the content container at least 100% of viewport height 
+   minus the footer’s height.
+*/
+.content-wrap {
+  min-height: calc(100vh - 100px); /* e.g., if your footer is ~100px tall */
+  background-color: #d4c1f1;       /* or your desired background color */
+}
+
+/* 
+   Footer styling 
+   (position: relative or static; not fixed).
+*/
+footer {
+  height: 100px; 
+  background-color: #333;
+  /* etc. */
+}
 
 /* ===== RESPONSIVE ADJUSTMENTS ===== */
 @media (max-width: 768px) {
