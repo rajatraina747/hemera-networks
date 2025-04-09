@@ -40,17 +40,23 @@ function setupFilterAndSearch() {
     });
   });
 
-  // Search functionality
+  // --- Updated Search Functionality ---
+  // Uses the correct button ID ("search-btn") from header.html
   const searchInput = document.getElementById('search-input');
-  // Updated to use the correct ID ("search") that exists in your header.html:
-  const searchBtn = document.getElementById('search');  
+  const searchBtn = document.getElementById('search-btn');
   if (searchBtn && searchInput) {
     searchBtn.addEventListener('click', () => {
-      const query = searchInput.value.trim();
+      const query = searchInput.value.trim().toLowerCase();
       if (query) {
-        console.log('Searching for:', query);
-        // Insert custom search behavior here:
-        // Example: filter articles or redirect to a search results page.
+        // Loop over each article and check the title and summary
+        articles.forEach(article => {
+          const titleEl = article.querySelector('h3');
+          const summaryEl = article.querySelector('p');
+          const titleText = titleEl ? titleEl.textContent.toLowerCase() : '';
+          const summaryText = summaryEl ? summaryEl.textContent.toLowerCase() : '';
+          // Display the article if either the title or summary contains the search query
+          article.style.display = (titleText.includes(query) || summaryText.includes(query)) ? 'block' : 'none';
+        });
       } else {
         alert('Please enter a search term.');
       }
