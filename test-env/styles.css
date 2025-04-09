@@ -354,7 +354,7 @@ footer {
 .about-page section {
   margin: 40px 0;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.1); /* Adjust background as needed */
+  background-color: rgba(0, 0, 0, 0.1); /* Adjust as desired */
   border-radius: 8px;
 }
 
@@ -370,35 +370,27 @@ footer {
   text-align: justify;
 }
 
-/* Discord Webhook Section */
-.discord-webhook form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
+/* Discord Widget Section */
+.discord-widget {
+  text-align: center;
 }
 
-.discord-webhook input[type="url"] {
-  width: 80%;
-  max-width: 400px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.discord-widget p {
+  margin-bottom: 20px;
 }
 
-.discord-webhook button {
-  padding: 10px 20px;
-  background-color: #FFD700;
-  color: #000;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* To help the widget container scale on smaller screens */
+.discord-iframe-container {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
 }
 
-.discord-webhook button:hover {
-  background-color: #ceb009;
+.discord-iframe-container iframe {
+  width: 100%;
+  max-width: 350px; /* Maintain the maximum width provided */
+  height: auto;
+  border: 0;
 }
 
 /* Team Members Section */

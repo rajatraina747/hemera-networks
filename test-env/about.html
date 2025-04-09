@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- HEADER SECTION (fetched via JS) -->
+  <!-- HEADER SECTION (loaded dynamically) -->
   <div id="header-container"></div>
 
   <!-- MAIN CONTENT -->
@@ -24,17 +24,24 @@
       </p>
     </section>
     
-    <!-- Discord Webhook Section -->
-    <section class="discord-webhook">
-      <h2>Discord Server Webhook</h2>
+    <!-- Discord Widget Section -->
+    <section class="discord-widget">
+      <h2>Join Our Discord Community</h2>
       <p>
-        To integrate our Discord server, paste your webhook URL below. (This section can be
-        used to store and process your webhook details.)
+        Connect with us and the rest of our community on Discord. Join for real-time updates, discussions,
+        and more.
       </p>
-      <form id="webhook-form">
-        <input type="url" id="discord-webhook-url" placeholder="Enter Discord Webhook URL" required>
-        <button type="submit">Save Webhook</button>
-      </form>
+      <!-- Discord Widget iframe code -->
+      <div class="discord-iframe-container">
+        <iframe 
+          src="https://discord.com/widget?id=1210599140472397844&theme=dark" 
+          width="350" 
+          height="500" 
+          allowtransparency="true" 
+          frameborder="0" 
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+        </iframe>
+      </div>
     </section>
     
     <!-- Team Members Section -->
@@ -61,7 +68,7 @@
     </section>
   </main>
 
-  <!-- FOOTER SECTION (fetched via JS) -->
+  <!-- FOOTER SECTION (loaded dynamically) -->
   <div id="footer-container"></div>
 
   <!-- Include your main JavaScript file -->
