@@ -1,79 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SportNews Today</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holistic Journalism</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Header with Navigation -->
+  <!-- HEADER SECTION -->
   <header>
-    <div class="container header-container">
-      <div class="logo">
-        <h1>SportNews</h1>
+    <div class="topbar">
+      <div class="container topbar-container">
+        <div class="logo">
+          <h1>Holistic Journal</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Opinion</a></li>
+            <li><a href="#">Culture</a></li>
+            <li><a href="#">Features</a></li>
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Scores</a></li>
-          <li><a href="#">News</a></li>
-          <li><a href="#">Features</a></li>
-          <li><a href="#">Videos</a></li>
-        </ul>
-      </nav>
+    </div>
+
+    <!-- FILTER BAR FOR SORTING ARTICLES -->
+    <div class="filter-bar">
+      <div class="container">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="news">News</button>
+        <button class="filter-btn" data-category="opinion">Opinion</button>
+        <button class="filter-btn" data-category="culture">Culture</button>
+        <button class="filter-btn" data-category="features">Features</button>
+      </div>
     </div>
   </header>
 
-  <!-- Main Content Area -->
+  <!-- MAIN CONTENT -->
   <main class="container">
-    <!-- Featured Story -->
-    <section class="featured">
-      <h2>Featured Match</h2>
-      <img src="featured-image.jpg" alt="Featured Sport Event">
-      <article>
-        <h3>Thrilling Game Comes Down to the Final Minute</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec cursus mauris. Aliquam erat volutpat. Integer et urna sed lacus feugiat fermentum.</p>
-        <a href="#">Read More</a>
-      </article>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <img src="hero.jpg" alt="Featured Story" />
+      <div class="hero-text">
+        <h2>Featured Story Title</h2>
+        <p>
+          A compelling lead on a featured article that draws the reader into your
+          unique journalism.
+        </p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
     </section>
 
-    <!-- Articles -->
+    <!-- ARTICLES GRID -->
     <section class="articles">
-      <article>
-        <h3>Match Analysis</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti.</p>
-        <a href="#">Read More</a>
+      <article class="article-item" data-category="news">
+        <img src="news1.jpg" alt="News Article" />
+        <div class="article-content">
+          <h3>Breaking News Headline</h3>
+          <p>Summary of the news article that keeps readers informed.</p>
+          <a href="#">Read More</a>
+        </div>
       </article>
-      <article>
-        <h3>Transfer Rumours</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed quam ac dui ornare pretium.</p>
-        <a href="#">Read More</a>
+      <article class="article-item" data-category="opinion">
+        <img src="opinion1.jpg" alt="Opinion Article" />
+        <div class="article-content">
+          <h3>Insightful Opinion Piece</h3>
+          <p>An opinion article that offers new perspectives on pressing issues.</p>
+          <a href="#">Read More</a>
+        </div>
       </article>
-      <article>
-        <h3>Upcoming Fixtures</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus, metus ac aliquam tincidunt, libero elit dignissim magna, eget tincidunt dui odio a velit.</p>
-        <a href="#">Read More</a>
+      <article class="article-item" data-category="culture">
+        <img src="culture1.jpg" alt="Culture Article" />
+        <div class="article-content">
+          <h3>Culture and Lifestyle</h3>
+          <p>Exploring trends and stories shaping culture today.</p>
+          <a href="#">Read More</a>
+        </div>
       </article>
+      <article class="article-item" data-category="features">
+        <img src="features1.jpg" alt="Feature Article" />
+        <div class="article-content">
+          <h3>Feature Story</h3>
+          <p>A deep dive into an issue or story that matters.</p>
+          <a href="#">Read More</a>
+        </div>
+      </article>
+      <!-- More article items can be added here -->
     </section>
-
-    <!-- Sidebar with Latest Updates -->
-    <aside class="sidebar">
-      <h2>Latest Updates</h2>
-      <ul>
-        <li><a href="#">Breaking: New Player Signings</a></li>
-        <li><a href="#">Injury News</a></li>
-        <li><a href="#">Live Score Updates</a></li>
-        <li><a href="#">Match Schedule Changes</a></li>
-      </ul>
-    </aside>
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER SECTION -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 SportNews. All rights reserved.</p>
+      <p>&copy; 2025 Holistic Journalism. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <!-- SIMPLE JAVASCRIPT FOR FILTERING ARTICLES -->
+  <script>
+    // Get all filter buttons and article items
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const articles = document.querySelectorAll('.article-item');
+
+    // Add click event for each button
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category');
+
+        // Show or hide articles based on their data-category attribute
+        articles.forEach(article => {
+          if (category === 'all' || article.getAttribute('data-category') === category) {
+            article.style.display = 'block';
+          } else {
+            article.style.display = 'none';
+          }
+        });
+        
+        // Update active button appearance
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
