@@ -201,7 +201,7 @@ body {
 .hero-text .read-more {
   display: inline-block;
   padding: 8px 16px;
-  background-color: #bb1919;
+  background-color: #FFD700;
   color: #fff;
   text-decoration: none;
   font-size: 14px;
@@ -209,7 +209,7 @@ body {
 }
 
 .hero-text .read-more:hover {
-  background-color: #a01717;
+  background-color: #ceb009;
 }
 
 /* ===== Articles Grid ===== */
@@ -222,7 +222,7 @@ body {
 
 .article-item {
   background-color: #2E2C2F;
-  border: 1px solid #6A0DAD;
+  border: 1px solid #580b8f;
   transition: box-shadow 0.3s;
   overflow: hidden;
 }
@@ -252,24 +252,16 @@ body {
 }
 
 .article-content a {
-  color: #6A0DAD;
+  color: #FFD700;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
 }
 
 .article-content a:hover {
-  color: #79a9f2;
+  color: #580b8f;
 }
 
-/* ===== Footer ===== */
-/*footer {
-  background-color: #2E2C2F;
-  color: #FFD700;
-  text-align: center;
-  padding: 20px 0;
-  margin-top: 20px;
-}*/
 /************************************************
    FOOTER STYLES
 ************************************************/
