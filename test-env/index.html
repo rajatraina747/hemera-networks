@@ -90,11 +90,7 @@
   </main>
 
   <!-- FOOTER SECTION -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Holistic Journalism. All Rights Reserved.</p>
-    </div>
-  </footer>
+  <div id="footer-container"></div>
 
   <!-- SIMPLE JAVASCRIPT FOR FILTERING ARTICLES -->
   <script>
@@ -122,5 +118,12 @@
       });
     });
   </script>
+  <script>
+    fetch('/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+</script>
 </body>
 </html>
