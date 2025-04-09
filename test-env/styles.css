@@ -23,9 +23,10 @@ body {
    HEADER & NAVIGATION STYLES
 ****************************************/
 .top-header {
-  background-color: #FFD700;        /* Dark background similar to BBC */
+  background-color: #6A0DAD;        /* Dark background similar to BBC */
   color: #fff;
   padding: 10px 0;
+  border-bottom: 1px solid #FFD700;
 }
 
 /* Header container now holds three items: logo, search, and nav */
@@ -33,6 +34,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 
 /* Logo / Brand */
