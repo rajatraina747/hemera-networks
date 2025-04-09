@@ -358,19 +358,19 @@ footer {
 /****************************************
    ABOUT PAGE STYLES
 ****************************************/
-/* New container to layout the top two sections side-by-side on desktop */
+/* Side-by-side container for 'About Us' and 'Discord' on desktop */
 .about-top-row {
   display: flex;
   gap: 20px;
-  margin-bottom: 40px;
+  margin-top: 40px;      /* Additional space above the row */
+  margin-bottom: 40px;   /* Space below the row */
 }
 
-/* Make each section take equal space */
 .about-top-row .about-us,
 .about-top-row .discord-widget {
   flex: 1;
   padding: 20px;
-  background-color: #2E2C2F;
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
@@ -386,7 +386,7 @@ footer {
   text-align: justify;
 }
 
-/* Discord Widget Section (within about-top-row) */
+/* Discord Widget Section */
 .discord-widget {
   text-align: center;
 }
@@ -404,7 +404,7 @@ footer {
 .discord-iframe-container iframe {
   width: 100%;
   max-width: 350px;
-  height: 300px;
+  height: auto;
   border: 0;
 }
 
@@ -413,10 +413,13 @@ footer {
   text-align: center;
 }
 
+/* Limit width and center the grid (ensures fewer cards are centered) */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  max-width: 800px;    /* Adjust as desired */
+  margin: 0 auto;      /* Center the grid horizontally */
   margin-top: 20px;
 }
 
@@ -440,8 +443,10 @@ footer {
   font-size: 20px;
 }
 
+/* Center location and email text */
 .team-card p {
   font-size: 14px;
+  text-align: center;
 }
 
 /* Mobile Adjustment for About Top Row */
