@@ -129,18 +129,11 @@ body {
     width: 100%;
     justify-content: center;
   }
-
+  
   .header-right nav ul {
     flex-wrap: wrap;
     margin-top: 10px;
     justify-content: center;
-  }
-
-  .hero-text {
-    position: static;
-    background-color: rgba(0, 0, 0, 0.8);
-    margin: 10px 0;
-    max-width: 100%;
   }
 }
 
