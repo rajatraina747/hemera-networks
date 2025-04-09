@@ -7,8 +7,8 @@
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #F5F2FA;
-  color: #6A0DAD;
+  background-color: #55b80f;
+  color: #ffffff;
   line-height: 1.6;
 }
 
@@ -23,7 +23,7 @@ body {
    HEADER & NAVIGATION STYLES
 ****************************************/
 .top-header {
-  background-color: #2E2C2F;        /* Dark background, BBC-like */
+  background-color: #6A0DAD;        /* Dark background, BBC-like */
   color: #FFD700;
   padding: 10px 0;
 }
