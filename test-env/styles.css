@@ -38,6 +38,7 @@ body {
 .header-left .logo {
   font-size: 24px;
   font-weight: bold;
+  place-items: center;
   color: #fff;
   text-decoration: none;
 }
