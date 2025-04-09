@@ -19,9 +19,117 @@ body {
   margin: 0 auto;
 }
 
+/****************************************
+   HEADER & NAVIGATION STYLES
+****************************************/
+.top-header {
+  background-color: #222;        /* Dark background, BBC-like */
+  color: #fff;
+  padding: 10px 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ----- Logo / Site Title ----- */
+.header-left .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ----- Navigation Menu ----- */
+nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;                     /* Spacing between nav items */
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ccc;
+}
+
+/* ----- Search Bar ----- */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 20px;            /* Space between nav and search */
+}
+
+.search-container input[type="text"] {
+  padding: 5px 8px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-container button {
+  padding: 6px 12px;
+  background-color: #bb1919;    /* BBC-esque red accent */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+  background-color: #a01717;    /* Darker red on hover */
+}
+
+/* ----- Sub-Header (Optional) ----- */
+.sub-header {
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc; /* Subtle separation line */
+}
+
+.sub-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+/****************************************
+   RESPONSIVE DESIGN
+****************************************/
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-wrap: wrap;            /* Allow nav to wrap on smaller screens */
+    margin-top: 10px;
+  }
+
+  .search-container {
+    margin-top: 10px;
+    margin-left: 0;             /* Reset search bar margin in stacked layout */
+  }
+}
+
+
 /* ===== Topbar and Navigation ===== */
-.topbar {
-  background-color: #2E2C2F;  /* Bold red accent */
+/*.topbar {
+  background-color: #2E2C2F;  /* Bold red accent 
   color: #FFD700;
 }
 
@@ -56,7 +164,7 @@ nav ul li a {
 
 nav ul li a:hover {
   color: #f4f4f4;
-}
+} */
 
 /* ===== Filter Bar for Sorting Articles ===== */
 .filter-bar {
@@ -256,7 +364,7 @@ footer {
 }
 
 .footer-bottom .disclaimer a:hover {
-  color: #ccc;
+  color: #FFD700;
   text-decoration: none;
 }
 
