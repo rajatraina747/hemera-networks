@@ -356,12 +356,12 @@ footer {
 }
 
 /****************************************
-   ABOUT PAGE SPECIFIC STYLES
+   ABOUT PAGE STYLES
 ****************************************/
 .about-page section {
   margin: 40px 0;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.1); /* Adjust as desired */
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
@@ -377,11 +377,8 @@ footer {
   text-align: justify;
 }
 
-/* Discord Widget Section in About Page */
+/* Discord Widget Section */
 .discord-widget {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
 }
 
@@ -397,12 +394,12 @@ footer {
 
 .discord-iframe-container iframe {
   width: 100%;
-  max-width: 350px;
+  max-width: 350px; /* This matches your original width for the widget */
   height: auto;
   border: 0;
 }
 
-/* Team Members Section in About Page */
+/* Team Members Section */
 .team-members {
   text-align: center;
 }
