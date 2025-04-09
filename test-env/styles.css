@@ -70,7 +70,7 @@ body {
 .search-container button {
   padding: 6px 12px;
   background-color: #FFD700;    /* gold accent */
-  color: #fff;
+  color: #000;
   border: none;
   border-radius: 4px;
   cursor: pointer;
