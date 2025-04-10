@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupFilterAndSearch() {
   // Filtering functionality
   const filterButtons = document.querySelectorAll('.filter-btn');
+  if (filterButtons.length === 0) return; // Do nothing if no filter buttons exist
   const articles = document.querySelectorAll('.article-item');
 
   filterButtons.forEach(btn => {
