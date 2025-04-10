@@ -149,11 +149,27 @@ main {
     justify-content: center;
   }
   
+  /* Updated Hero Section for Mobile */
+  .hero img {
+    max-height: none;
+    object-fit: cover;
+  }
+  
   .hero-text {
     position: static;
+    margin: 10px auto;
+    padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
-    margin: 10px 0;
-    max-width: 100%;
+    max-width: 90%;
+    text-align: center;
+  }
+  
+  .hero-text h2 {
+    font-size: 24px;
+  }
+  
+  .hero-text p {
+    font-size: 14px;
   }
 }
 
@@ -362,15 +378,16 @@ footer {
 .about-top-row {
   display: flex;
   gap: 20px;
-  margin-top: 40px;      /* Additional space above the row */
-  margin-bottom: 40px;   /* Space below the row */
+  margin-top: 40px;      /* Extra gap above the row */
+  margin-bottom: 40px;   /* Gap below the row */
 }
 
+/* Each section in the top row takes equal space */
 .about-top-row .about-us,
 .about-top-row .discord-widget {
   flex: 1;
   padding: 20px;
-  background-color: #2E2C2F;
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
@@ -404,7 +421,7 @@ footer {
 .discord-iframe-container iframe {
   width: 100%;
   max-width: 350px;
-  height: 400px;
+  height: auto;
   border: 0;
 }
 
@@ -413,14 +430,13 @@ footer {
   text-align: center;
 }
 
-/* Limit width and center the grid (ensures fewer cards are centered) */
+/* Limit grid width and center if fewer cards */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  max-width: 275px;    /* Adjust as desired */
-  margin: 0 auto;      /* Center the grid horizontally */
-  margin-top: 20px;
+  max-width: 800px;
+  margin: 20px auto 0 auto;
 }
 
 .team-card {
@@ -443,7 +459,6 @@ footer {
   font-size: 20px;
 }
 
-/* Center location and email text */
 .team-card p {
   font-size: 14px;
   text-align: center;
