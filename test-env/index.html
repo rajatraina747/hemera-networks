@@ -4,16 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hemera Networks</title>
-  <link rel="icon" type="image/x-icon" href="/images/HN Logo.png">
+  <link rel="icon" type="image/x-icon" href="/images/HN Logo.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- HEADER SECTION -->
+  <!-- HEADER SECTION (Loaded Dynamically) -->
   <div id="header-container"></div>
-
-  <!-- HEADER SECTION -->
-  <div id="header-container"></div>
-  <!-- Filter Bar (only on the homepage) -->
+  
+  <!-- FILTER BAR (Now only on the homepage) -->
   <div class="filter-bar">
     <div class="container">
       <button class="filter-btn active" data-category="all">All</button>
@@ -25,60 +23,46 @@
       <button class="filter-btn" data-category="features">Features</button>
     </div>
   </div>
+  
   <!-- MAIN CONTENT -->
   <main class="container">
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <img src="/Articles/Images/09.04.25-US-China-Tariff-War/assets_task_01jrd7ye1xewnv53qdaqsvd6q3_img_0.webp" alt="Featured Story"/>
-      <div class="hero-text">
-        <h2>US China Tariff War</h2>
-        <p>Tariff War Intensifies as U.S. Hits China with 104% Duties, Markets Spiral</p>
-        <a href="/Articles/09.04.25-US-China-Tariff-War.html" class="read-more">Read More</a>
+    <!-- Section 1: Latest Overall Headlines -->
+    <section class="latest-articles-overall">
+      <h2>Latest Headlines</h2>
+      <div class="latest-articles-container">
+        <!-- Dynamic articles will be inserted here -->
       </div>
     </section>
-
-    <!-- ARTICLES GRID -->
-    <section class="articles">
-      <article class="article-item" data-category="news">
-        <img src="/Articles/Images/08.04.25-Nippon-US-Steel-Review/us-steel-nippon-steel-040125-01-1735963449.jpg" alt="News Article" />
-        <div class="article-content">
-          <h3>Nippon US Steel Review</h3>
-          <p>Trump Administration Scrutinizes Japanese Bid for U.S. Steel Over Security Concerns</p>
-          <a href="/Articles/08.04.25-Nippon-US-Steel-Review.html">Read More</a>
-        </div>
-      </article>
-      <article class="article-item" data-category="opinion">
-        <img src="/Articles/Images/07.04.25-Asian-Markets-Tariffs/skynews-nikkei-japan-markets_6879454.jpg" alt="Opinion Article" />
-        <div class="article-content">
-          <h3>Asian Markets Tariffs</h3>
-          <p>Trump’s Tariff Push Sparks Investor Panic Across Asia</p>
-          <a href="/Articles/07.04.25-Asian-Markets-Tariffs.html">Read More</a>
-        </div>
-      </article>
-      <article class="article-item" data-category="culture">
-        <img src="/Articles/Images/08.04.25-Bayer-Glyphosate-Lawsuits/bayer-roundup-trials-news.jpg" alt="Culture Article" />
-        <div class="article-content">
-          <h3>Bayer Glyphosate Lawsuits</h3>
-          <p>Bayer Petitions Supreme Court to Block Cancer Lawsuits Over Glyphosate</p>
-          <a href="/Articles/08.04.25-Bayer-Glyphosate-Lawsuits.html">Read More</a>
-        </div>
-      </article>
-      <article class="article-item" data-category="features">
-        <img src="/Articles/Images/09.04.25-US-China-Tariff-War/assets_task_01jrd7ye1xewnv53qdaqsvd6q3_img_0.webp" alt="Feature Article" />
-        <div class="article-content">
-          <h3>US China Tariff War</h3>
-          <p>Tariff War Intensifies as U.S. Hits China with 104% Duties, Markets Spiral</p>
-          <a href="/Articles/09.04.25-US-China-Tariff-War.html">Read More</a>
-        </div>
-      </article>
-      <!-- More article items can be added here -->
+    
+    <!-- Section 2: Sport Category -->
+    <section class="homepage-category-sport">
+      <h2>Sport</h2>
+      <div class="sport-articles-container">
+        <!-- Dynamic Sport articles will be inserted here -->
+      </div>
+    </section>
+    
+    <!-- Section 3: News Category -->
+    <section class="homepage-category-news">
+      <h2>News</h2>
+      <div class="news-articles-container">
+        <!-- Dynamic News articles will be inserted here -->
+      </div>
+    </section>
+    
+    <!-- Section 4: Automotive Category -->
+    <section class="homepage-category-automotive">
+      <h2>Automotive</h2>
+      <div class="auto-articles-container">
+        <!-- Dynamic Automotive articles will be inserted here -->
+      </div>
     </section>
   </main>
-
-  <!-- FOOTER SECTION -->
+  
+  <!-- FOOTER SECTION (Loaded Dynamically) -->
   <div id="footer-container"></div>
-
-  <!-- SIMPLE JAVASCRIPT FOR FILTERING ARTICLES -->
+  
+  <!-- MAIN JAVASCRIPT -->
   <script src="/test-env/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "title": "Historic F1 Weekend",
+    "subheading": "Mercedes introduces a radical new sidepod design",
+    "summary": "A thrilling Spanish Grand Prix sees multiple lead changes...",
+    "category": "sport",
+    "subcategory": "formula1",
+    "type": "primary",
+    "image": "/images/Hemera Networks Logo.png",
+    "url": "/Articles/2025.05.02-F1-Weekend.html",
+    "date": "2025-05-02T10:30:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Major Apple Car Rumors",
+    "subheading": "Leaked designs show advanced battery technology",
+    "summary": "Speculation grows as Apple’s secretive automotive project...",
+    "category": "automotive",
+    "subcategory": "electric-cars",
+    "type": "secondary",
+    "image": "/images/Hemera Networks Logo.png",
+    "url": "/Articles/2025.05.03-Apple-Car-Rumors.html",
+    "date": "2025-05-03T14:15:00Z"
+  }
+  // … more articles …
+]
