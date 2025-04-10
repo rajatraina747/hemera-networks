@@ -8,20 +8,33 @@
     "subcategory": "formula1",
     "type": "primary",
     "image": "/images/Hemera Networks Logo.png",
-    "url": "/Articles/2025.05.02-F1-Weekend.html",
-    "date": "2025-05-02T10:30:00Z"
+    "url": "/Articles/09.04.25-US-China-Tariff-War.html",
+    "date": "2025-05-03T14:15:00Z"
   },
   {
     "id": 2,
     "title": "Major Apple Car Rumors",
     "subheading": "Leaked designs show advanced battery technology",
     "summary": "Speculation grows as Apple’s secretive automotive project...",
-    "category": "automotive",
+    "category": "sport",
     "subcategory": "electric-cars",
     "type": "secondary",
     "image": "/images/Hemera Networks Logo.png",
     "url": "/Articles/2025.05.03-Apple-Car-Rumors.html",
-    "date": "2025-05-03T14:15:00Z"
+    "date": "2025-05-10T14:25:00Z"
+  },
+  {
+    "id": 3,
+    "title": "Major Google Car Rumors",
+    "subheading": "Leaked designs show no advanced battery technology",
+    "summary": "Speculation grows as Gogogole's secretive automotive project...",
+    "category": "sport",
+    "subcategory": "electric-cars",
+    "type": "secondary",
+    "image": "/images/Hemera Networks Logo.png",
+    "url": "/Articles/07.04.25-Asian-Markets-Tariffs.html",
+    "date": "2025-05-10T14:25:00Z"
   }
+
   // … more articles …
 ]
