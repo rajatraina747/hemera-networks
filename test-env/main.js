@@ -2,7 +2,6 @@
 // MAIN.JS
 // ------------------------------
 
-// Wait for the DOM to load
 document.addEventListener('DOMContentLoaded', () => {
   // Fetch the header and set up search & filter functionality.
   fetch('/test-env/header.html')
@@ -13,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error fetching header:', error));
 
-  // Fetch the footer
+  // Fetch the footer.
   fetch('/test-env/footer.html')
     .then(response => response.text())
     .then(data => {
@@ -21,10 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error fetching footer:', error));
 
-  // Load articles data from JSON file
+  // Load articles data from JSON file.
   fetch('/test-env/articles.json')
     .then(response => response.json())
     .then(data => {
+      console.log("Articles loaded:", data); // Debug: log loaded articles.
       window.articlesData = data;
       // If the homepage's latest articles section exists, load homepage articles.
       if (document.querySelector('.latest-articles-overall')) {
@@ -51,28 +51,25 @@ function setupFilterAndSearch() {
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const category = btn.getAttribute('data-category');
-        // Show/hide articles based on the filter button's category
         articles.forEach(article => {
           article.style.display =
             category === 'all' || article.getAttribute('data-category') === category
               ? 'block'
               : 'none';
         });
-        // Update button active state
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
       });
     });
   }
 
-  // Setup search functionality (using the search input in the header)
+  // Setup search functionality using the header search input.
   const searchInput = document.getElementById('search-input');
   const searchBtn = document.getElementById('search-btn');
   if (searchBtn && searchInput) {
     searchBtn.addEventListener('click', () => {
       const query = searchInput.value.trim().toLowerCase();
       if (query) {
-        // Loop over articles (those in .article-item) and show/hide based on title or summary match.
         const articles = document.querySelectorAll('.article-item');
         articles.forEach(article => {
           const titleEl = article.querySelector('h3');
@@ -94,14 +91,14 @@ function setupFilterAndSearch() {
 // ------------------------------
 function loadHomepageArticles() {
   if (!window.articlesData) return;
-  // Sort articles in descending order by date (newest first)
+  // Sort articles by date descending (newest first)
   const sortedArticles = [...window.articlesData].sort((a, b) => new Date(b.date) - new Date(a.date));
   
-  // Get the top 5 overall articles
+  // Top 5 overall articles.
   const topOverall = sortedArticles.slice(0, 5);
   insertLatestOverall(topOverall);
 
-  // Load articles by category (example: sport, news, automotive)
+  // Filter by specific categories.
   const sportArticles = sortedArticles.filter(article => article.category === 'sport').slice(0, 5);
   const newsArticles = sortedArticles.filter(article => article.category === 'news').slice(0, 5);
   const autoArticles = sortedArticles.filter(article => article.category === 'automotive').slice(0, 5);
@@ -116,8 +113,9 @@ function insertLatestOverall(articles) {
   if (!container) return;
   container.innerHTML = '';
   articles.forEach(article => {
+    // NOTE: Using "article-item" and data-category for consistent filtering.
     const markup = `
-      <article class="article-card">
+      <article class="article-item" data-category="${article.category}">
         <img src="${article.image}" alt="${article.title}" />
         <h3>${article.title}</h3>
         <p>${article.summary}</p>
@@ -134,7 +132,7 @@ function insertCategoryArticles(articles, containerSelector) {
   container.innerHTML = '';
   articles.forEach(article => {
     const markup = `
-      <article class="article-card">
+      <article class="article-item" data-category="${article.category}">
         <img src="${article.image}" alt="${article.title}" />
         <h3>${article.title}</h3>
         <p>${article.summary}</p>
@@ -151,21 +149,28 @@ function insertCategoryArticles(articles, containerSelector) {
 // ------------------------------
 function loadSportLanding() {
   if (!window.articlesData) return;
-  // Filter sport articles and sort them by date descending.
+  // Filter for articles with category "sport" and sort them descending by date.
   const sortedSport = window.articlesData
     .filter(article => article.category === 'sport')
     .sort((a, b) => new Date(b.date) - new Date(a.date));
   
-  // For the sport landing page, designate:
-  // 1. A feature article (of type "feature")
-  const sportFeature = sortedSport.find(article => article.type === 'feature');
-  // 2. Up to 5 primary sport articles
-  const primaries = sortedSport.filter(article => article.type === 'primary').slice(0, 5);
-  // 3. Up to 5 secondary sport articles
+  // Get feature article: if there is one marked as "feature", use it;
+  // otherwise, fall back to the first primary article.
+  let sportFeature = sortedSport.find(article => article.type === 'feature');
+  if (!sportFeature) {
+    sportFeature = sortedSport.find(article => article.type === 'primary');
+  }
+  
+  // Filter primary and secondary articles.
+  const primaries = sortedSport.filter(article => article.type === 'primary');
+  // If a feature is used from primary articles, filter it out from primaries:
+  const primariesFiltered = sportFeature ? primaries.filter(article => article.id !== sportFeature.id) : primaries;
+  const primaryLimit = primariesFiltered.slice(0, 5);
   const secondaries = sortedSport.filter(article => article.type === 'secondary').slice(0, 5);
 
+  // Insert into the DOM.
   insertSportFeature(sportFeature);
-  insertSportPrimaries(primaries);
+  insertSportPrimaries(primaryLimit);
   insertSportSecondaries(secondaries);
 }
 
