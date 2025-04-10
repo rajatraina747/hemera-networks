@@ -421,7 +421,7 @@ footer {
 .about-top-row .discord-widget {
   flex: 1;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #2E2C2F;
   border-radius: 8px;
 }
 
@@ -455,7 +455,7 @@ footer {
 .discord-iframe-container iframe {
   width: 100%;
   max-width: 350px;
-  height: auto;
+  height: 300px;
   border: 0;
 }
 
@@ -469,7 +469,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  max-width: 800px;
+  max-width: 250px;
   margin: 20px auto 0 auto;
 }
 
