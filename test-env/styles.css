@@ -44,7 +44,6 @@ main {
   border-bottom: 1px solid #FFD700;
 }
 
-/* Header container for logo, search, and nav */
 .header-container {
   display: flex;
   align-items: center;
@@ -58,7 +57,6 @@ main {
   text-decoration: none;
 }
 
-/* Search Container positioned between logo and navigation */
 .header-search {
   flex-grow: 1;
   margin: 0 20px;
@@ -92,10 +90,9 @@ main {
 }
 
 .search-container button:hover {
-  background-color: #ceb009; /* Darker gold on hover */
+  background-color: #ceb009;
 }
 
-/* Navigation Menu */
 .header-right nav ul {
   list-style: none;
   display: flex;
@@ -115,7 +112,6 @@ main {
   color: #ccc;
 }
 
-/* Sub-Header */
 .sub-header {
   background-color: #2E2C2F;
   color: #fff;
@@ -159,7 +155,7 @@ main {
     position: static;
     margin: 10px auto;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0,0,0,0.8);
     max-width: 90%;
     text-align: center;
   }
@@ -172,7 +168,7 @@ main {
     font-size: 14px;
   }
   
-  /* Reduce text sizes for various elements for better responsiveness */
+  /* Reduced text sizes for better mobile fit */
   .sub-header h1 {
     font-size: 16px;
   }
@@ -189,11 +185,12 @@ main {
     font-size: 12px;
   }
   
-  .about-page h2, .sport-page h2 {
+  .about-page h2, .sport-page h2, .latest-articles-overall h2,
+  .homepage-category-sport h2, .homepage-category-news h2, .homepage-category-automotive h2 {
     font-size: 24px;
   }
   
-  .about-page p, .sport-page p {
+  .about-page p, .sport-page p, .article-card p {
     font-size: 14px;
   }
   
@@ -225,9 +222,9 @@ main {
 
 .filter-bar .container {
   display: flex;
-  flex-wrap: wrap;      /* Allow buttons to wrap */
+  flex-wrap: wrap;
   gap: 10px;
-  justify-content: center; /* Center buttons horizontally */
+  justify-content: center;
 }
 
 .filter-btn {
@@ -265,7 +262,7 @@ main {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0,0,0,0.6);
   padding: 20px;
   max-width: 70%;
   color: #fff;
@@ -313,7 +310,7 @@ main {
 }
 
 .article-item:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .article-item img {
@@ -415,15 +412,13 @@ footer {
 /****************************************
    ABOUT PAGE STYLES
 ****************************************/
-/* Side-by-side container for 'About Us' and 'Discord' on desktop */
 .about-top-row {
   display: flex;
   gap: 20px;
-  margin-top: 40px;      /* Extra gap above the row */
-  margin-bottom: 40px;   /* Gap below the row */
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
-/* Each section in the top row takes equal space */
 .about-top-row .about-us,
 .about-top-row .discord-widget {
   flex: 1;
@@ -444,7 +439,6 @@ footer {
   text-align: justify;
 }
 
-/* Discord Widget Section (About Page) */
 .discord-widget {
   text-align: center;
 }
@@ -466,12 +460,11 @@ footer {
   border: 0;
 }
 
-/* Team Members Section (About Page) */
+/* TEAM MEMBERS (About Page) */
 .team-members {
   text-align: center;
 }
 
-/* Limit grid width and center the grid if there are fewer cards */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -505,7 +498,7 @@ footer {
   text-align: center;
 }
 
-/* Mobile Adjustment for About Top Row */
+/* MOBILE Adjustment for About Top Row */
 @media (max-width: 768px) {
   .about-top-row {
     flex-direction: column;
@@ -515,13 +508,11 @@ footer {
 /****************************************
    SPORT PAGE STYLES
 ****************************************/
-/* Overall container specific to Sports Page */
 .sport-page {
   margin-top: 20px;
   margin-bottom: 40px;
 }
 
-/* HERO Section for Sports */
 .sport-hero {
   position: relative;
   margin-bottom: 20px;
@@ -539,7 +530,7 @@ footer {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0,0,0,0.6);
   padding: 20px;
   max-width: 60%;
   color: #fff;
@@ -569,7 +560,6 @@ footer {
   background-color: #ceb009;
 }
 
-/* Sports Navigation Bar */
 .sport-nav {
   background-color: #2E2C2F;
   padding: 10px 0;
@@ -597,7 +587,6 @@ footer {
   color: #ccc;
 }
 
-/* Top Stories and Other Stories for Sports */
 .sport-top-stories,
 .sport-other-stories {
   display: grid;
@@ -643,5 +632,3 @@ footer {
   font-size: 12px;
   color: #ccc;
 }
-
-/* Additional responsive adjustments for the sport page are handled in the global media query above. */
