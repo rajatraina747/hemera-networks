@@ -3,20 +3,20 @@ const fs = require('fs');
 const path = require('path');
 
 // 1. Load articles from JSON
-const rawData = fs.readFileSync('.data/articles.json', 'utf8');
+const rawData = fs.readFileSync('data/articles.json', 'utf8');
 let articles = JSON.parse(rawData);
 
 // 2. Sort articles by date desc
 articles.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 // 3. Read template files
-const indexTemplate = fs.readFileSync('.templates/index.template.html', 'utf8');
-const categoryTemplate = fs.readFileSync('.templates/category.template.html', 'utf8');
-const articleTemplate = fs.readFileSync('.templates/article.template.html', 'utf8');
+const indexTemplate = fs.readFileSync('templates/index.template.html', 'utf8');
+const categoryTemplate = fs.readFileSync('templates/category.template.html', 'utf8');
+const articleTemplate = fs.readFileSync('templates/article.template.html', 'utf8');
 
 // Make sure dist folder exists
-if (!fs.existsSync('./dist')) {
-  fs.mkdirSync('./dist');
+if (!fs.existsSync('/dist')) {
+  fs.mkdirSync('/dist');
 }
 
 // 4. Build the homepage
