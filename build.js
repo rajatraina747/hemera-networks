@@ -15,8 +15,8 @@ const categoryTemplate = fs.readFileSync('templates/category.template.html', 'ut
 const articleTemplate = fs.readFileSync('templates/article.template.html', 'utf8');
 
 // Make sure dist folder exists
-if (!fs.existsSync('/dist')) {
-  fs.mkdirSync('/dist');
+if (!fs.existsSync('dist')) {
+  fs.mkdirSync('dist');
 }
 
 // 4. Build the homepage
