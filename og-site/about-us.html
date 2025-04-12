@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>About Us - Hemera Networks</title>
+		<link rel="icon" type="image/x-icon" href="/images/wp3198040.webp">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload no-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-container"></div>
+
+			<!-- Main -->
+				<div id="main-wrapper">
+					<div class="container">
+						<div id="content">
+
+							<!-- Content -->
+								<article>
+
+									<center><h2>About Hemera Networks<sup>&copy;</sup>(Powered by RainaCorp<sup>&copy;</sup>)</h2></center>
+
+									<p>At Hemera Networks<sup>&copy;</sup>, we believe journalism should inform, engage, and empower. As the journalism division of RainaCorp<sup>&copy;</sup>, we are committed to delivering high-impact, timely content that cuts through the noise. Whether covering fast-moving political developments, the pulse of global motorsport, or the urgent realities of climate change, our mission is clear: to be a trusted source of insight in a rapidly changing world.</p>
+
+									<p>Our work begins with the written word—deeply researched, thoughtfully framed, and relentlessly relevant. From there, we are expanding into the realms of audio and video, crafting immersive journalism for the next generation of news consumers. In every format, we uphold the highest standards of integrity, accuracy, and storytelling.</p>
+
+									<h3>As highlighted on our homepage:</h3>
+									<p><i>“The launch of Hemera Networks<sup>&copy;</sup> journalism division within RainaCorp<sup>&copy;</sup> represents an exciting opportunity to deliver dynamic and engaging content to our audience. By starting with text-based journalism and expanding into audio and video formats, we aim to meet the evolving needs and preferences of our audience while upholding the highest standards of journalistic integrity and professionalism. Furthermore, to establish Hemera Networks<sup>&copy;</sup> as a trusted source of information and insight within the industry.”</i></p>
+									
+									<h3>Community-Driven, Insight-Focused</h3>
+									<p>We don’t just report the news—we invite you into the conversation. Our active Discord server is a vibrant space where automotive enthusiasts, aspiring journalists, and curious minds come together to share, debate, and collaborate. It’s more than just a forum—it’s a newsroom without walls. Join us, connect with experts and readers, and help shape the future of independent journalism.</p>
+								</article>
+
+						</div>
+					</div>
+				</div>
+				<section id="team" style="padding: 2rem; background-color: #0D2E3D;">
+					<div style="max-width: 1200px; margin: auto; text-align: center;">
+					  <h2 style="font-size: 2rem; margin-bottom: 1rem;">Meet the Team</h2>
+					  <p style="max-width: 700px; margin: auto; margin-bottom: 2rem; color: #ffffff;">
+						Our dedicated team brings together journalism, creativity, and insight to deliver meaningful stories.
+					  </p>
+					  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+				  
+						<!-- Card 1 -->
+						<div style="background: rgb(0, 0, 0); border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 8px rgba(214, 52, 52, 0.1); max-width: 280px; text-align: center;">
+						  <img src="/images/Profile Pic - RR.PNG" alt="Rajat Raina" style="border-radius: 50%; margin-bottom: 1rem; width: 150px; height: 150px; object-fit: cover;">
+						  <h3 style="margin: 0.5rem 0;">Rajat Raina</h3>
+						  <p style="color: #ffffff; font-size: 0.9rem;"><i>Editor-in-Chief</i></p>
+						  <p style="font-size: 0.85rem;">Founder of Hemera Networks, dedicated to crafting impactful journalism at the intersection of politics, motorsport, and climate.</p>
+						  <p style="font-size: 0.8rem; color: #ffffff; text-align: center;">📍 United Kingdom <br> 📧 rajat.raina@rainacorp.co.uk</p>
+						</div>				  
+					  </div>
+					</div>
+				  </section>
+				<div id="footer-container"></div>
+			</div>
+
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+                fetch('/footer.html')
+                  .then(response => response.text())
+                  .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                  });
+            </script>
+            <script>
+                fetch('/header.html')
+                  .then(response => response.text())
+                  .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                  });
+            </script>
+
+	</body>
+</html>
