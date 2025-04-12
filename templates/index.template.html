@@ -1,59 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Hemera Networks - Home</title>
+    <!-- Link to your shared stylesheet -->
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
-    <header>
-      <div class="logo">Hemera Networks</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="sport.html">Sport</a>
+    <!-- Top Header & Nav -->
+    <header class="top-header">
+      <div class="header-left">
+        <div class="branding">
+          <span class="site-title">Hemera Networks</span>
+          <span class="tagline">A RainaCorp® Company</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <nav class="main-nav">
+          <a href="index.html" class="active">Home</a>
+          <a href="news.html">News</a>
+          <a href="opinion.html">Opinion</a>
+          <a href="culture.html">Culture</a>
+          <a href="features.html">Features</a>
+          <a href="sport.html">Sport</a>
+          <a href="entertainment.html">Entertainment</a>
+        </nav>
+        <form class="search-form">
+          <input type="text" placeholder="Search..." />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    </header>
+
+    <!-- Hero / Featured Article Section -->
+    <section class="hero">
+      <!-- FEATURED_ARTICLE_PLACEHOLDER -->
+      <!-- 
+        Example of what might be injected via build script:
+        <div class="hero-article">
+          <img src="images/tariff-war.jpg" alt="Tariff War" />
+          <div class="hero-article-content">
+            <h2>US-China Tariff War</h2>
+            <p>Tariff War Intensifies as US hits China with 10% Duties, Markets Spiral</p>
+            <a href="article-001.html" class="read-more">Read More</a>
+          </div>
+        </div>
+      -->
+    </section>
+
+    <!-- Category/Grid Section -->
+    <section class="category-grid">
+      <div class="grid-row">
+        <!-- For example: 4 columns across with article cards -->
+        
+        <!-- Example placeholders—replace with real data in your build script -->
+        <div class="category-article-card">
+          <img src="images/sample-news.jpg" alt="Sample News" />
+          <div class="card-content">
+            <h3>Sample News Article</h3>
+            <p>Short summary goes here...</p>
+            <a href="article-002.html" class="read-more">Read More</a>
+          </div>
+        </div>
+        
+        <div class="category-article-card">
+          <img src="images/sample-opinion.jpg" alt="Sample Opinion" />
+          <div class="card-content">
+            <h3>Opinion Piece</h3>
+            <p>Short summary goes here...</p>
+            <a href="article-003.html" class="read-more">Read More</a>
+          </div>
+        </div>
+        
+        <div class="category-article-card">
+          <img src="images/sample-culture.jpg" alt="Sample Culture" />
+          <div class="card-content">
+            <h3>Culture Article</h3>
+            <p>Short summary goes here...</p>
+            <a href="article-004.html" class="read-more">Read More</a>
+          </div>
+        </div>
+        
+        <div class="category-article-card">
+          <img src="images/sample-feature.jpg" alt="Sample Feature" />
+          <div class="card-content">
+            <h3>Feature Story</h3>
+            <p>Short summary goes here...</p>
+            <a href="article-005.html" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Another row for additional categories if needed -->
+    <section class="category-grid">
+      <div class="grid-row">
+        <!-- CATEGORY_ARTICLES_PLACEHOLDER -->
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+      <div class="footer-links">
         <a href="news.html">News</a>
         <a href="automotive.html">Automotive</a>
-      </nav>
-    </header>
-    <main>
-      <!-- Featured Article Section -->
-      <section class="featured">
-        <h2>Featured Article</h2>
-        <!-- Optionally you can inject a special featured article block here -->
-        <!-- FEATURED_ARTICLE_PLACEHOLDER -->
-      </section>
-
-      <!-- Latest Articles Section -->
-      <section class="latest">
-        <h2>Latest Articles</h2>
-        <div class="articles-list">
-          <!-- ARTICLES_PLACEHOLDER -->
-        </div>
-      </section>
-
-      <!-- Category Sections -->
-      <section class="categories">
-        <h2>Browse by Category</h2>
-        <div class="category-sections">
-          <!-- Each category block can include a title and a few recent articles -->
-          <div class="category-block">
-            <h3>Sport</h3>
-            <!-- Sport articles snippet goes here -->
-            <!-- For example: <div class="article-snippet">...</div> -->
-          </div>
-          <div class="category-block">
-            <h3>News</h3>
-            <!-- News articles snippet -->
-          </div>
-          <div class="category-block">
-            <h3>Automotive</h3>
-            <!-- Automotive snippet -->
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2025 Hemera Networks. All rights reserved.</p>
+        <a href="sport.html">Sport</a>
+        <a href="entertainment.html">Entertainment</a>
+        <a href="about.html">About Hemera Networks</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-disclaimer">
+        <p>Intellectual Property Protection | Editorial Policy | About Hemera Networks</p>
+        <p>
+          © 2025 RainaCorp. Raina Corporation Inc. All rights reserved.  
+          Hemera Networks is not responsible for content of external sites.
+        </p>
+      </div>
     </footer>
   </body>
 </html>
