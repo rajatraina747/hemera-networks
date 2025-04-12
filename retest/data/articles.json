@@ -1,0 +1,23 @@
+[
+    {
+      "id": "001",
+      "title": "My First Article",
+      "category": "Sport",
+      "subcategory": "Football",
+      "featured": true,
+      "date": "2025-04-11",
+      "summary": "A quick summary of the article.",
+      "image_url": "images/my-first-article.jpg",
+      "content": "Full text or a short paragraph goes here..."
+    },
+    {
+      "id": "002",
+      "title": "Another Post",
+      "category": "News",
+      "date": "2025-04-10",
+      "summary": "This is the second article summary.",
+      "image_url": "images/another.jpg",
+      "content": "Full article content here."
+    }
+  ]
+  
