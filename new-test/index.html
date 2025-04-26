@@ -4,48 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <title>Hemera Networks</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to content</a>
-
-  <header class="header" role="banner">
-    <nav class="nav" role="navigation">
-      <div class="header-banner">
-        <div class="header-date" aria-live="polite">Loading date…</div>
-        <div class="header-weather" aria-live="polite">
-          <span class="weather-icon">☀️</span>
-          <span class="weather-temp">--°C</span>
-          <span class="weather-location">London</span>
-        </div>
-      </div>
-
-      <div class="nav-main">
-        <div class="nav-logo" aria-label="Hemera Networks homepage">Hemera Networks</div>
-        <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-        <ul class="nav-links">
-          <li><a href="#" class="nav-signin">Sign in</a></li>
-          <li><a href="#" class="nav-link">Home</a></li>
-          <li><a href="#" class="nav-link">News</a></li>
-          <li><a href="#" class="nav-link">Sport</a></li>
-          <li class="nav-search-form">
-            <form action="/search" method="get">
-              <input type="search" name="q" placeholder="Search" class="nav-search" aria-label="Search" required>
-              <button type="submit" class="nav-search-button" aria-label="Submit search">🔍</button>
-            </form>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <!-- Dynamically injected header -->
+  <div id="header-container"></div>
 
   <main class="main-content" id="main-content">
     <section class="top-stories">
       <h2 class="section-title">Welcome to Hemera Networks</h2>
       <div class="featured-story">
-        <img src="https://picsum.photos/800/450" alt="Featured news scene" loading="lazy">
+        <img
+          src="https://picsum.photos/800/450"
+          alt="Featured news scene"
+          loading="lazy">
         <h1>Breaking News: Major Development in Global Politics</h1>
         <p>World leaders gather for emergency summit as international tensions rise.</p>
         <span class="category-world">World</span>
@@ -54,57 +30,83 @@
 
     <section class="secondary-stories">
       <div class="story-card">
-        <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
+        <img
+          data-src="https://picsum.photos/400/225"
+          class="lazy-load"
+          alt="Lab experiment scene"
+          loading="lazy">
         <h3>New Technology Breakthrough Announced</h3>
-        <span class="category-sport">Football</span>
+        <span class="category-tech">Technology</span>
       </div>
       <div class="story-card">
-        <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
+        <img
+          data-src="https://picsum.photos/400/225"
+          class="lazy-load"
+          alt="Global research collaboration"
+          loading="lazy">
         <h3>New World Breakthrough Announced 2</h3>
-        <span class="category-world">Technology</span>
+        <span class="category-world">World</span>
       </div>
       <div class="story-card">
-        <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
+        <img
+          data-src="https://picsum.photos/400/225"
+          class="lazy-load"
+          alt="UK parliamentary session"
+          loading="lazy">
         <h3>New UK Breakthrough Announced 3</h3>
-        <span class="category-uk">Technology</span>
+        <span class="category-uk">UK</span>
       </div>
       <div class="story-card">
-        <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
+        <img
+          data-src="https://picsum.photos/400/225"
+          class="lazy-load"
+          alt="UK innovation lab"
+          loading="lazy">
         <h3>New UK Breakthrough Announced 4</h3>
-        <span class="category-uk">Technology</span>
+        <span class="category-uk">UK</span>
       </div>
       <div class="story-card">
-        <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
+        <img
+          data-src="https://picsum.photos/400/225"
+          class="lazy-load"
+          alt="Tennis championship action"
+          loading="lazy">
         <h3>New Sports Breakthrough Announced 5</h3>
         <span class="category-sport">Tennis</span>
       </div>
       <div class="story-card">
-        <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
+        <img
+          data-src="https://picsum.photos/400/225"
+          class="lazy-load"
+          alt="Tech prototype unveiling"
+          loading="lazy">
         <h3>New Technology Breakthrough Announced 6</h3>
         <span class="category-tech">Technology</span>
       </div>
       <div class="story-card">
-        <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
-        <h3>New Health Breakthrough Announced 6</h3>
-        <span class="category-health">Covid</span>
+        <img
+          data-src="https://picsum.photos/400/225"
+          class="lazy-load"
+          alt="Healthcare worker with patient"
+          loading="lazy">
+        <h3>New Health Breakthrough Announced 7</h3>
+        <span class="category-health">Health</span>
       </div>
       <div class="story-card">
-        <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
-        <h3>New Technology Breakthrough Announced 7</h3>
-        <span class="category-tech">Technology</span>
-      </div>
-      <div class="story-card">
-        <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
+        <img
+          data-src="https://picsum.photos/400/225"
+          class="lazy-load"
+          alt="Next-gen gadget preview"
+          loading="lazy">
         <h3>New Technology Breakthrough Announced 8</h3>
         <span class="category-tech">Technology</span>
       </div>
-      <!-- Add more story cards as needed -->
     </section>
 
     <section class="news-section">
       <h2 class="section-title">News</h2>
       <div class="news-grid">
-        <!-- fetchNews() populates this -->
+        <!-- fetchNews() will populate this -->
       </div>
     </section>
 
@@ -112,24 +114,15 @@
       <h2 class="section-title">Sport</h2>
       <div class="sport-grid">
         <article class="sport-article">
-          <img src="https://picsum.photos/300/169" alt="Football match action" loading="lazy">
+          <img
+            src="https://picsum.photos/300/169"
+            alt="Football match action"
+            loading="lazy">
           <h3>Premier League Transfer Latest</h3>
           <p>Top clubs battle for star striker’s signature as window closes.</p>
           <span class="category-sport">Football</span>
         </article>
       </div>
-    </section>
-    <section class="secondary-stories">
-        <div class="story-card">
-          <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
-          <h3>New Sports Breakthrough Announced</h3>
-          <span class="category-sport">Cricket</span>
-        </div>
-        <div class="story-card">
-            <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
-            <h3>New Sports Breakthrough Announced</h3>
-            <span class="category-sport">Tennis</span>
-          </div>
     </section>
 
     <section class="weather-section">
@@ -138,15 +131,29 @@
         <div class="weather-card" data-location="London">
           <h4>London</h4>
           <div class="weather-info">
-            <span class="temp">22°C</span>
-            <span class="condition">Sunny</span>
+            <span class="temp">--°C</span>
+            <span class="condition">--</span>
           </div>
         </div>
-        <!-- Add more weather cards -->
+        <div class="weather-card" data-location="Manchester">
+          <h4>Manchester</h4>
+          <div class="weather-info">
+            <span class="temp">--°C</span>
+            <span class="condition">--</span>
+          </div>
+        </div>
+        <div class="weather-card" data-location="Edinburgh">
+          <h4>Edinburgh</h4>
+          <div class="weather-info">
+            <span class="temp">--°C</span>
+            <span class="condition">--</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- Dynamically injected footer -->
   <div id="footer-container"></div>
 
   <script src="script.js" defer></script>
