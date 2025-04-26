@@ -235,6 +235,7 @@ body {
   border-radius: 4px;
   padding: 0.5rem;
   color: #fff;
+  text-decoration: none;
 }
 .sport-article img {
   width: 100%;
@@ -242,10 +243,20 @@ body {
   object-fit: cover;
   border-radius: 4px;
 }
+.sport-article {
+  background: var(--hn-black);
+  border-radius: 4px;
+  padding: 0.5rem;
+  /* make sure the default text color is white */
+  color: #fff;
+  text-decoration: none;
+}
+
+/* force all headings, paragraphs and category spans inside each sport-article to white */
 .sport-article h3,
 .sport-article p,
 .sport-article span {
-  color: inherit;
+  color: #fff;
 }
 
 /* 11. Weather cards */
