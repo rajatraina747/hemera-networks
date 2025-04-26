@@ -58,8 +58,8 @@ function setupHamburger() {
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    await loadHTML('header-container','header.html');
-    await loadHTML('footer-container','footer.html');
+    await loadHTML('header-container','/header.html');
+    await loadHTML('footer-container','/footer.html');
   } catch (e) {
     console.error(e);
   }
