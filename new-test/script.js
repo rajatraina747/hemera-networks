@@ -81,17 +81,6 @@ function setupHamburger() {
   });
 }
 
-function setupBackToTop() {
-    const btn = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) btn.classList.add('show');
-      else btn.classList.remove('show');
-    });
-    btn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     await loadHTML('header-container','header.html');
@@ -110,7 +99,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   fetchNews();
   fetchHeaderWeather();
   fetchCardWeather();
-  setupBackToTop();
 
   // optional: image-error fallback, live scores, etc.
 });

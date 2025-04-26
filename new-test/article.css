@@ -1,0 +1,115 @@
+/* article.css */
+
+/* Container */
+.article-page {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: var(--hn-black);
+  }
+  
+  /* Header */
+  .article-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .article-meta {
+    font-size: 0.9rem;
+    color: var(--hn-gray);
+    margin-bottom: 1rem;
+  }
+  .article-meta .author {
+    font-weight: 600;
+  }
+  .category-list {
+    margin-bottom: 1.5rem;
+  }
+  .category-tag {
+    display: inline-block;
+    background: var(--hn-gold);
+    color: var(--hn-black);
+    text-decoration: none;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
+  
+  /* Featured image */
+  .article-featured-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+  }
+  
+  /* Body text */
+  .article-body p {
+    margin: 1.2rem 0;
+    line-height: 1.6;
+  }
+  .article-body h2,
+  .article-body h3 {
+    margin: 2rem 0 1rem;
+    color: var(--hn-black);
+  }
+  .article-body ul,
+  .article-body ol {
+    margin: 1rem 0 1rem 1.5rem;
+  }
+  .article-body blockquote {
+    border-left: 4px solid var(--hn-gold);
+    padding-left: 1rem;
+    color: #555;
+    font-style: italic;
+    margin: 2rem 0;
+  }
+  
+  /* Share buttons */
+  .share-bar {
+    margin: 2rem 0;
+  }
+  .share-bar button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .share-bar button:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Footer / Author bio */
+  .article-footer {
+    border-top: 1px solid var(--hn-gray);
+    margin-top: 3rem;
+    padding-top: 2rem;
+  }
+  .author-bio {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .author-bio img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .author-bio .bio-text {
+    font-size: 0.9rem;
+    color: var(--hn-black);
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 600px) {
+    .article-header h1 {
+      font-size: 2rem;
+    }
+    .share-bar button {
+      font-size: 1.2rem;
+    }
+  }
+  
