@@ -1,36 +1,11 @@
 // script.js
 
-const NEWS_API_KEY    = 'e8c89187882d4906b54062dddbca65bc';
 const WEATHER_API_KEY = '672c22632e1f7263d3877166fe0eda01';
 
 async function loadHTML(id, url) {
   const res  = await fetch(url);
   if (!res.ok) throw new Error(`Failed to load ${url}: ${res.status}`);
   document.getElementById(id).innerHTML = await res.text();
-}
-
-async function fetchNews() {
-  const container = document.querySelector('.news-grid');
-  try {
-    const res = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=gb&apiKey=${NEWS_API_KEY}`
-    );
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    if (data.status !== 'ok') throw new Error(data.message);
-    container.innerHTML = data.articles.slice(0, 3).map(a => `
-      <article class="news-article">
-        <img src="${a.urlToImage||'placeholder.jpg'}"
-             alt="${a.title}" loading="lazy">
-        <h3>${a.title}</h3>
-        <p>${a.description||''}</p>
-        <span class="category-uk">UK News</span>
-      </article>
-    `).join('');
-  } catch (err) {
-    console.error(err);
-    container.innerHTML = `<p class="error-message">Couldn’t load news: ${err.message}</p>`;
-  }
 }
 
 async function fetchHeaderWeather() {
@@ -96,10 +71,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
   setupHamburger();
-  fetchNews();
   fetchHeaderWeather();
   fetchCardWeather();
-
-  // optional: image-error fallback, live scores, etc.
 });
-
