@@ -9,7 +9,6 @@
   <title>BBC Redesign</title>
 </head>
 <body>
-  <!-- Skip link for screen-reader / keyboard users -->
   <a href="#main-content" class="skip-link">Skip to content</a>
 
   <header class="header" role="banner">
@@ -25,12 +24,7 @@
 
       <div class="nav-main">
         <div class="nav-logo" aria-label="BBC homepage">BBC</div>
-        <button class="mobile-menu-toggle"
-                aria-label="Toggle menu"
-                aria-expanded="false">
-          ☰
-        </button>
-
+        <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
         <ul class="nav-links">
           <li><a href="#" class="nav-signin">Sign in</a></li>
           <li><a href="#" class="nav-link">Home</a></li>
@@ -41,12 +35,7 @@
           <li><a href="#" class="nav-link">More</a></li>
           <li class="nav-search-form">
             <form action="/search" method="get">
-              <input type="search"
-                     name="q"
-                     placeholder="Search"
-                     class="nav-search"
-                     aria-label="Search"
-                     required>
+              <input type="search" name="q" placeholder="Search" class="nav-search" aria-label="Search" required>
               <button type="submit" class="nav-search-button" aria-label="Submit search">🔍</button>
             </form>
           </li>
@@ -59,9 +48,7 @@
     <section class="top-stories">
       <h2 class="section-title">Welcome to BBC.com</h2>
       <div class="featured-story">
-        <img src="https://picsum.photos/800/450"
-             alt="Featured news scene"
-             loading="lazy">
+        <img src="https://picsum.photos/800/450" alt="Featured news scene" loading="lazy">
         <h1>Breaking News: Major Development in Global Politics</h1>
         <p>World leaders gather for emergency summit as international tensions rise.</p>
         <span class="category-world">World</span>
@@ -70,20 +57,17 @@
 
     <section class="secondary-stories">
       <div class="story-card">
-        <img data-src="https://picsum.photos/400/225"
-             class="lazy-load"
-             alt="Lab experiment scene"
-             loading="lazy">
+        <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Lab experiment scene" loading="lazy">
         <h3>New Technology Breakthrough Announced</h3>
         <span class="category-tech">Technology</span>
       </div>
-      <!-- …other cards, each with loading="lazy" and meaningful alt… -->
+      <!-- Add more story cards as needed -->
     </section>
 
     <section class="news-section">
       <h2 class="section-title">News</h2>
       <div class="news-grid">
-        <!-- populateNews() will fill this -->
+        <!-- fetchNews() populates this -->
       </div>
     </section>
 
@@ -91,11 +75,9 @@
       <h2 class="section-title">Sport</h2>
       <div class="sport-grid">
         <article class="sport-article">
-          <img src="https://picsum.photos/300/169"
-               alt="Football match action"
-               loading="lazy">
+          <img src="https://picsum.photos/300/169" alt="Football match action" loading="lazy">
           <h3>Premier League Transfer Latest</h3>
-          <p>Top clubs battle for star striker's signature as window closes.</p>
+          <p>Top clubs battle for star striker’s signature as window closes.</p>
           <span class="category-sport">Football</span>
         </article>
       </div>
@@ -122,10 +104,12 @@
             <span class="condition">Sunny</span>
           </div>
         </div>
-        <!-- more cards -->
+        <!-- Add more weather cards -->
       </div>
     </section>
   </main>
+
+  <div id="footer-container"></div>
 
   <script src="script.js" defer></script>
 </body>
