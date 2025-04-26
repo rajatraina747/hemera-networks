@@ -2,17 +2,32 @@
     --bbc-red: #BB1919;
     --bbc-black: #1A1A1A;
     --bbc-gray: #E5E5E5;
+    --bbc-blue: #1D395F;
+    --bbc-dark-red: #990000;
+    --bbc-font: "BBC Reith Sans", Arial, sans-serif;
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    font-family: var(--bbc-font);
+    line-height: 1.5;
 }
+
 
 /* Header Styles */
 .header {
     background: var(--bbc-black);
     padding: 1rem;
+}
+
+.header-banner {
+    background: var(--bbc-red);
+    color: white;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
 }
 
 .nav {
@@ -162,4 +177,91 @@ body {
         font-size: 1.5rem;
         bottom: 2rem;
     }
+}
+/* Proper hamburger menu */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bbc-black);
+        flex-direction: column;
+        padding: 1rem;
+        display: none;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 0;
+    }
+    
+    .nav-search {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+/* BBC-specific typography */
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--bbc-black);
+    border-left: 8px solid var(--bbc-red);
+    padding-left: 1.5rem;
+    margin: 3rem 0;
+}
+
+/* Sport section styling */
+.sport-article {
+    position: relative;
+    border-bottom: 4px solid var(--bbc-sport);
+    padding-bottom: 1rem;
+}
+
+/* Weather cards */
+.weather-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.weather-card {
+    background: var(--bbc-gray);
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+/* Interactive features */
+.story-card:hover, 
+.news-article:hover {
+    transform: translateY(-3px);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+/* Live indicator */
+.live-indicator {
+    background: #E9190F;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-left: 1rem;
 }
