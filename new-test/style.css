@@ -5,6 +5,7 @@
     --bbc-gray: #E5E5E5;
     --bbc-font: "Source Sans 3", Arial, sans-serif;
     --bbc-sport: #FFD230;
+    --error-red: #E9190F;
   }
   
   body {
@@ -27,7 +28,7 @@
     top: 0;
   }
   
-  /* Header banner */
+  /* Header */
   .header {
     background: var(--bbc-black);
   }
@@ -46,7 +47,7 @@
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
   }
   .nav-logo {
     color: white;
@@ -71,6 +72,9 @@
     padding: 0;
   }
   @media (max-width: 768px) {
+    .mobile-menu-toggle {
+      display: block;
+    }
     .nav-links {
       display: none;
       flex-direction: column;
@@ -125,7 +129,7 @@
     margin: 3rem 0;
   }
   .featured-story img,
-  .secondary-stories img,
+  .story-card img,
   .news-article img,
   .sport-article img {
     width: 100%;
@@ -138,11 +142,17 @@
     gap: 1rem;
   }
   .secondary-stories {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     margin-bottom: 3rem;
   }
   .news-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  }
+  
+  /* News error */
+  .error-message {
+    color: var(--error-red);
+    font-style: italic;
   }
   
   /* Category badges */
@@ -191,9 +201,5 @@
   .footer-bottom {
     color: var(--bbc-gray);
     font-size: 0.8rem;
-  }
-  .footer-bottom a {
-    color: var(--bbc-gray);
-    text-decoration: underline;
   }
   

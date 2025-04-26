@@ -11,7 +11,49 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="header-container"></div>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- INLINE HEADER -->
+  <header class="header" role="banner">
+    <div class="header-banner">
+      <div id="header-date" aria-live="polite">Loading date…</div>
+      <div class="header-weather" aria-live="polite">
+        <span class="weather-icon">☀️</span>
+        <span id="header-weather-temp">--°C</span>
+        <span class="weather-location">London</span>
+      </div>
+    </div>
+    <div class="nav-main">
+      <div class="nav-logo" aria-label="Hemera Networks homepage">
+        Hemera Networks
+      </div>
+      <button class="mobile-menu-toggle"
+              aria-label="Toggle menu"
+              aria-expanded="false">
+        ☰
+      </button>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link">Home</a></li>
+        <li><a href="#" class="nav-link">News</a></li>
+        <li><a href="#" class="nav-link">Sport</a></li>
+        <li class="nav-search-form">
+          <form action="/search" method="get">
+            <input type="search"
+                   name="q"
+                   placeholder="Search"
+                   class="nav-search"
+                   aria-label="Search"
+                   required>
+            <button type="submit"
+                    class="nav-search-button"
+                    aria-label="Search">
+              Search
+            </button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </header>
 
   <main class="main-content" id="main-content">
     <section class="top-stories">
@@ -30,8 +72,7 @@
     <section class="secondary-stories">
       <div class="story-card">
         <img
-          data-src="https://picsum.photos/400/225"
-          class="lazy-load"
+          src="https://picsum.photos/400/225"
           alt="Lab experiment scene"
           loading="lazy">
         <h3>New Technology Breakthrough Announced</h3>
@@ -39,8 +80,7 @@
       </div>
       <div class="story-card">
         <img
-          data-src="https://picsum.photos/400/225"
-          class="lazy-load"
+          src="https://picsum.photos/400/225"
           alt="Global research collaboration"
           loading="lazy">
         <h3>New World Breakthrough Announced 2</h3>
@@ -48,8 +88,7 @@
       </div>
       <div class="story-card">
         <img
-          data-src="https://picsum.photos/400/225"
-          class="lazy-load"
+          src="https://picsum.photos/400/225"
           alt="UK parliamentary session"
           loading="lazy">
         <h3>New UK Breakthrough Announced 3</h3>
@@ -57,8 +96,7 @@
       </div>
       <div class="story-card">
         <img
-          data-src="https://picsum.photos/400/225"
-          class="lazy-load"
+          src="https://picsum.photos/400/225"
           alt="Tennis championship action"
           loading="lazy">
         <h3>New Sports Breakthrough Announced 5</h3>
@@ -70,7 +108,7 @@
     <section class="news-section">
       <h2 class="section-title">News</h2>
       <div class="news-grid">
-        <!-- fetchNews() will populate this -->
+        <!-- fetchNews() will populate here -->
       </div>
     </section>
 
@@ -117,7 +155,23 @@
     </section>
   </main>
 
-  <div id="footer-container"></div>
+  <!-- INLINE FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <a href="index.html">Home</a>
+      <a href="#">News</a>
+      <a href="#">Sport</a>
+    </div>
+    <div class="footer-middle">
+      <a href="#">About Us</a>
+      <a href="#">Editorial Policy</a>
+      <a href="#">Intellectual Property Protection</a>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 Hemera Networks. We are not responsible for third-party content.
+    </div>
+  </footer>
+
   <script src="script.js" defer></script>
 </body>
 </html>
