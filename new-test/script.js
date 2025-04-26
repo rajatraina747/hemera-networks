@@ -36,7 +36,7 @@ async function fetchNews() {
 async function fetchHeaderWeather() {
   try {
     const res  = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=${WEATHER_API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=Swansea&units=metric&appid=${WEATHER_API_KEY}`
     );
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
@@ -48,7 +48,7 @@ async function fetchHeaderWeather() {
 }
 
 async function fetchCardWeather() {
-  const cities = ['London','Cardiff','Edinburgh', 'Swansea'];
+  const cities = ['London','Cardiff','Edinburgh'];
   for (let city of cities) {
     try {
       const res  = await fetch(
@@ -81,6 +81,17 @@ function setupHamburger() {
   });
 }
 
+function setupBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) btn.classList.add('show');
+      else btn.classList.remove('show');
+    });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     await loadHTML('header-container','header.html');
@@ -99,6 +110,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   fetchNews();
   fetchHeaderWeather();
   fetchCardWeather();
+  setupBackToTop();
 
   // optional: image-error fallback, live scores, etc.
 });
+
