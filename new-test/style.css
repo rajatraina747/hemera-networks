@@ -1,3 +1,4 @@
+/* style.css */
 :root {
     --bbc-red: #BB1919;
     --bbc-black: #1A1A1A;
@@ -12,7 +13,7 @@
     line-height: 1.5;
   }
   
-  /* Skip link */
+  /* Skip-link */
   .skip-link {
     position: absolute;
     top: -40px;
@@ -69,7 +70,18 @@
     margin: 0;
     padding: 0;
   }
-  /* show when .open */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bbc-black);
+      padding: 1rem;
+    }
+  }
   .nav-links.open {
     display: flex;
   }
@@ -79,7 +91,7 @@
     font-size: 0.9rem;
   }
   
-  /* Search button styling */
+  /* Search */
   .nav-search-form form {
     display: flex;
     align-items: center;
@@ -99,7 +111,7 @@
     font-size: 0.9rem;
   }
   
-  /* Main content & grids */
+  /* Main & grids */
   .main-content {
     max-width: 1200px;
     margin: 2rem auto;
@@ -156,7 +168,7 @@
     text-align: center;
   }
   
-  /* Footer centered */
+  /* Footer */
   .footer {
     background: var(--bbc-black);
     color: white;
@@ -183,29 +195,5 @@
   .footer-bottom a {
     color: var(--bbc-gray);
     text-decoration: underline;
-  }
-  
-  /* Responsive nav & wrapping */
-  @media (max-width: 768px) {
-    .mobile-menu-toggle {
-      display: block;
-    }
-    .nav-links {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      flex-direction: column;
-      background: var(--bbc-black);
-      display: none;
-      padding: 1rem;
-    }
-    .nav-links.open {
-      display: flex;
-    }
-    .secondary-stories,
-    .news-grid {
-      grid-template-columns: 1fr;
-    }
   }
   

@@ -1,7 +1,8 @@
+// script.js
+
 const NEWS_API_KEY    = 'e8c89187882d4906b54062dddbca65bc';
 const WEATHER_API_KEY = '672c22632e1f7263d3877166fe0eda01';
 
-// Load header snippet
 async function loadHeader() {
   try {
     const res  = await fetch('header.html');
@@ -12,7 +13,6 @@ async function loadHeader() {
   }
 }
 
-// Load footer snippet
 async function loadFooter() {
   try {
     const res  = await fetch('footer.html');
@@ -23,15 +23,15 @@ async function loadFooter() {
   }
 }
 
-// Fetch top headlines (GB-wide)
 async function fetchNews() {
   const container = document.querySelector('.news-grid');
   try {
     const res  = await fetch(
       `https://newsapi.org/v2/top-headlines?country=gb&apiKey=${NEWS_API_KEY}`
     );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    if (data.status !== 'ok') throw new Error(data.message || 'Bad status');
+    if (data.status !== 'ok') throw new Error(data.message);
     container.innerHTML = data.articles.slice(0, 3).map(a => `
       <article class="news-article">
         <img src="${a.urlToImage || 'placeholder.jpg'}"
@@ -44,11 +44,14 @@ async function fetchNews() {
     `).join('');
   } catch (err) {
     console.error('News error:', err);
-    container.innerHTML = `<p class="error-message">Couldn’t load news.</p>`;
+    container.innerHTML = `
+      <p class="error-message">
+        Couldn’t load news: ${err.message}
+      </p>
+    `;
   }
 }
 
-// Header weather (London)
 async function fetchWeather() {
   try {
     const res  = await fetch(
@@ -62,7 +65,6 @@ async function fetchWeather() {
   }
 }
 
-// Populate cards for multiple cities
 async function updateWeather() {
   const locations = ['London','Manchester','Edinburgh'];
   for (let loc of locations) {
@@ -77,7 +79,7 @@ async function updateWeather() {
         `${Math.round(data.main.temp)}°C`;
       card.querySelector('.condition').textContent =
         data.weather[0].main;
-    } catch (__) { /* silent fail per city */ }
+    } catch {}
   }
 }
 
@@ -117,11 +119,9 @@ function addScrollAnimations() {
 }
 
 async function init() {
-  // 1) Load header & footer
   await loadHeader();
   await loadFooter();
 
-  // 2) Hamburger toggle
   const btn = document.querySelector('.mobile-menu-toggle');
   const nav = document.querySelector('.nav-links');
   btn.addEventListener('click', () => {
@@ -136,19 +136,16 @@ async function init() {
     }
   });
 
-  // 3) Date in header
   const now = new Date();
   document.querySelector('.header-date').textContent =
     now.toLocaleDateString('en-GB', {
       weekday:'long', day:'numeric', month:'long', year:'numeric'
     });
 
-  // 4) Image-error fallback
   document.querySelectorAll('img').forEach(img => {
     img.onerror = () => img.style.display = 'none';
   });
 
-  // 5) Data & extras
   fetchNews();
   fetchWeather();
   updateWeather();
