@@ -5,6 +5,8 @@
   --hn-gold:        #ffcc00;
   --hn-black:       #1A1A1A;
   --hn-gray:        #E5E5E5;
+  --hn-red:         #f70c0c;
+  --hn-blue:        #29d2f0;  
   --hn-font:        "Source Sans 3", Arial, sans-serif;
   --error-gold:     #f7b900;
   --body-bg:        #d4c1f1;
@@ -166,8 +168,28 @@ body {
 }
 .featured-story .category-world {
   display: inline-block;
+  background: var(--hn-blue);
+  color: var(--hn-black);
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  margin: 0 1rem 1rem;
+  border-radius: 3px;
+}
+.featured-story .category-sports {
+  display: inline-block;
   background: var(--hn-gold);
   color: var(--hn-black);
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  margin: 0 1rem 1rem;
+  border-radius: 3px;
+}
+.featured-story .category-entertainment {
+  display: inline-block;
+  background: var(--hn-red);
+  color: var(--hn-gray);
   text-transform: uppercase;
   font-weight: bold;
   padding: 0.3rem 0.8rem;
@@ -328,5 +350,14 @@ body {
 
 /* if you want a hover cue */
 .featured-story .featured-link:hover h1 {
+  text-decoration: underline;
+}
+
+.story-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.story-card a:hover h3 {
   text-decoration: underline;
 }
