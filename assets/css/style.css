@@ -314,3 +314,19 @@ body {
 .sport-article a:hover {
   text-decoration: underline;
 }
+/* ─── Featured story link styling ─── */
+.featured-story .featured-link {
+  display: block;          /* let it wrap image + h1 */
+  text-decoration: none;   /* no blue underline */
+  color: inherit;          /* inherit the white h1 color */
+}
+
+.featured-story .featured-link h1 {
+  margin: 1rem;
+  color: #fff;             /* force white */
+}
+
+/* if you want a hover cue */
+.featured-story .featured-link:hover h1 {
+  text-decoration: underline;
+}
