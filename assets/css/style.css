@@ -243,15 +243,6 @@ body {
   object-fit: cover;
   border-radius: 4px;
 }
-.sport-article {
-  background: var(--hn-black);
-  border-radius: 4px;
-  padding: 0.5rem;
-  /* make sure the default text color is white */
-  color: #fff;
-  text-decoration: none;
-}
-
 /* force all headings, paragraphs and category spans inside each sport-article to white */
 .sport-article h3,
 .sport-article p,
@@ -313,4 +304,13 @@ body {
 .footer-bottom {
   color: var(--hn-gray);
   font-size: 0.8rem;
+}
+
+/* sport‐article links */
+.sport-article a {
+  color: #fff;            /* white text */
+  text-decoration: none;  /* remove blue underline */
+}
+.sport-article a:hover {
+  text-decoration: underline;
 }
