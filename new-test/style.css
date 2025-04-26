@@ -55,6 +55,7 @@
     font-size: 2rem;
     font-weight: bold;
     margin-right: 1rem;
+    text-decoration: none;
   }
   .mobile-menu-toggle {
     display: none;
@@ -145,6 +146,13 @@
   .secondary-stories {
     grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     margin-bottom: 3rem;
+  }
+  .secondary-stories .story-card h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .secondary-stories .story-card h3 a:hover {
+    text-decoration: underline;
   }
   .news-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
