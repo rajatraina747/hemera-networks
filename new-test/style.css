@@ -1,59 +1,50 @@
 /* style.css */
+
+/* 1. Theme variables */
 :root {
-    --bbc-red: #BB1919;
-    --bbc-black: #1A1A1A;
-    --bbc-gray: #E5E5E5;
-    --bbc-font: "Source Sans 3", Arial, sans-serif;
-    --bbc-sport: #FFD230;
-    --error-red: #E9190F;
+    --primary-purple: #5d0bd1;      /* header bar */
+    --accent-yellow: #ffd600;       /* search button, sub-accent */
+    --dark-bg: #252525;             /* article & subheader bg */
+    --light-bg: #f2f2f2;            /* page background */
+    --filter-active: #b71833;       /* “All” filter button */
+    --filter-inactive: #e0e0e0;     /* other filter buttons */
+    --section-lavender: #e2d7ff;    /* “Latest Headlines” banner */
+    --link-color: #2185d0;          /* “Read More” links */
+    --font-family: "Source Sans 3", Arial, sans-serif;
   }
   
   body {
     margin: 0;
-    font-family: var(--bbc-font);
-    line-height: 1.5;
+    background: var(--light-bg);
+    font-family: var(--font-family);
+    color: #333;
   }
   
-  /* Skip-link */
-  .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--bbc-black);
-    color: white;
-    padding: 0.5rem;
-    z-index: 100;
-  }
-  .skip-link:focus {
-    top: 0;
-  }
-  
-  /* Header */
+  /* 2. Header */
   .header {
-    background: var(--bbc-black);
+    background: var(--primary-purple);
   }
   .header-banner {
-    background: var(--bbc-red);
+    /* if you still display date/weather up top */
+    background: var(--primary-purple);
     color: white;
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 1rem;
     font-size: 0.9rem;
   }
-  
-  /* Nav */
   .nav-main {
-    display: flex;
-    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   .nav-logo {
-    color: white;
+    color: var(--accent-yellow);
     font-size: 2rem;
     font-weight: bold;
-    margin-right: 1rem;
   }
   .mobile-menu-toggle {
     display: none;
@@ -65,29 +56,23 @@
   }
   .nav-links {
     display: flex;
-    gap: 1.5rem;
-    align-items: center;
+    gap: 1rem;
     list-style: none;
     margin: 0;
     padding: 0;
   }
   @media (max-width: 768px) {
-    .mobile-menu-toggle {
-      display: block;
-    }
-    .nav-links {
-      display: none;
+    .mobile-menu-toggle { display: block; }
+    .nav-links { 
+      display: none; 
       flex-direction: column;
+      background: var(--primary-purple);
       position: absolute;
       top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--bbc-black);
+      left: 0; right: 0;
       padding: 1rem;
     }
-  }
-  .nav-links.open {
-    display: flex;
+    .nav-links.open { display: flex; }
   }
   .nav-link {
     color: white;
@@ -95,95 +80,154 @@
     font-size: 0.9rem;
   }
   
-  /* Search */
+  /* Search form */
   .nav-search-form form {
     display: flex;
-    align-items: center;
+    max-width: 300px;
+    width: 100%;
   }
   .nav-search {
-    padding: 0.3rem;
-    border: 1px solid var(--bbc-gray);
-    border-radius: 3px 0 0 3px;
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--light-bg);
+    border-radius: 4px 0 0 4px;
   }
   .nav-search-button {
-    background: var(--bbc-red);
-    color: white;
+    background: var(--accent-yellow);
+    color: var(--dark-bg);
     border: none;
-    padding: 0.4rem 0.8rem;
-    border-radius: 0 3px 3px 0;
+    padding: 0.5rem 1rem;
+    border-radius: 0 4px 4px 0;
     cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* 3. Subheader (A RainaCorp© Company) */
+  .subheader {
+    background: var(--dark-bg);
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
     font-size: 0.9rem;
   }
   
-  /* Main & grids */
-  .main-content {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+  /* 4. Filter bar */
+  .filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    background: white;
+    padding: 0.5rem;
+    border-bottom: 2px solid var(--filter-active);
   }
-  .section-title {
-    font-size: 2rem;
-    color: var(--bbc-black);
-    border-left: 8px solid var(--bbc-red);
-    padding-left: 1.5rem;
-    margin: 3rem 0;
+  .filter-bar button {
+    background: var(--filter-inactive);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 4px;
   }
-  .featured-story img,
-  .story-card img,
-  .news-article img,
-  .sport-article img {
+  .filter-bar button.active {
+    background: var(--filter-active);
+    color: white;
+  }
+  .filter-bar button:hover:not(.active) {
+    background: #ccc;
+  }
+  
+  /* 5. “Latest Headlines” banner */
+  .section-latest {
+    background: var(--section-lavender);
+    color: white;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* 6. News grid & articles */
+  .news-grid {
+    background: var(--dark-bg);
+  }
+  .news-article {
+    border-top: 4px solid var(--primary-purple);
+    padding: 1rem;
+    color: white;
+  }
+  .news-article img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+  }
+  .news-article h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+  .news-article p {
+    margin: 0.5rem 0;
+  }
+  .news-article .read-more {
+    color: var(--link-color);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  /* 7. Secondary story cards */
+  .secondary-stories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .story-card {
+    background: var(--dark-bg);
+    padding: 1rem;
+    border: 2px solid var(--primary-purple);
+    border-radius: 4px;
+    color: white;
+  }
+  .story-card img {
     width: 100%;
     height: auto;
     object-fit: cover;
   }
-  .secondary-stories,
-  .news-grid {
-    display: grid;
-    gap: 1rem;
-  }
-  .secondary-stories {
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-    margin-bottom: 3rem;
-  }
-  .news-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  .story-card h3 {
+    margin-top: 0.5rem;
   }
   
-  /* News error */
-  .error-message {
-    color: var(--error-red);
-    font-style: italic;
-  }
-  
-  /* Category badges */
-  [class^="category-"] {
-    display: inline-block;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0.5rem 0;
-  }
-  
-  /* Weather cards */
+  /* 8. Weather cards */
   .weather-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
     gap: 1rem;
+    margin: 2rem 0;
   }
   .weather-card {
-    background: var(--bbc-gray);
+    background: white;
     padding: 1rem;
     border-radius: 4px;
     text-align: center;
   }
+  .weather-card h4 {
+    margin: 0 0 0.5rem;
+  }
+  .weather-card .temp {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .weather-card .condition {
+    font-size: 1rem;
+    color: #555;
+  }
   
-  /* Footer */
+  /* 9. Footer */
   .footer {
-    background: var(--bbc-black);
+    background: var(--dark-bg);
     color: white;
-    padding: 2rem 1rem;
     text-align: center;
+    padding: 2rem 1rem;
   }
   .footer-top,
   .footer-middle {
@@ -199,7 +243,7 @@
     text-decoration: none;
   }
   .footer-bottom {
-    color: var(--bbc-gray);
+    color: #aaa;
     font-size: 0.8rem;
   }
   
