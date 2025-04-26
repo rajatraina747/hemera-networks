@@ -1,11 +1,11 @@
 /* style.css */
 :root {
-    --bbc-red: #BB1919;
-    --bbc-black: #1A1A1A;
-    --bbc-gray: #E5E5E5;
+    --hn-gold: #ffcc00;
+    --hn-black: #1A1A1A;
+    --hn-gray: #E5E5E5;
     --bbc-font: "Source Sans 3", Arial, sans-serif;
-    --bbc-sport: #FFD230;
-    --error-red: #E9190F;
+    --hn-sport: #BB1919;
+    --error-gold: #f7b900;
   }
   
   body {
@@ -19,7 +19,7 @@
     position: absolute;
     top: -40px;
     left: 0;
-    background: var(--bbc-black);
+    background: var(--hn-black);
     color: white;
     padding: 0.5rem;
     z-index: 100;
@@ -30,10 +30,10 @@
   
   /* Header */
   .header {
-    background: var(--bbc-black);
+    background: var(--hn-black);
   }
   .header-banner {
-    background: var(--bbc-red);
+    background: var(--hn-gold);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -82,7 +82,7 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: var(--bbc-black);
+      background: var(--hn-black);
       padding: 1rem;
     }
   }
@@ -102,11 +102,11 @@
   }
   .nav-search {
     padding: 0.3rem;
-    border: 1px solid var(--bbc-gray);
+    border: 1px solid var(--hn-gray);
     border-radius: 3px 0 0 3px;
   }
   .nav-search-button {
-    background: var(--bbc-red);
+    background: var(--hn-gold);
     color: white;
     border: none;
     padding: 0.4rem 0.8rem;
@@ -123,8 +123,8 @@
   }
   .section-title {
     font-size: 2rem;
-    color: var(--bbc-black);
-    border-left: 8px solid var(--bbc-red);
+    color: var(--hn-black);
+    border-left: 8px solid var(--hn-gold);
     padding-left: 1.5rem;
     margin: 3rem 0;
   }
@@ -151,7 +151,7 @@
   
   /* News error */
   .error-message {
-    color: var(--error-red);
+    color: var(--error-gold);
     font-style: italic;
   }
   
@@ -172,7 +172,7 @@
     gap: 1rem;
   }
   .weather-card {
-    background: var(--bbc-gray);
+    background: var(--hn-gray);
     padding: 1rem;
     border-radius: 4px;
     text-align: center;
@@ -180,7 +180,7 @@
   
   /* Footer */
   .footer {
-    background: var(--bbc-black);
+    background: var(--hn-black);
     color: white;
     padding: 2rem 1rem;
     text-align: center;
@@ -199,7 +199,7 @@
     text-decoration: none;
   }
   .footer-bottom {
-    color: var(--bbc-gray);
+    color: var(--hn-gray);
     font-size: 0.8rem;
   }
   
