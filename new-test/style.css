@@ -3,14 +3,15 @@
     --hn-gold: #ffcc00;
     --hn-black: #1A1A1A;
     --hn-gray: #E5E5E5;
-    --bbc-font: "Source Sans 3", Arial, sans-serif;
+    --hn-font: "Source Sans 3", Arial, sans-serif;
     --hn-sport: #BB1919;
     --error-gold: #f7b900;
   }
   
   body {
     margin: 0;
-    font-family: var(--bbc-font);
+    background-color: #d4c1f1;
+    font-family: var(--hn-font);
     line-height: 1.5;
   }
   
@@ -33,8 +34,8 @@
     background: var(--hn-black);
   }
   .header-banner {
-    background: var(--hn-gold);
-    color: white;
+    background-color: #580b8f;
+    color: #ffffff;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 1rem;
@@ -50,7 +51,7 @@
     padding: 0.5rem 1rem;
   }
   .nav-logo {
-    color: white;
+    color: #ffcc00;
     font-size: 2rem;
     font-weight: bold;
     margin-right: 1rem;
@@ -107,7 +108,7 @@
   }
   .nav-search-button {
     background: var(--hn-gold);
-    color: white;
+    color: #000000;
     border: none;
     padding: 0.4rem 0.8rem;
     border-radius: 0 3px 3px 0;

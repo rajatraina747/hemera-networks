@@ -48,7 +48,7 @@ async function fetchHeaderWeather() {
 }
 
 async function fetchCardWeather() {
-  const cities = ['London','Manchester','Edinburgh'];
+  const cities = ['London','Cardiff','Edinburgh', 'Swansea'];
   for (let city of cities) {
     try {
       const res  = await fetch(
