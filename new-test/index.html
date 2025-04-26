@@ -11,49 +11,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to content</a>
-
-  <!-- INLINE HEADER -->
-  <header class="header" role="banner">
-    <div class="header-banner">
-      <div id="header-date" aria-live="polite">Loading date…</div>
-      <div class="header-weather" aria-live="polite">
-        <span class="weather-icon">☀️</span>
-        <span id="header-weather-temp">--°C</span>
-        <span class="weather-location">London</span>
-      </div>
-    </div>
-    <div class="nav-main">
-      <div class="nav-logo" aria-label="Hemera Networks homepage">
-        Hemera Networks
-      </div>
-      <button class="mobile-menu-toggle"
-              aria-label="Toggle menu"
-              aria-expanded="false">
-        ☰
-      </button>
-      <ul class="nav-links">
-        <li><a href="#" class="nav-link">Home</a></li>
-        <li><a href="#" class="nav-link">News</a></li>
-        <li><a href="#" class="nav-link">Sport</a></li>
-        <li class="nav-search-form">
-          <form action="/search" method="get">
-            <input type="search"
-                   name="q"
-                   placeholder="Search"
-                   class="nav-search"
-                   aria-label="Search"
-                   required>
-            <button type="submit"
-                    class="nav-search-button"
-                    aria-label="Search">
-              Search
-            </button>
-          </form>
-        </li>
-      </ul>
-    </div>
-  </header>
+  <div id="header-container"></div>
 
   <main class="main-content" id="main-content">
     <section class="top-stories">
@@ -156,22 +114,7 @@
   </main>
 
   <!-- INLINE FOOTER -->
-  <footer class="footer">
-    <div class="footer-top">
-      <a href="index.html">Home</a>
-      <a href="#">News</a>
-      <a href="#">Sport</a>
-    </div>
-    <div class="footer-middle">
-      <a href="#">About Us</a>
-      <a href="#">Editorial Policy</a>
-      <a href="#">Intellectual Property Protection</a>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2024 Hemera Networks. We are not responsible for third-party content.
-    </div>
-  </footer>
-
+  <div id="footer-container"></div>
   <script src="script.js" defer></script>
 </body>
 </html>
