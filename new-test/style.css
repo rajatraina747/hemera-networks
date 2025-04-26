@@ -1,0 +1,165 @@
+:root {
+    --bbc-red: #BB1919;
+    --bbc-black: #1A1A1A;
+    --bbc-gray: #E5E5E5;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+.header {
+    background: var(--bbc-black);
+    padding: 1rem;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.nav-signin {
+    color: white;
+    text-decoration: none;
+    background: var(--bbc-red);
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+}
+
+.nav-search {
+    padding: 0.3rem;
+    border: none;
+    border-radius: 3px;
+}
+
+/* Main Content Styles */
+.main-content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.section-title {
+    color: var(--bbc-black);
+    border-left: 4px solid var(--bbc-red);
+    padding-left: 1rem;
+    margin: 2rem 0;
+}
+
+/* Featured Story Styles */
+.featured-story {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.featured-story img {
+    width: 100%;
+    height: auto;
+}
+
+.featured-story h1 {
+    position: absolute;
+    bottom: 4rem;
+    left: 2rem;
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Secondary Stories Grid */
+.secondary-stories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.story-card {
+    position: relative;
+}
+
+.story-card img {
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+}
+
+.story-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+/* News Grid Styles */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.news-article img {
+    width: 100%;
+    height: 169px;
+    object-fit: cover;
+}
+
+/* Category Labels */
+[class^="category-"] {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0.5rem 0;
+}
+
+.category-world { background: var(--bbc-red); color: white; }
+.category-tech { background: #147EFB; color: white; }
+.category-sport { background: #FFD230; color: black; }
+.category-environment { background: #00A95F; color: white; }
+.category-entertainment { background: #FF4E00; color: white; }
+.category-uk { background: #6D2077; color: white; }
+.category-health { background: #0095D9; color: white; }
+.category-education { background: #FA6720; color: white; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .secondary-stories {
+        grid-template-columns: 1fr;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-story h1 {
+        font-size: 1.5rem;
+        bottom: 2rem;
+    }
+}

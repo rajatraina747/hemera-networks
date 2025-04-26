@@ -49,7 +49,7 @@ categories.forEach(categoryName => {
 
   let categoryArticlesHTML = '';
   catArticles.forEach(article => {
-    const articleLink = `../article-${article.id}.html`;
+    const articleLink = `article-${article.id}.html`;
     categoryArticlesHTML += `
       <div class="article">
         <h2><a href="${articleLink}">${article.title}</a></h2>
