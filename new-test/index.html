@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <title>BBC Redesign</title>
     <link rel="stylesheet" href="/new-test/style.css">
 </head>
@@ -44,7 +45,7 @@
 
         <section class="secondary-stories">
             <div class="story-card">
-                <img src="https://picsum.photos/400/225" alt="Story 1">
+                <img data-src="https://picsum.photos/400/225" class="lazy-load" alt="Story 1">
                 <h3>New Technology Breakthrough Announced</h3>
                 <span class="category-tech">Technology</span>
             </div>
@@ -89,7 +90,7 @@
                 </article>
             </div>
         </section>
-        
+
         <section class="sport-section">
             <h2 class="section-title">Sport</h2>
             <div class="sport-grid">
@@ -100,6 +101,17 @@
                     <span class="category-sport">Football</span>
                 </article>
                 <!-- Add more sport articles -->
+            </div>
+            <div class="live-scores">
+                <div class="score-card">
+                    <span class="live-indicator">LIVE</span>
+                    <div class="teams">
+                        <span class="team">England</span>
+                        <span class="score">2 - 1</span>
+                        <span class="team">France</span>
+                    </div>
+                    <div class="match-time">65'</div>
+                </div>
             </div>
         </section>
         

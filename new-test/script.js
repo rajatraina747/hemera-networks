@@ -75,3 +75,85 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, 1000);
 });
+
+function lazyLoadImages() {
+    const lazyImages = document.querySelectorAll('.lazy-load');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '0px 0px 100px 0px'
+    });
+
+    lazyImages.forEach(img => observer.observe(img));
+}
+
+document.addEventListener('DOMContentLoaded', lazyLoadImages);
+
+// Add to script.js
+function simulateLiveScores() {
+    const scores = document.querySelectorAll('.score');
+    setInterval(() => {
+        scores.forEach(score => {
+            const current = score.textContent.split(' - ').map(Number);
+            if (Math.random() > 0.7) {
+                current[Math.floor(Math.random() * 2)]++;
+                score.textContent = current.join(' - ');
+            }
+        });
+    }, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', simulateLiveScores);
+
+function addScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    animatedElements.forEach(el => observer.observe(el));
+}
+
+document.addEventListener('DOMContentLoaded', addScrollAnimations);
+
+function addVideoControls() {
+    document.querySelectorAll('video').forEach(video => {
+        const controls = document.createElement('div');
+        controls.className = 'custom-video-controls';
+        controls.innerHTML = `
+            <button class="play-pause">⏯</button>
+            <input type="range" class="volume" min="0" max="1" step="0.1" value="1">
+        `;
+        video.parentNode.insertBefore(controls, video.nextSibling);
+    });
+}
+
+function updateWeather() {
+    const locations = ['London', 'Manchester', 'Edinburgh'];
+    locations.forEach(async (location) => {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=YOUR_API_KEY`);
+        const data = await response.json();
+        updateWeatherCard(location, data);
+    });
+}
+
+function updateWeatherCard(location, data) {
+    const card = document.querySelector(`[data-location="${location}"]`);
+    if (card) {
+        card.querySelector('.temp').textContent = `${Math.round(data.main.temp)}°C`;
+        card.querySelector('.condition').textContent = data.weather[0].main;
+    }
+}

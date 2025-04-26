@@ -265,3 +265,109 @@ h1, h2, h3 {
     display: inline-block;
     margin-left: 1rem;
 }
+
+.lazy-load {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lazy-load.loaded {
+    opacity: 1;
+}
+
+.live-scores {
+    background: #f4f4f4;
+    padding: 1rem;
+    margin: 2rem 0;
+}
+
+.score-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.match-time {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.live-indicator {
+    animation: pulse 1.5s infinite;
+}
+
+.story-card, 
+.news-article,
+.sport-article {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.story-card:hover,
+.news-article:hover,
+.sport-article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* Add image overlay effect */
+.story-card::after,
+.news-article::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent 60%, rgba(0,0,0,0.7));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.story-card:hover::after,
+.news-article:hover::after {
+    opacity: 1;
+}
+
+/* Text hover effects */
+h3 {
+    transition: color 0.3s ease;
+}
+
+.story-card:hover h3,
+.news-article:hover h3 {
+    color: var(--bbc-red);
+}
+
+/* Mobile touch support */
+@media (hover: none) {
+    .story-card,
+    .news-article,
+    .sport-article {
+        transition: none;
+    }
+    
+    .story-card:hover,
+    .news-article:hover,
+    .sport-article:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
