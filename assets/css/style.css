@@ -1,6 +1,7 @@
 /* Variables */
 :root {
   --gold:        #ffcc00;
+  --cyan:        #18e9d7;
   --purple:      #580b8f;
   --black:       #1A1A1A;
   --gray-light:  #E5E5E5;
@@ -119,12 +120,12 @@ body {
   margin-top: 0.5rem;
 }
 /* variants */
-.category-world       { background: var(--gold);        color: var(--black); }
-.category-politics    { background: var(--gold);        color: var(--black); }
-.category-football    { background: var(--gold);        color: var(--black); }
-.category-tennis      { background: var(--purple);      color: #fff;         }
-.category-literature  { background: var(--gold);        color: var(--black); }
-.category-shows       { background: var(--purple);      color: #fff;         }
+.category-world         { background: var(--gold);        color: var(--black); }
+.category-politics      { background: var(--gold);        color: var(--black); }
+.category-sports        { background: var(--cyan);        color: var(--black); }
+.category-tennis        { background: var(--purple);      color: #fff;       }
+.category-literature    { background: var(--gold);        color: var(--black); }
+.category-entertainment { background: var(--purple);      color: #fff;       }
 
 /* Story-card grid */
 .secondary-stories {
@@ -199,6 +200,19 @@ body {
   overflow: hidden;
 }
 .entertainment-article p { color: #ddd; margin: 0 0 1rem; }
+
+.sport-section a,
+.entertainment-section a {
+  text-decoration: none;
+  color: inherit;   /* keep the text the same color */
+}
+
+/* make sure hover still looks clickable if you want */
+.sport-section a:hover,
+.entertainment-section a:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
 
 /* Weather cards */
 .weather-cards {
