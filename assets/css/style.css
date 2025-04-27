@@ -1,345 +1,232 @@
-/* style.css */
-
-/* 1. Theme variables */
+/* Variables */
 :root {
-  --color-gold:        #ffcc00;
-  --color-black:       #1A1A1A;
-  --color-gray-light:  #E5E5E5;
-  --color-purple:      #580b8f;
-  --color-bg:          #d4c1f1;
-  --font-main:         "Source Sans 3", Arial, sans-serif;
+  --gold:        #ffcc00;
+  --purple:      #580b8f;
+  --black:       #1A1A1A;
+  --gray-light:  #E5E5E5;
+  --bg:          #d4c1f1;
+  --font-main:   "Source Sans 3", Arial, sans-serif;
 }
 
-/* 2. Reset & base */
+/* Base reset */
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 body {
   margin: 0;
-  background: var(--color-bg);
+  background: var(--bg);
   font-family: var(--font-main);
   line-height: 1.5;
-  color: var(--color-black);
+  color: var(--black);
 }
 
-/* 3. Skip link */
+/* Skip link */
 .skip-link {
-  position: absolute;
-  top: -40px; left: 0;
-  background: var(--color-black);
-  color: #fff;
-  padding: 0.5rem;
-  z-index: 100;
+  position: absolute; top: -40px; left: 0;
+  background: var(--black); color: #fff;
+  padding: 0.5rem; z-index: 100;
 }
-.skip-link:focus {
-  top: 0;
-}
+.skip-link:focus { top: 0; }
 
-/* 4. Header banner */
-.header {
-  background: var(--color-black);
-}
+/* Header banner */
+.header { background: var(--black); }
 .header-banner {
-  background: var(--color-purple);
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  background: var(--purple); color: #fff;
+  display: flex; justify-content: space-between;
+  padding: 0.5rem 1rem; font-size: 0.9rem;
 }
 
-/* 5. Navigation */
+/* Navigation */
 .nav-main {
-  display: flex;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex; align-items: center;
+  max-width: 1200px; margin: 0 auto;
   padding: 0.5rem 1rem;
 }
 .nav-logo {
-  color: var(--color-gold);
-  font-size: 2rem;
-  font-weight: bold;
-  text-decoration: none;
+  color: var(--gold); font-size: 2rem;
+  font-weight: bold; text-decoration: none;
   margin-right: 1rem;
 }
 .mobile-menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  cursor: pointer;
+  display: none; background: none;
+  border: none; color: #fff;
+  font-size: 1.5rem; cursor: pointer;
 }
 .nav-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0; padding: 0;
+  display: flex; gap: 1.5rem; margin: 0; padding: 0;
+  list-style: none; align-items: center;
 }
 @media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: block;
-  }
+  .mobile-menu-toggle { display: block; }
   .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%; left: 0; right: 0;
-    background: var(--color-black);
-    padding: 1rem;
+    display: none; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--black); padding: 1rem;
   }
 }
-.nav-links.open {
-  display: flex;
+.nav-links.open { display: flex; }
+.nav-link { color: #fff; text-decoration: none; font-size: 0.9rem; }
+
+/* Search form */
+.nav-search-form form { display: flex; align-items: center; }
+.nav-search {
+  padding: 0.3rem; border: 1px solid var(--gray-light);
+  border-radius: 3px 0 0 3px;
 }
-.nav-link {
-  color: #fff;
-  text-decoration: none;
+.nav-search-button {
+  background: var(--gold); color: var(--black);
+  border: none; padding: 0.4rem 0.8rem;
+  border-radius: 0 3px 3px 0; cursor: pointer;
   font-size: 0.9rem;
 }
 
-/* 6. Main & section titles */
+/* Main & titles */
 .main-content {
-  max-width: 1200px;
-  margin: 2rem auto;
+  max-width: 1200px; margin: 2rem auto;
   padding: 0 1rem;
 }
 .section-title {
-  font-size: 2rem;
-  color: var(--color-black);
-  border-left: 8px solid var(--color-gold);
-  padding-left: 1.5rem;
-  margin: 3rem 0;
+  font-size: 2rem; color: var(--black);
+  border-left: 8px solid var(--gold);
+  padding-left: 1.5rem; margin: 3rem 0;
 }
 
-/* 7. Featured card */
+/* Featured (hero) card */
 .featured-story {
-  background: var(--color-black);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 2rem;
+  background: var(--black); border-radius: 4px;
+  overflow: hidden; margin-bottom: 2rem;
 }
 .featured-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
+  display: block; text-decoration: none; color: inherit;
 }
 .featured-link img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
+  width: 100%; aspect-ratio: 16/9; object-fit: cover;
 }
 .featured-link h1 {
-  margin: 1rem;
-  color: #fff;
-  font-size: 2rem;
+  margin: 1rem; color: #fff; font-size: 2rem;
 }
 .featured-story p {
-  color: #ddd;
-  margin: 0 1rem 1rem;
+  color: #ddd; margin: 0 1rem 1rem;
 }
-.featured-story .category-world {
+
+/* Category badges (all badge variants handled here) */
+[class^="category-"] {
   display: inline-block;
-  background: var(--color-gold);
-  color: var(--color-black);
   text-transform: uppercase;
   font-weight: bold;
   padding: 0.3rem 0.8rem;
-  margin: 0 1rem 1rem;
   border-radius: 3px;
+  margin-top: 0.5rem;
 }
+/* variants */
+.category-world       { background: var(--gold);        color: var(--black); }
+.category-politics    { background: var(--gold);        color: var(--black); }
+.category-football    { background: var(--gold);        color: var(--black); }
+.category-tennis      { background: var(--purple);      color: #fff;         }
+.category-literature  { background: var(--gold);        color: var(--black); }
+.category-shows       { background: var(--purple);      color: #fff;         }
 
-/* 8. Secondary story cards */
+/* Story-card grid */
 .secondary-stories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 1rem;
-  margin-bottom: 3rem;
+  gap: 1rem; margin-bottom: 3rem;
 }
 .story-card {
-  background: var(--color-black);
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  height: 360px;
-  overflow: hidden;
-  padding: 0.5rem;
+  background: var(--black); border-radius: 4px;
+  display: flex; flex-direction: column;
+  height: 360px; overflow: hidden; padding: 0.5rem;
 }
 .story-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 4px;
-  flex-shrink: 0;
+  width: 100%; height: 180px; object-fit: cover;
+  border-radius: 4px; flex-shrink: 0;
 }
 .story-card h3 {
-  margin: 1rem 0 0.5rem;
-  color: #fff;
-  font-size: 1.2rem;
-  line-height: 1.2;
+  margin: 1rem 0 0.5rem; color: #fff;
+  font-size: 1.2rem; line-height: 1.2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-.story-card a {
-  text-decoration: none;
-  color: inherit;
-}
-.story-card a:hover h3 {
-  text-decoration: underline;
-}
-.story-card .category-world,
-.story-card .category-sport {
-  margin-top: auto;
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
-}
+.story-card a { text-decoration: none; color: inherit; }
+.story-card a:hover h3 { text-decoration: underline; }
 
-/* 9. Sport cards */
+/* Sport grid (same fixed-height cards) */
 .sport-section .sport-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 1rem;
-  margin-bottom: 3rem;
+  gap: 1rem; margin-bottom: 3rem;
 }
 .sport-article {
-  background: var(--color-black);
-  border-radius: 4px;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  height: 360px;
-  overflow: hidden;
-  text-decoration: none;
+  background: var(--black); border-radius: 4px;
+  padding: 0.5rem; display: flex; flex-direction: column;
+  height: 360px; overflow: hidden; text-decoration: none;
 }
 .sport-article img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 4px;
-  flex-shrink: 0;
+  width: 100%; height: 180px; object-fit: cover;
+  border-radius: 4px; flex-shrink: 0;
 }
 .sport-article h3 {
-  margin: 1rem 0 0.5rem;
-  color: #fff;
-  font-size: 1.2rem;
-  line-height: 1.2;
+  margin: 1rem 0 0.5rem; color: #fff;
+  font-size: 1.2rem; line-height: 1.2;
 }
 .sport-article p {
-  color: #ddd;
-  margin: 0 0 1rem;
-}
-.sport-article .category-sport {
-  margin-top: auto;
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.sport-article a {
-  text-decoration: none;
-}
-.sport-article a:hover h3 {
-  text-decoration: underline;
+  color: #ddd; margin: 0 0 1rem;
 }
 
-/* 10. Entertainment cards */
+/* Entertainment grid (same pattern) */
 .entertainment-section .entertainment-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 1rem;
-  margin-bottom: 3rem;
+  gap: 1rem; margin-bottom: 3rem;
 }
 .entertainment-article {
-  background: var(--color-black);
-  border-radius: 4px;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  height: 360px;
-  overflow: hidden;
-  text-decoration: none;
+  background: var(--black); border-radius: 4px;
+  padding: 0.5rem; display: flex; flex-direction: column;
+  height: 360px; overflow: hidden; text-decoration: none;
 }
 .entertainment-article img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 4px;
-  flex-shrink: 0;
+  width: 100%; height: 180px; object-fit: cover;
+  border-radius: 4px; flex-shrink: 0;
 }
 .entertainment-article h3 {
-  margin: 1rem 0 0.5rem;
-  color: #fff;
-  font-size: 1.2rem;
-  line-height: 1.2;
+  margin: 1rem 0 0.5rem; color: #fff;
+  font-size: 1.2rem; line-height: 1.2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-.entertainment-article p {
-  color: #ddd;
-  margin: 0 0 1rem;
-}
-.entertainment-article .category-entertainment {
-  margin-top: auto;
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.entertainment-article a {
-  text-decoration: none;
-  color: inherit;
-}
-.entertainment-article a:hover h3 {
-  text-decoration: underline;
-}
+.entertainment-article p { color: #ddd; margin: 0 0 1rem; }
 
-/* 11. Weather cards */
+/* Weather cards */
 .weather-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 1rem;
-  margin: 2rem 0;
+  gap: 1rem; margin: 2rem 0;
 }
 .weather-card {
-  background: var(--color-gray-light);
-  padding: 1rem;
-  border-radius: 4px;
-  text-align: center;
+  background: var(--gray-light); padding: 1rem;
+  border-radius: 4px; text-align: center;
 }
-.weather-card h4 {
-  margin: 0 0 0.5rem;
-}
+.weather-card h4 { margin: 0 0 0.5rem; }
 .weather-card .temp {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.5rem; font-weight: bold;
 }
 .weather-card .condition {
-  font-size: 1rem;
-  color: #555;
+  font-size: 1rem; color: #555;
 }
 
-/* 12. Footer */
+/* Footer */
 .footer {
-  background: var(--color-black);
-  color: #fff;
-  padding: 2rem 1rem;
-  text-align: center;
+  background: var(--black); color: #fff;
+  padding: 2rem 1rem; text-align: center;
 }
 .footer-top,
 .footer-middle {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 1rem;
   margin-bottom: 1rem;
 }
-.footer a {
-  color: #fff;
-  text-decoration: none;
-}
+.footer a { color: #fff; text-decoration: none; }
