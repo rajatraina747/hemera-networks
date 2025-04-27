@@ -1,6 +1,6 @@
 /* news.css */
 
-/* — Controls bar — */
+/* —— Controls bar —— */
 .news-controls {
   display: flex;
   justify-content: space-between;
@@ -28,74 +28,123 @@
   background: var(--gold);
 }
 
-/* — Grid view (default) — */
+/* —— Kill default link underline —— */
+.news-card a {
+  color: inherit;
+  text-decoration: none;
+}
+.news-card a:hover h3 {
+  text-decoration: underline;
+}
+
+/* —— Image wrapper + cover crop —— */
+.image-wrapper {
+  overflow: hidden;
+}
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* —— GRID view —— */
 .news-container.grid-view {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
   gap: 1rem;
 }
-
-/* — Card style (same as your story-card) — */
-.news-card {
+.news-container.grid-view .news-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--black);
   border-radius: 4px;
   overflow: hidden;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
   height: 360px;
+  padding-bottom: 2rem; /* room for badge */
 }
-.news-card img {
+.news-container.grid-view .news-card .image-wrapper {
   width: 100%;
   height: 180px;
-  object-fit: cover;
-  border-radius: 4px;
-  flex-shrink: 0;
 }
-.news-card h3 {
-  margin: 1rem 0 0.5rem;
+.news-container.grid-view .news-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+.news-container.grid-view .news-details h3 {
+  margin: 0;
   color: #fff;
   font-size: 1.2rem;
   line-height: 1.2;
 }
-.news-card time {
+.news-container.grid-view .news-details time {
+  margin-top: 0.5rem;
   font-size: 0.85rem;
   color: var(--gray-light);
 }
-.news-card > span[class^="category-"] {
-  margin-top: auto;
+/* pill badge bottom-left in grid */
+.news-container.grid-view .news-details > span[class^="category-"] {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 3px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-/* — Improved List View — */
+/* —— LIST view —— */
 .news-container.list-view {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .news-container.list-view .news-card {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--gray-light);
-}
-.news-container.list-view .news-card:last-child {
-  border-bottom: none;
-}
-.news-container.list-view .news-card img {
-  width: 180px;
-  height: 100px;
-  object-fit: cover;
+  flex-direction: row;
+  align-items: stretch;         /* make wrapper fill card height */
+  background: var(--black);
   border-radius: 4px;
+  overflow: hidden;
+  height: auto;
+}
+.news-container.list-view .news-card .image-wrapper {
+  width: 180px;
+  height: 100%;
   flex-shrink: 0;
 }
 .news-container.list-view .news-details {
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 0.75rem;
 }
-.news-container.list-view .news-meta {
-  display: flex;
-  gap: 1rem;
-  margin-top: auto;
+.news-container.list-view .news-details h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+.news-container.list-view .news-details time {
+  margin-top: 0.5rem;
   font-size: 0.85rem;
   color: var(--gray-light);
 }
+/* badge at bottom-of-column in list */
+.news-container.list-view .news-details > span[class^="category-"] {
+  margin-top: auto;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 3px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* —— Category badge colors —— */
+.news-card .category-world         { background: var(--gold);   color: var(--black); }
+.news-card .category-politics      { background: var(--gold);   color: var(--black); }
+.news-card .category-sports        { background: var(--cyan);   color: var(--black); }
+.news-card .category-entertainment { background: var(--purple); color: #fff;       }
