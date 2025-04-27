@@ -1,0 +1,91 @@
+/* news.css */
+
+/* Controls bar */
+.news-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .news-controls input[type="search"] {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--gray-light);
+    border-radius: 4px;
+    margin-right: 1rem;
+    font-size: 1rem;
+  }
+  .view-toggle button {
+    background: var(--gray-light);
+    border: none;
+    padding: 0.5rem 0.75rem;
+    margin-left: 0.25rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  .view-toggle button[aria-pressed="true"] {
+    background: var(--gold);
+  }
+  
+  /* Grid view (default) */
+  .news-container.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 1rem;
+  }
+  /* Card style matches story-card from style.css :contentReference[oaicite:2]{index=2}&#8203;:contentReference[oaicite:3]{index=3} */
+  .news-card {
+    background: var(--black);
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 360px;
+  }
+  .news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .news-card h3 {
+    margin: 1rem 0 0.5rem;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+  .news-card time {
+    font-size: 0.85rem;
+    color: var(--gray-light);
+  }
+  .news-card > span[class^="category-"] {
+    margin-top: auto;
+  }
+  
+  /* List view overrides */
+  .news-container.list-view {
+    display: block;
+  }
+  .news-container.list-view .news-card {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+  }
+  .news-container.list-view .news-card img {
+    width: 150px;
+    height: 100px;
+    margin-right: 1rem;
+    flex-shrink: 0;
+  }
+  .news-container.list-view .news-card h3 {
+    margin: 0 0 0.25rem;
+    flex: 1;
+  }
+  .news-container.list-view .news-card time,
+  .news-container.list-view .news-card span {
+    margin-right: 1rem;
+  }
+  
