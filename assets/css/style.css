@@ -2,15 +2,12 @@
 
 /* 1. Theme variables */
 :root {
-  --hn-gold:        #ffcc00;
-  --hn-black:       #1A1A1A;
-  --hn-gray:        #E5E5E5;
-  --hn-red:         #f70c0c;
-  --hn-blue:        #29d2f0;  
-  --hn-font:        "Source Sans 3", Arial, sans-serif;
-  --error-gold:     #f7b900;
-  --body-bg:        #d4c1f1;
-  --header-purple:  #580b8f;
+  --gold:          #ffcc00;
+  --black:         #1A1A1A;
+  --gray-light:    #E5E5E5;
+  --purple:        #580b8f;
+  --bg:            #d4c1f1;
+  --font:          "Source Sans 3", Arial, sans-serif;
 }
 
 /* 2. Reset & base */
@@ -21,18 +18,17 @@
 }
 body {
   margin: 0;
-  background: var(--body-bg);
-  font-family: var(--hn-font);
+  background: var(--bg);
+  font-family: var(--font);
   line-height: 1.5;
-  color: var(--hn-black);
+  color: var(--black);
 }
 
 /* 3. Skip link */
 .skip-link {
   position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--hn-black);
+  top: -40px; left: 0;
+  background: var(--black);
   color: #fff;
   padding: 0.5rem;
   z-index: 100;
@@ -42,11 +38,9 @@ body {
 }
 
 /* 4. Header banner */
-.header {
-  background: var(--hn-black);
-}
+.header { background: var(--black); }
 .header-banner {
-  background: var(--header-purple);
+  background: var(--purple);
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -63,11 +57,11 @@ body {
   padding: 0.5rem 1rem;
 }
 .nav-logo {
-  color: var(--hn-gold);
+  color: var(--gold);
   font-size: 2rem;
   font-weight: bold;
-  margin-right: 1rem;
   text-decoration: none;
+  margin-right: 1rem;
 }
 .mobile-menu-toggle {
   display: none;
@@ -75,60 +69,27 @@ body {
   border: none;
   color: #fff;
   font-size: 1.5rem;
-  cursor: pointer;
 }
 .nav-links {
   display: flex;
   gap: 1.5rem;
-  align-items: center;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
 }
 @media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: block;
-  }
+  .mobile-menu-toggle { display: block; }
   .nav-links {
     display: none;
     flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0; right: 0;
-    background: var(--hn-black);
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--black);
     padding: 1rem;
   }
 }
-.nav-links.open {
-  display: flex;
-}
-.nav-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
+.nav-links.open { display: flex; }
+.nav-link { color: #fff; text-decoration: none; }
 
-/* 6. Search form */
-.nav-search-form form {
-  display: flex;
-  align-items: center;
-}
-.nav-search {
-  padding: 0.3rem;
-  border: 1px solid var(--hn-gray);
-  border-radius: 3px 0 0 3px;
-}
-.nav-search-button {
-  background: var(--hn-gold);
-  color: var(--hn-black);
-  border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 0 3px 3px 0;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-/* 7. Main/content & titles */
+/* 6. Main & section titles */
 .main-content {
   max-width: 1200px;
   margin: 2rem auto;
@@ -136,30 +97,32 @@ body {
 }
 .section-title {
   font-size: 2rem;
-  color: var(--hn-black);
-  border-left: 8px solid var(--hn-gold);
+  color: var(--black);
+  border-left: 8px solid var(--gold);
   padding-left: 1.5rem;
   margin: 3rem 0;
 }
 
-/* 8. Featured-story as a card */
+/* 7. Featured card */
 .featured-story {
-  background: var(--hn-black);
+  background: var(--black);
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
 }
-.featured-story img {
+.featured-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.featured-link img {
   width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
-  flex-shrink: 0;
 }
-.featured-story h1 {
-  color: #fff;
+.featured-link h1 {
   margin: 1rem;
+  color: #fff;
   font-size: 2rem;
 }
 .featured-story p {
@@ -168,28 +131,8 @@ body {
 }
 .featured-story .category-world {
   display: inline-block;
-  background: var(--hn-blue);
-  color: var(--hn-black);
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 0.3rem 0.8rem;
-  margin: 0 1rem 1rem;
-  border-radius: 3px;
-}
-.featured-story .category-sports {
-  display: inline-block;
-  background: var(--hn-gold);
-  color: var(--hn-black);
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 0.3rem 0.8rem;
-  margin: 0 1rem 1rem;
-  border-radius: 3px;
-}
-.featured-story .category-entertainment {
-  display: inline-block;
-  background: var(--hn-red);
-  color: var(--hn-gray);
+  background: var(--gold);
+  color: var(--black);
   text-transform: uppercase;
   font-weight: bold;
   padding: 0.3rem 0.8rem;
@@ -197,16 +140,15 @@ body {
   border-radius: 3px;
 }
 
-/* 9. Secondary stories: fixed-height cards */
+/* 8. Secondary story cards */
 .secondary-stories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
   gap: 1rem;
-  align-items: start;
   margin-bottom: 3rem;
 }
 .story-card {
-  background: var(--hn-black);
+  background: var(--black);
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -223,29 +165,30 @@ body {
 }
 .story-card h3 {
   margin: 1rem 0 0.5rem;
+  color: #fff;
   font-size: 1.2rem;
   line-height: 1.2;
-  color: #fff;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-.story-card h3 a {
-  color: inherit;
+.story-card a {
   text-decoration: none;
+  color: inherit;
 }
-.story-card h3 a:hover {
+.story-card a:hover h3 {
   text-decoration: underline;
 }
-.story-card span[class^="category-"] {
+.story-card .category-world,
+.story-card .category-sport {
   margin-top: auto;
+  color: #fff;
   font-weight: bold;
   text-transform: uppercase;
-  color: #fff;
 }
 
-/* 10. Sport section cards */
+/* 9. Sport cards */
 .sport-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
@@ -253,26 +196,48 @@ body {
   margin-bottom: 3rem;
 }
 .sport-article {
-  background: var(--hn-black);
+  background: var(--black);
   border-radius: 4px;
   padding: 0.5rem;
   color: #fff;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 360px;
+  overflow: hidden;
 }
 .sport-article img {
   width: 100%;
-  height: auto;
+  height: 180px;
   object-fit: cover;
   border-radius: 4px;
+  flex-shrink: 0;
 }
-/* force all headings, paragraphs and category spans inside each sport-article to white */
-.sport-article h3,
-.sport-article p,
-.sport-article span {
+.sport-article h3 {
+  margin: 1rem 0 0.5rem;
   color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+.sport-article p {
+  color: #ddd;
+  margin: 0 0 1rem;
+  flex-shrink: 0;
+}
+.sport-article .category-sport {
+  margin-top: auto;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.sport-article a {
+  text-decoration: none;
+}
+.sport-article a:hover h3 {
+  text-decoration: underline;
 }
 
-/* 11. Weather cards */
+/* 10. Weather cards */
 .weather-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
@@ -280,7 +245,7 @@ body {
   margin: 2rem 0;
 }
 .weather-card {
-  background: var(--hn-gray);
+  background: var(--gray-light);
   padding: 1rem;
   border-radius: 4px;
   text-align: center;
@@ -297,15 +262,9 @@ body {
   color: #555;
 }
 
-/* 12. Error text */
-.error-message {
-  color: var(--error-gold);
-  font-style: italic;
-}
-
-/* 13. Footer */
+/* 11. Footer */
 .footer {
-  background: var(--hn-black);
+  background: var(--black);
   color: #fff;
   padding: 2rem 1rem;
   text-align: center;
@@ -318,46 +277,7 @@ body {
   gap: 1rem;
   margin-bottom: 1rem;
 }
-.footer-top a,
-.footer-middle a {
+.footer a {
   color: #fff;
   text-decoration: none;
-}
-.footer-bottom {
-  color: var(--hn-gray);
-  font-size: 0.8rem;
-}
-
-/* sport‐article links */
-.sport-article a {
-  color: #fff;            /* white text */
-  text-decoration: none;  /* remove blue underline */
-}
-.sport-article a:hover {
-  text-decoration: underline;
-}
-/* ─── Featured story link styling ─── */
-.featured-story .featured-link {
-  display: block;          /* let it wrap image + h1 */
-  text-decoration: none;   /* no blue underline */
-  color: inherit;          /* inherit the white h1 color */
-}
-
-.featured-story .featured-link h1 {
-  margin: 1rem;
-  color: #fff;             /* force white */
-}
-
-/* if you want a hover cue */
-.featured-story .featured-link:hover h1 {
-  text-decoration: underline;
-}
-
-.story-card a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.story-card a:hover h3 {
-  text-decoration: underline;
 }

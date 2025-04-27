@@ -8,14 +8,16 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
     rel="stylesheet">
-  <link rel="icon" href="/assets/images/HN Logo.png" type="image/x-icon">  
+  <link rel="icon" href="/assets/images/HN Logo.png" type="image/x-icon">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+  <!-- header injected by script.js -->
   <div id="header-container"></div>
 
   <main class="main-content" id="main-content">
-    <section class="top-stories"> 
+    <!-- Featured (hero) card -->
+    <section class="top-stories">
       <h2 class="section-title">Welcome to Hemera Networks</h2>
       <div class="featured-story">
         <a href="/Articles/0004.html" class="featured-link">
@@ -25,75 +27,85 @@
             loading="lazy">
           <h1>Breaking News: Nine killed as car rams Filipino street-festival crowd in Vancouver</h1>
         </a>
-        <p><i>Police arrest 30-year-old local driver; officials say attack is “not terrorism” but motive still unclear</i></p>
+        <p><i>Police arrest 30-year-old local driver; officials say attack is “not terrorism” but motive still unclear.</i></p>
         <span class="category-world">International</span>
       </div>
     </section>
 
+    <!-- Secondary stories -->
     <section class="secondary-stories">
       <div class="story-card">
         <a href="/Articles/0003.html">
-        <img
-          src="/Articles/Images/0003/01.jpg"
-          alt="Lab experiment scene"
-          loading="lazy">
-        <h3>Sudden Jhelum surge from India floods PoK, stoking a fresh river-row</h3></a>
+          <img
+            src="/Articles/Images/0003/01.jpg"
+            alt="Surging river waters"
+            loading="lazy">
+          <h3>Sudden Jhelum surge from India floods PoK, stoking a fresh river-row</h3>
+        </a>
         <span class="category-world">International</span>
       </div>
       <div class="story-card">
         <a href="/Articles/0002.html">
-        <img
-          src="/Articles/Images/0002/01.avif"
-          alt="Zelensky and Trump"
-          loading="lazy">
-        <h3>Trump Casts Doubt on Putin’s Will for Peace After Vatican Meeting With Zelensky</h3></a>
+          <img
+            src="/Articles/Images/0002/01.avif"
+            alt="Zelensky and Trump"
+            loading="lazy">
+          <h3>Trump casts doubt on Putin’s will for peace after Vatican meeting with Zelensky</h3>
+        </a>
         <span class="category-world">Politics</span>
       </div>
       <div class="story-card">
-        <img
-          src="https://picsum.photos/400/225"
-          alt="Lab experiment scene"
-          loading="lazy">
-        <h3><a href="/article.html">Test Article 3</a></h3>
+        <a href="/article.html">
+          <img
+            src="https://picsum.photos/400/225"
+            alt="Lab experiment scene"
+            loading="lazy">
+          <h3>Test Article 3</h3>
+        </a>
         <span class="category-sport">Tennis</span>
       </div>
       <div class="story-card">
-        <img
-          src="https://picsum.photos/400/225"
-          alt="Lab experiment scene"
-          loading="lazy">
-        <h3><a href="/article.html">Test Article 4</a></h3>
+        <a href="/article.html">
+          <img
+            src="https://picsum.photos/400/225"
+            alt="Book and quill"
+            loading="lazy">
+          <h3>Test Article 4</h3>
+        </a>
         <span class="category-world">Literature</span>
       </div>
-      <!-- …other cards… -->
     </section>
 
+    <!-- Sport cards -->
     <section class="sport-section">
       <h2 class="section-title">Sport</h2>
       <div class="sport-grid">
-        <article class="sport-article">
+        <div class="sport-article">
           <a href="/Articles/0005.html">
-          <img
-            src="/Articles/Images/0005/01.jpg"
-            alt="Football match action"
-            loading="lazy">
-          <h3>Palace sweep Villa aside to book FA Cup final spot</h3></a>
-          <p><i>Eze’s opener and a second-half brace from Sarr seal a commanding 3-0 Wembley win as Glasner’s Eagles eye a first major trophy on 17 May.</i></p>
+            <img
+              src="/Articles/Images/0005/01.jpg"
+              alt="Crystal Palace celebrating"
+              loading="lazy">
+            <h3>Palace sweep Villa aside to book FA Cup final spot</h3>
+          </a>
+          <p><i>Eze’s opener and a second-half brace from Sarr seal a commanding 3–0 Wembley win as Glasner’s Eagles eye a first major trophy on 17 May.</i></p>
           <span class="category-sport">Football</span>
-        </article>
-        <article class="sport-article">
+        </div>
+        <div class="sport-article">
           <a href="/Articles/0001.html">
-          <img
-            src="/Articles/Images/0001/01.avif"
-            alt="Football match action"
-            loading="lazy">
-          <h3>Referee row engulfs Copa del Rey clásico</h3></a>
-          <p><i>Real Madrid boycott pre-final media duties after tearful press conference by match officials, heightening tension before tonight’s showdown with Barcelona in Seville</i></p>
+            <img
+              src="/Articles/Images/0001/01.avif"
+              alt="Referee signalling"
+              loading="lazy">
+            <h3>Referee row engulfs Copa del Rey clásico</h3>
+          </a>
+          <p><i>Real Madrid boycott pre-final media duties after tearful press conference by match officials, heightening tension before tonight’s showdown with Barcelona in Seville.</i></p>
           <span class="category-sport">Football</span>
-        </article>
+        </div>
       </div>
     </section>
 
+    <!-- Weather cards -->
     <section class="weather-section">
       <h2 class="section-title">Weather</h2>
       <div class="weather-cards">
@@ -122,7 +134,8 @@
     </section>
   </main>
 
+  <!-- footer injected by script.js -->
   <div id="footer-container"></div>
-  <script src="script.js" defer></script>
+  <script src="/script.js" defer></script>
 </body>
 </html>
