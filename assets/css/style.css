@@ -108,6 +108,21 @@ body {
 }
 .featured-story p {
   color: #ddd; margin: 0 1rem 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Stick the featured badge to the bottom of its card */
+.featured-story {
+  position: relative;
+  /* make room for the badge so it won’t overlap the text */
+  padding-bottom: 2rem;
+}
+
+.featured-story > span[class^="category-"] {
+  position: absolute;
+  bottom: 1rem;   /* distance from the bottom edge */
+  left:   1rem;   /* align with your text margins */
+  margin:  0;     /* override the default top-margin */
 }
 
 /* Category badges (all badge variants handled here) */
@@ -212,6 +227,13 @@ body {
 .entertainment-section a:hover {
   text-decoration: none;
   opacity: 0.8;
+}
+
+/* push category badge down to the bottom of each card */
+.story-card > span[class^="category-"],
+.sport-article > span[class^="category-"],
+.entertainment-article > span[class^="category-"] {
+  margin-top: auto;
 }
 
 /* Weather cards */
