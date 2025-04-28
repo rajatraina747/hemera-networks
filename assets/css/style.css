@@ -4,6 +4,7 @@
   --cyan:        #18e9d7;
   --purple:      #580b8f;
   --black:       #1A1A1A;
+  --red:         #d61b1b;
   --gray-light:  #E5E5E5;
   --bg:          #d4c1f1;
   --font-main:   "Source Sans 3", Arial, sans-serif;
@@ -135,8 +136,8 @@ body {
   margin-top: 0.5rem;
 }
 /* variants */
-.category-world         { background: var(--gold);        color: var(--black); }
-.category-politics      { background: var(--gold);        color: var(--black); }
+.category-world         { background: var(--red);         color: #fff; }
+.category-economics     { background: var(--gold);        color: var(--black); }
 .category-sports        { background: var(--cyan);        color: var(--black); }
 .category-tennis        { background: var(--purple);      color: #fff;       }
 .category-literature    { background: var(--gold);        color: var(--black); }
