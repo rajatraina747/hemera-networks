@@ -267,3 +267,60 @@ body {
   margin-bottom: 1rem;
 }
 .footer a { color: #fff; text-decoration: none; }
+
+/* Economics grid (same pattern as Sport & Entertainment) */
+.economics-section .economics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.economics-article {
+  background: var(--black);
+  border-radius: 4px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 360px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.economics-article img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.economics-article h3 {
+  margin: 1rem 0 0.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.economics-article p {
+  color: #ddd;
+  margin: 0 0 1rem;
+}
+
+/* push the category badge to the bottom */
+.economics-article > span[class^="category-"] {
+  margin-top: auto;
+}
+
+.economics-section a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.economics-section a:hover {
+  opacity: 0.8;
+}
