@@ -1,5 +1,6 @@
 const NEWS_API_KEY    = 'e8c89187882d4906b54062dddbca65bc';
 const WEATHER_API_KEY = '672c22632e1f7263d3877166fe0eda01';
+window.WEATHER_API_KEY = '672c22632e1f7263d3877166fe0eda01';
 
 async function loadHTML(id, url) {
   const res = await fetch(url);

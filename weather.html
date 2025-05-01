@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Global Weather Map</title>
+  <!-- Leaflet styles -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  >
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="main-content">
+    <h2 class="section-title">Global Weather Map</h2>
+    <div id="weather-map"></div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <!-- Leaflet script -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Re-use your app’s script loader -->
+  <script src="/script.js" defer></script>
+  <!-- Page-specific script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Only run on weather.html
+      if (!document.getElementById('weather-map')) return;
+
+      // 1) Initialize the map
+      const map = L.map('weather-map').setView([20, 0], 2);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      // 2) Define your cities + coords
+      const cities = [
+        { name: 'London',     lat: 51.5074, lon: -0.1278 },
+        { name: 'New York',   lat: 40.7128, lon: -74.0060 },
+        { name: 'Tokyo',      lat: 35.6895, lon: 139.6917 },
+        { name: 'Sydney',     lat: -33.8688, lon: 151.2093 },
+        { name: 'Rio de Janeiro', lat: -22.9068, lon: -43.1729 },
+        // …add as many as you like
+      ];
+
+      // 3) For each city: fetch weather + add marker
+      const key = WEATHER_API_KEY; // from your existing script.js
+      cities.forEach(city => {
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}` +
+          `&units=metric&appid=${key}`
+        )
+        .then(res => res.json())
+        .then(data => {
+          const t = Math.round(data.main.temp);
+          const cond = data.weather[0].description;
+          // add marker + popup
+          L.marker([city.lat, city.lon])
+            .addTo(map)
+            .bindPopup(
+              `<strong>${city.name}</strong><br>` +
+              `${t}°C, ${cond}`
+            );
+        })
+        .catch(console.error);
+      });
+    });
+  </script>
+</body>
+</html>

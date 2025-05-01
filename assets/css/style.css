@@ -324,3 +324,12 @@ body {
 .economics-section a:hover {
   opacity: 0.8;
 }
+
+/* Weather map page */
+#weather-map {
+  width: 100%;
+  height: calc(100vh - 200px); /* subtract header/footer space */
+  margin: 1rem 0;
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+}
