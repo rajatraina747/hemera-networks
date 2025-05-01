@@ -10,12 +10,11 @@
   <!-- MarkerCluster CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-
-  <!-- Your main stylesheet -->
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="/assets/css/style.css" />
 
   <style>
-    /* Make the map fill most of the viewport, with a solid fallback background */
+    /* Map container */
     #weather-map {
       width: 100%;
       height: 80vh;
@@ -40,25 +39,84 @@
   <!-- Leaflet & MarkerCluster -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-  <!-- your loader (defines loadHTML & window.WEATHER_API_KEY) -->
-  <script src="/script.js" defer></script> :contentReference[oaicite:0]{index=0}&#8203;:contentReference[oaicite:1]{index=1}
+  <!-- Loader + API_KEY injected by script.js -->
+  <script src="/script.js" defer></script>
 
-  <!-- …same header/footer injection and base-layer setup… -->
-
-<script>
+  <script>
   document.addEventListener('DOMContentLoaded', async () => {
-    await loadHTML('header-container','/header.html');
-    await loadHTML('footer-container','/footer.html');
-  
-    const map = L.map('weather-map', { center:[20,0], zoom:2 });
+    // 1) inject header & footer
+    try {
+      await loadHTML('header-container','/header.html');
+      await loadHTML('footer-container','/footer.html');
+    } catch (err) {
+      console.error('Layout injection failed:', err);
+    }
+
+    // 2) initialize map
+    const map = L.map('weather-map', {
+      center: [20, 0],
+      zoom: 2
+    });
+
+    // 3) base‐layer
     const base = L.tileLayer(
       'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-      { attribution:'&copy; CartoDB &mdash; &copy; OpenStreetMap' }
+      { attribution: '&copy; CartoDB &mdash; &copy; OpenStreetMap' }
     ).addTo(map);
-  
-    map.on('moveend', () => map.invalidateSize());
-    
-    map.on('click', async (e) => {
+
+    // 4) recalc size
+    map.invalidateSize();
+
+    // 5) marker cluster group
+    const markers = L.markerClusterGroup().addTo(map);
+
+    // 6) initial points to show
+    const coords = [
+      { name: 'London',   lat: 51.51, lon: -0.13 },
+      { name: 'New York', lat: 40.71, lon: -74.01 },
+      { name: 'Sydney',   lat: -33.87, lon: 151.21 },
+      { name: 'Tokyo',    lat: 35.68, lon: 139.69 }
+      // …add up to 50 total…
+    ];
+
+    // 7) bulk‐fetch & add markers
+    async function addInitialWeatherMarkers() {
+      const q = coords.map(c => `${c.lat},${c.lon}`).join(',');
+      try {
+        const res = await fetch(
+          `https://api.weatherapi.com/v1/bulk.json?key=${WEATHER_API_KEY}&q=${q}`
+        );
+        const data = await res.json(); // data.locations[]
+        data.locations.forEach(loc => {
+          const { name } = loc.location;
+          const { temp_c, condition } = loc.current;
+          const iconUrl = `https:${condition.icon}`;
+
+          // custom icon
+          const icon = L.icon({
+            iconUrl,
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
+          });
+
+          // marker
+          L.marker([loc.location.lat, loc.location.lon], { icon })
+            .bindPopup(
+              `<strong>${loc.location.name}</strong><br>` +
+              `${Math.round(temp_c)}°C, ${condition.text}`
+            )
+            .addTo(markers);
+        });
+      } catch (e) {
+        console.error('Bulk-weather error', e);
+      }
+    }
+
+    // 8) run it once
+    addInitialWeatherMarkers();
+
+    // 9) keep click‐to‐lookup for ad-hoc points
+    map.on('click', async e => {
       try {
         const { lat, lng } = e.latlng;
         const res  = await fetch(
@@ -67,17 +125,17 @@
         );
         const data = await res.json();
         L.popup()
-         .setLatLng(e.latlng)
-         .setContent(`
-           <strong>${data.location.name}</strong><br>
-           ${Math.round(data.current.temp_c)}°C, ${data.current.condition.text}
-         `)
-         .openOn(map);
+          .setLatLng(e.latlng)
+          .setContent(`
+            <strong>${data.location.name}</strong><br>
+            ${Math.round(data.current.temp_c)}°C, ${data.current.condition.text}
+          `)
+          .openOn(map);
       } catch (err) {
-        console.error('Map weather error', err);
+        console.error('Map lookup error', err);
       }
     });
   });
-  </script>  
+  </script>
 </body>
 </html>
