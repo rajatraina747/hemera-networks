@@ -4,12 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Global Weather Map</title>
-  <!-- Leaflet styles -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet/dist/leaflet.css"
-  >
-  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Leaflet core CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+  <!-- Your main stylesheet -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <style>
+    /* Make the map fill most of the viewport, with a solid fallback background */
+    #weather-map {
+      width: 100%;
+      height: 80vh;
+      min-height: 400px;
+      margin: 1rem auto;
+      background: #ddd;
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+    }
+  </style>
 </head>
 <body>
   <div id="header-container"></div>
@@ -21,55 +37,47 @@
 
   <div id="footer-container"></div>
 
-  <!-- Leaflet script -->
+  <!-- Leaflet & MarkerCluster -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <!-- Re-use your app’s script loader -->
-  <script src="/script.js" defer></script>
-  <!-- Page-specific script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Only run on weather.html
-      if (!document.getElementById('weather-map')) return;
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <!-- your loader (defines loadHTML & window.WEATHER_API_KEY) -->
+  <script src="/script.js" defer></script> :contentReference[oaicite:0]{index=0}&#8203;:contentReference[oaicite:1]{index=1}
 
-      // 1) Initialize the map
-      const map = L.map('weather-map').setView([20, 0], 2);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution:
-          '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      }).addTo(map);
+  <!-- …same header/footer injection and base-layer setup… -->
 
-      // 2) Define your cities + coords
-      const cities = [
-        { name: 'London',     lat: 51.5074, lon: -0.1278 },
-        { name: 'New York',   lat: 40.7128, lon: -74.0060 },
-        { name: 'Tokyo',      lat: 35.6895, lon: 139.6917 },
-        { name: 'Sydney',     lat: -33.8688, lon: 151.2093 },
-        { name: 'Rio de Janeiro', lat: -22.9068, lon: -43.1729 },
-        // …add as many as you like
-      ];
-
-      // 3) For each city: fetch weather + add marker
-      const key = WEATHER_API_KEY; // from your existing script.js
-      cities.forEach(city => {
-        fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}` +
-          `&units=metric&appid=${key}`
-        )
-        .then(res => res.json())
-        .then(data => {
-          const t = Math.round(data.main.temp);
-          const cond = data.weather[0].description;
-          // add marker + popup
-          L.marker([city.lat, city.lon])
-            .addTo(map)
-            .bindPopup(
-              `<strong>${city.name}</strong><br>` +
-              `${t}°C, ${cond}`
-            );
-        })
-        .catch(console.error);
-      });
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    await loadHTML('header-container','/header.html');
+    await loadHTML('footer-container','/footer.html');
+  
+    const map = L.map('weather-map', { center:[20,0], zoom:2 });
+    const base = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+      { attribution:'&copy; CartoDB &mdash; &copy; OpenStreetMap' }
+    ).addTo(map);
+  
+    map.on('moveend', () => map.invalidateSize());
+    
+    map.on('click', async (e) => {
+      try {
+        const { lat, lng } = e.latlng;
+        const res  = await fetch(
+          `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}` +
+          `&q=${lat},${lng}`
+        );
+        const data = await res.json();
+        L.popup()
+         .setLatLng(e.latlng)
+         .setContent(`
+           <strong>${data.location.name}</strong><br>
+           ${Math.round(data.current.temp_c)}°C, ${data.current.condition.text}
+         `)
+         .openOn(map);
+      } catch (err) {
+        console.error('Map weather error', err);
+      }
     });
-  </script>
+  });
+  </script>  
 </body>
 </html>
