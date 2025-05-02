@@ -333,3 +333,21 @@ body {
   border: 2px solid var(--gold);
   border-radius: 4px;
 }
+
+/* style the permanent city-temp labels */
+.major-city-label {
+  background: rgba(255,255,255,0.8);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #333;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.header-banner .weather-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
