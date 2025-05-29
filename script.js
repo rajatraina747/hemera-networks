@@ -4,7 +4,18 @@
 const WEATHER_API_KEY = 'ceb1286f17de4a45806211356250105';
 window.WEATHER_API_KEY = WEATHER_API_KEY;
 
-// --- Header Date ---
+// --- Utility to load header/footer ---
+async function loadHTML(containerId, url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Failed to load ${url}: ${res.status}`);
+    document.getElementById(containerId).innerHTML = await res.text();
+  } catch (e) {
+    console.error(`Error loading ${url}`, e);
+  }
+}
+
+// --- Update Header Date ---
 function updateDate() {
   const now = new Date();
   document.getElementById('header-date').textContent = now.toLocaleDateString(undefined, {
@@ -15,13 +26,14 @@ function updateDate() {
   });
 }
 
-// --- Header Weather ---
+// --- Fetch Header Weather ---
 async function fetchHeaderWeather() {
   try {
-    const res = await fetch(`https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=Swansea`);
+    const res = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=Swansea`
+    );
     const data = await res.json();
 
-    // Temperature
     const tempEl = document.getElementById('header-weather-temp');
     tempEl.textContent = `${Math.round(data.current.temp_c)}°C`;
     tempEl.setAttribute(
@@ -29,21 +41,19 @@ async function fetchHeaderWeather() {
       `${data.location.name}: ${data.current.temp_c}°C, ${data.current.condition.text}`
     );
 
-    // Icon
     const iconEl = document.getElementById('header-weather-icon');
     iconEl.src = `https:${data.current.condition.icon}`;
     iconEl.alt = data.current.condition.text;
 
-    // Location name
     document.getElementById('header-weather-location').textContent = data.location.name;
   } catch (err) {
     console.error('Header weather error', err);
   }
 }
 
-// --- Weather Cards ---
+// --- Fetch Weather for Cards by City Name ---
 async function fetchCardWeather() {
-  document.querySelectorAll('.weather-card').forEach(async card => {
+  document.querySelectorAll('.weather-card').forEach(async (card) => {
     const city = card.dataset.location;
     try {
       const res = await fetch(
@@ -51,18 +61,15 @@ async function fetchCardWeather() {
       );
       const data = await res.json();
 
-      // Update temp
       const tempEl = card.querySelector('.temp');
       if (tempEl) tempEl.textContent = `${Math.round(data.current.temp_c)}°C`;
 
-      // Update icon
-      const iconEl = card.querySelector('img');
+      const iconEl = card.querySelector('img.weather-icon');
       if (iconEl) {
         iconEl.src = `https:${data.current.condition.icon}`;
         iconEl.alt = data.current.condition.text;
       }
 
-      // Update condition text
       const condEl = card.querySelector('.condition');
       if (condEl) condEl.textContent = data.current.condition.text;
     } catch (err) {
@@ -71,23 +78,24 @@ async function fetchCardWeather() {
   });
 }
 
-// --- Global Map (weather.html) ---
+// --- Initialize Global Map (weather.html) ---
 function initMap() {
-  const map = L.map('map').setView([20, 0], 2);
+  if (typeof L === 'undefined' || !document.getElementById('weather-map')) return;
+
+  const map = L.map('weather-map').setView([20, 0], 2);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
-  // Optionally add markers here...
 }
 
-// --- Bootstrapping on DOM ready ---
-document.addEventListener('DOMContentLoaded', () => {
+// --- Bootstrapping ---
+document.addEventListener('DOMContentLoaded', async () => {
+  // inject header & footer
+  await loadHTML('header-container', '/header.html');
+  await loadHTML('footer-container', '/footer.html');
+
   updateDate();
   fetchHeaderWeather();
   fetchCardWeather();
-
-  // Only initialize map if Leaflet (`L`) is loaded
-  if (typeof L !== 'undefined' && document.getElementById('map')) {
-    initMap();
-  }
+  initMap();
 });
