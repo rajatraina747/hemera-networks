@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Global Weather Map</title>
 
   <!-- Leaflet core CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
   <!-- MarkerCluster CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"
+  />
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="/assets/css/style.css" />
-
-  <style>
-    /* Map container */
-    #weather-map {
-      width: 100%;
-      height: 80vh;
-      min-height: 400px;
-      margin: 1rem auto;
-      background: #ddd;
-      border: 2px solid var(--gold);
-      border-radius: 4px;
-    }
-  </style>
 </head>
 <body>
+  <!-- header & footer get injected by script.js -->
   <div id="header-container"></div>
 
   <main class="main-content">
@@ -36,106 +33,10 @@
 
   <div id="footer-container"></div>
 
-  <!-- Leaflet & MarkerCluster -->
+  <!-- Leaflet & MarkerCluster scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-  <!-- Loader + API_KEY injected by script.js -->
+  <!-- Your loader + API key + header/footer injection -->
   <script src="/script.js" defer></script>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    // 1) inject header & footer
-    try {
-      await loadHTML('header-container','/header.html');
-      await loadHTML('footer-container','/footer.html');
-    } catch (err) {
-      console.error('Layout injection failed:', err);
-    }
-
-    // 2) initialize map
-    const map = L.map('weather-map', {
-      center: [20, 0],
-      zoom: 2
-    });
-
-    // 3) base‐layer
-    const base = L.tileLayer(
-      'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-      { attribution: '&copy; CartoDB &mdash; &copy; OpenStreetMap' }
-    ).addTo(map);
-
-    // 4) recalc size
-    map.invalidateSize();
-
-    // 5) marker cluster group
-    const markers = L.markerClusterGroup().addTo(map);
-
-    // 6) initial points to show
-    const coords = [
-      { name: 'London',   lat: 51.51, lon: -0.13 },
-      { name: 'New York', lat: 40.71, lon: -74.01 },
-      { name: 'Sydney',   lat: -33.87, lon: 151.21 },
-      { name: 'Tokyo',    lat: 35.68, lon: 139.69 }
-      // …add up to 50 total…
-    ];
-
-    // 7) bulk‐fetch & add markers
-    async function addInitialWeatherMarkers() {
-      const q = coords.map(c => `${c.lat},${c.lon}`).join(',');
-      try {
-        const res = await fetch(
-          `https://api.weatherapi.com/v1/bulk.json?key=${WEATHER_API_KEY}&q=${q}`
-        );
-        const data = await res.json(); // data.locations[]
-        data.locations.forEach(loc => {
-          const { name } = loc.location;
-          const { temp_c, condition } = loc.current;
-          const iconUrl = `https:${condition.icon}`;
-
-          // custom icon
-          const icon = L.icon({
-            iconUrl,
-            iconSize: [32, 32],
-            iconAnchor: [16, 16]
-          });
-
-          // marker
-          L.marker([loc.location.lat, loc.location.lon], { icon })
-            .bindPopup(
-              `<strong>${loc.location.name}</strong><br>` +
-              `${Math.round(temp_c)}°C, ${condition.text}`
-            )
-            .addTo(markers);
-        });
-      } catch (e) {
-        console.error('Bulk-weather error', e);
-      }
-    }
-
-    // 8) run it once
-    addInitialWeatherMarkers();
-
-    // 9) keep click‐to‐lookup for ad-hoc points
-    map.on('click', async e => {
-      try {
-        const { lat, lng } = e.latlng;
-        const res  = await fetch(
-          `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}` +
-          `&q=${lat},${lng}`
-        );
-        const data = await res.json();
-        L.popup()
-          .setLatLng(e.latlng)
-          .setContent(`
-            <strong>${data.location.name}</strong><br>
-            ${Math.round(data.current.temp_c)}°C, ${data.current.condition.text}
-          `)
-          .openOn(map);
-      } catch (err) {
-        console.error('Map lookup error', err);
-      }
-    });
-  });
-  </script>
 </body>
 </html>
