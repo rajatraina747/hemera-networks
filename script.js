@@ -143,4 +143,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   fetchHeaderWeather();
   fetchCardWeather();
   initMap();
+
+  // ── Mobile menu toggle ──
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navLinks   = document.querySelector('.nav-links');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+    });
+  }
+
 });

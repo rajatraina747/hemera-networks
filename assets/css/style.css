@@ -58,7 +58,16 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0.5rem 1rem;
+  position: relative;
 }
+
+/* ensure the mobile menu sits above the content below it */
+@media (max-width: 768px) {
+  .nav-links {
+    z-index: 1000;
+  }
+}
+
 .nav-logo {
   color: var(--gold);
   font-size: 2rem;
@@ -120,6 +129,28 @@ body {
   padding-left: 1.5rem;
   margin: 3rem 0;
 }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+/* “View More” button (unchanged) */
+.view-more-btn {
+  background: var(--gold);
+  color: var(--black);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+}
+.view-more-btn:hover {
+  opacity: 0.9;
+}
+
 
 /* Featured (hero) card */
 .featured-story {

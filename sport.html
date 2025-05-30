@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hemera Networks – Sport</title>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <!-- header & footer will be injected by script.js -->
+  <div id="header-container"></div>
+
+  <main class="main-content">
+    <h2 class="section-title">Sport</h2>
+
+    <!-- Container for cloned sport cards -->
+    <section class="sport-section">
+      <div class="sport-grid" id="category-stories"></div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <!-- Core site script (header/footer, weather cards, map, etc.) -->
+  <script src="/script.js" defer></script>
+
+  <!-- Inline script to pull Sport articles from index.html -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 1) Fetch the main index.html
+      const resp = await fetch('/index.html');
+      const html = await resp.text();
+
+      // 2) Parse it into a DOM
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+
+      // 3) Find every badge with class "category-sports"
+      const badges = doc.querySelectorAll('.category-sports');
+      const container = document.getElementById('category-stories');
+
+      // 4) For each badge, locate its closest .story-card or .sport-article
+      badges.forEach(badge => {
+        const card = badge.closest('.story-card') 
+                  || badge.closest('.sport-article');
+        if (!card) return;
+        // 5) Clone and append to this page’s grid
+        container.appendChild(card.cloneNode(true));
+      });
+    });
+  </script>
+</body>
+</html>
