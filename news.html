@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>News — Hemera Networks</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <title>News - Hemera Networks</title>
+  <script>
+    fetch('/head.html')
+      .then(r => r.text())
+      .then(fragment => {
+        document.head.insertAdjacentHTML('beforeend', fragment);
+      })
+      .catch(console.error);
+  </script>
   <link rel="stylesheet" href="/assets/css/news.css">
 </head>
 <body>

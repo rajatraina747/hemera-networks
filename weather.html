@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Global Weather Map</title>
-
+  <title>Weather - Hemera Networks</title>
+  <script>
+    fetch('/head.html')
+      .then(r => r.text())
+      .then(fragment => {
+        document.head.insertAdjacentHTML('beforeend', fragment);
+      })
+      .catch(console.error);
+  </script>
   <!-- Leaflet core CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet/dist/leaflet.css"
-  />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
   <!-- MarkerCluster CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css"
-  />
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"
-  />
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css"/>
 </head>
 <body>
   <!-- header & footer get injected by script.js -->
