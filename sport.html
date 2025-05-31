@@ -6,12 +6,12 @@
 
   <title>Hemera Networks – Sport</title>
 
-  <!-- ── Inject shared head bits (favicon, CSS links, etc.) ── -->
+  <!-- ── Inject shared head bits (favicon, CSS, etc.) ── -->
   <script>
     fetch('/head.html')
       .then(r => r.text())
       .then(fragment => {
-        // This fragment typically includes your <link rel="icon">, <link rel="stylesheet">, etc.
+        // Inserts your <link rel="icon"> and main stylesheet(s)
         document.head.insertAdjacentHTML('beforeend', fragment);
       })
       .catch(console.error);
@@ -19,76 +19,178 @@
 
   <!-- 
     ── Sport-page-only CSS overrides: 
-       1) Display each sub-category’s cards in a single flex row with horizontal scrolling
-       2) Force each “news-card” to a fixed width so they don’t wrap onto multiple lines
-       3) Add a thin custom scrollbar (WebKit browsers only)
-       4) Shrink each card on tablets/phones for responsiveness
+       1) Flex-row container with horizontal scrolling
+       2) Force each cloned .news-card to a fixed width (no wrapping)
+       3) Constrain .news-card’s inner content (image + text + tag) so everything is visible
+       4) Explicitly set text colors to white on dark background
+       5) Custom WebKit horizontal scrollbar
+       6) Shrink card widths & thumbnail heights on tablet/phone
   -->
   <style>
-    /* 1) Make each sub-section’s container a flex row that scrolls horizontally */
+    /* 1) Flex-row container that scrolls horizontally */
     #sport-subsections .sport-section .sport-grid {
-      display: flex !important;
-      flex-wrap: nowrap !important;
-      overflow-x: auto !important;
-      gap: 1rem !important;
-      margin-bottom: 3rem !important;
-      padding-bottom: 0.5rem; /* leave a little room for the scrollbar */
+      display:        flex !important;
+      flex-wrap:      nowrap !important;
+      overflow-x:     auto !important;
+      gap:            1rem !important;
+      margin-bottom:  3rem !important;
+      padding-bottom: 0.5rem; /* room for the horizontal scrollbar */
     }
 
-    /* 2) Give each cloned “news-card” a fixed width so items never wrap */
+    /* 2) Fixed-width “slots” so each news-card never wraps onto a second column */
     #sport-subsections .sport-section .sport-grid > * {
-      flex: 0 0 250px;
+      flex:       0 0 250px; /* desktop width */
+      max-width:  250px;
+      box-sizing: border-box;
     }
 
-    /* 3) Custom horizontal scrollbar styling (WebKit-only) */
+    /* 3) Constrain .news-card content to fit inside its 250px slot */
+    #sport-subsections .sport-section .sport-grid .news-card {
+      width:           100%;
+      margin:          0;
+      padding:         0;
+      display:         flex;
+      flex-direction:  column;
+      background:      #000;      /* solid black background */
+      border-radius:   4px;
+      overflow:        hidden;    /* clip any overflow */
+    }
+
+    /* 3a) Fixed-height image wrapper for uniform thumbnails */
+    #sport-subsections .sport-section .sport-grid .news-card .image-wrapper {
+      flex:                  0 0 auto;
+      width:                 100%;
+      height:                110px; /* desktop thumbnail height */
+      overflow:              hidden;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+    #sport-subsections .sport-section .sport-grid .news-card .image-wrapper img {
+      width:      100%;
+      height:     auto;
+      object-fit: cover;
+      display:    block;
+    }
+
+    /* 3b) Details area expands vertically to show headline, date, and tag */
+    #sport-subsections .sport-section .sport-grid .news-card .news-details {
+      flex:           1 1 auto;
+      padding:        0.5rem;
+      display:        flex;
+      flex-direction: column;
+      background:     #000;      /* keep details area black */
+      color:          #fff;      /* default text color white */
+    }
+
+    /* 3c) Headline (<h3>) can wrap onto multiple lines, in white */
+    #sport-subsections .sport-section .sport-grid .news-card h3 {
+      font-size:        0.9rem;
+      line-height:      1.2;
+      margin:           0 0 0.4rem 0;
+      color:            #fff;    /* explicitly white */
+      white-space:      normal;      /* allow wrapping */
+      overflow-wrap:    break-word;  /* break long words if needed */
+    }
+
+    /* 3d) Date styling: white text on dark background */
+    #sport-subsections .sport-section .sport-grid .news-card time {
+      font-size:      0.75rem;
+      color:          #ddd;    /* light gray for date */
+      margin-bottom:  0.3rem;
+      display:        block;
+    }
+
+    /* 3e) Category tags pinned to the bottom of .news-details */
+    #sport-subsections .sport-section .sport-grid .news-card .category-sports,
+    #sport-subsections .sport-section .sport-grid .news-card .category-tag {
+      font-size:       0.7rem;
+      padding:         0.2rem 0.5rem;
+      border-radius:   2px;
+      background:      #00e5cf;  /* bright aqua */
+      color:           #000;     /* black text on aqua background */
+      align-self:      flex-start;
+      white-space:     nowrap;
+      overflow:        hidden;
+      text-overflow:   ellipsis;
+      margin-top:      auto; /* push tag to the very bottom of details area */
+    }
+
+    /* 4) Ensure any other text is white */
+    #sport-subsections .sport-section .sport-grid .news-card p {
+      color: #fff;
+    }
+
+    /* 5) Custom horizontal scrollbar (WebKit only) */
     #sport-subsections .sport-section .sport-grid::-webkit-scrollbar {
       height: 8px;
     }
     #sport-subsections .sport-section .sport-grid::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.2);
+      background:    rgba(0, 0, 0, 0.2);
       border-radius: 4px;
     }
     #sport-subsections .sport-section .sport-grid::-webkit-scrollbar-track {
       background: transparent;
     }
 
-    /* 4) Narrower card widths on smaller screens */
+    /* 6) Shrink card widths & thumbnail heights on smaller screens */
     @media (max-width: 768px) {
       #sport-subsections .sport-section .sport-grid > * {
-        flex: 0 0 200px;
+        flex:       0 0 200px;
+        max-width:  200px;
+      }
+      #sport-subsections .sport-section .sport-grid .news-card .image-wrapper {
+        height: 100px; /* tablet thumbnail height */
+      }
+      #sport-subsections .sport-section .sport-grid .news-card h3 {
+        font-size: 0.85rem;
+      }
+      #sport-subsections .sport-section .sport-grid .news-card time {
+        font-size: 0.7rem;
       }
     }
     @media (max-width: 480px) {
       #sport-subsections .sport-section .sport-grid > * {
-        flex: 0 0 150px;
+        flex:       0 0 150px;
+        max-width:  150px;
+      }
+      #sport-subsections .sport-section .sport-grid .news-card .image-wrapper {
+        height: 80px; /* phone thumbnail height */
+      }
+      #sport-subsections .sport-section .sport-grid .news-card h3 {
+        font-size: 0.8rem;
+      }
+      #sport-subsections .sport-section .sport-grid .news-card time {
+        font-size: 0.65rem;
+      }
+      #sport-subsections .sport-section .sport-grid .news-card .category-sports,
+      #sport-subsections .sport-section .sport-grid .news-card .category-tag {
+        font-size: 0.65rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- These two divs are populated by script.js (header & footer injection) -->
+  <!-- Header and footer are injected by script.js -->
   <div id="header-container"></div>
 
   <main class="main-content">
     <h2 class="section-title">Sport</h2>
-
-    <!-- This is where we will inject one <section> per sub-category -->
+    <!-- One <section> per subcategory will be injected here -->
     <div id="sport-subsections"></div>
   </main>
 
   <div id="footer-container"></div>
 
-  <!-- Core site script: inserts header & footer, handles weather map, mobile menu, etc. -->
+  <!-- Core site script: injects header & footer, handles mobile menu, etc. -->
   <script src="/script.js" defer></script>
 
   <!-- 
-    Inline script to build each sports sub-section dynamically. 
-    Steps:
-      1) Fetch /news.html  
-      2) Find all <div class="news-card"> elements that have <span class="category-sports">  
-      3) For each such “news-card,” fetch its article page and extract <a class="category-tag">…</a>  
-      4) Bucket news-cards by those article-level tags (or “Other” if none)  
-      5) Sort buckets by descending size and render each as a single flex-row scroll container 
+    Inline script to build each sports subsection:
+      1) Fetch /news.html
+      2) Collect all <div class="news-card"> elements that have <span class="category-sports">
+      3) For each sports-card, fetch its linked article and read <a class="category-tag"> badges
+      4) Bucket cards by those article-level tags (or “Other” if none)
+      5) Sort buckets by size, then render each as a flex-row with horizontal scroll
   -->
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -102,92 +204,86 @@
         return;
       }
 
-      // 2) Parse news.html into a DOM
+      // 2) Parse news.html into a temporary DOM
       const parser = new DOMParser();
       const newsDoc = parser.parseFromString(newsText, 'text/html');
 
-      // 3) Grab all <div class="news-card"> that contain <span class="category-sports">
+      // 3) Select all .news-card elements that contain a <span class="category-sports">
       const allNewsCards = Array.from(newsDoc.querySelectorAll('.news-card'));
-      const sportCards = allNewsCards.filter(card =>
+      const sportCards    = allNewsCards.filter(card =>
         card.querySelector('span.category-sports')
       );
-      // If no <span.category-sports> is found, sportCards = []
+      // Every sports story in news.html is a .news-card with <span class="category-sports">…</span> :contentReference[oaicite:0]{index=0}
 
-      // 4) Prepare a “buckets” object: { "Football": [card1,card2], "Cricket": [card3], …, "Other": [cardX] }
+      // 4) Prepare buckets: { "Football": [card1, card2], "Cricket": [card3], …, "Other": [cardX] }
       const buckets = {};
 
-      // 5) For each sports-related card, fetch its linked article page and read <a class="category-tag">
-      const tasks = sportCards.map(async card => {
-        // Each “news-card” contains <div class="news-details"> 
-        // with an <a href="…"><h3>…</h3></a> inside it.
+      // 5) For each sports-card, fetch its linked article page to extract any <a class="category-tag">…</a> badges
+      const tasks = sportCards.map(async (card) => {
         const linkEl = card.querySelector('.news-details a');
         if (!linkEl) {
-          // If no link, slot into “Other”
+          // If no link, bucket under "Other"
           return { card, tags: [] };
         }
         const articleHref = linkEl.getAttribute('href');
-        const articleURL = new URL(articleHref, window.location.origin).href;
+        const articleURL  = new URL(articleHref, window.location.origin).href;
 
         try {
           const artResp = await fetch(articleURL);
           const artText = await artResp.text();
-          const artDoc = parser.parseFromString(artText, 'text/html');
-          // Extract any <a class="category-tag">…</a> inside the article
+          const artDoc  = parser.parseFromString(artText, 'text/html');
+          // Extract each <a class="category-tag">…</a> inside that article
           const tagEls = artDoc.querySelectorAll('a.category-tag');
-          const tags = Array.from(tagEls).map(el => el.textContent.trim());
+          const tags   = Array.from(tagEls).map(el => el.textContent.trim());
           return { card, tags };
-        } catch (err) {
-          console.error(`Error fetching/parsing ${articleURL}:`, err);
+        } catch {
           return { card, tags: [] };
         }
       });
 
-      // 6) Wait for all fetch+parse operations to finish
+      // 6) Await all fetch+parse tasks
       const results = await Promise.all(tasks);
 
-      // 7) Populate buckets
+      // 7) Populate each bucket
       results.forEach(({ card, tags }) => {
         if (tags.length > 0) {
-          // If the article had one or more <a.category-tag>, bucket under each tag
+          // If the article has ≥1 <a.category-tag>, bucket under each tag
           tags.forEach(tagName => {
             if (!buckets[tagName]) buckets[tagName] = [];
             buckets[tagName].push(card);
           });
         } else {
-          // No <a.category-tag> → “Other”
+          // No <a.category-tag> → bucket under "Other"
           if (!buckets['Other']) buckets['Other'] = [];
           buckets['Other'].push(card);
         }
       });
 
-      // 8) Reference the container where we’ll place each sub-section
+      // 8) Render each bucket into #sport-subsections
       const container = document.getElementById('sport-subsections');
-
-      // 9) Sort buckets by descending article count, then build each <section>
       Object.entries(buckets)
-        .sort((a, b) => b[1].length - a[1].length)
+        .sort((a, b) => b[1].length - a[1].length) // sort by descending article count
         .forEach(([subcatName, cardList]) => {
           // a) Create <section class="sport-section">
           const section = document.createElement('section');
           section.classList.add('sport-section');
 
-          // b) Build a heading <h3> like “Football (3)”
+          // b) Sub-section heading (e.g., "Football (3)")
           const heading = document.createElement('h3');
-          heading.textContent = `${subcatName} (${cardList.length})`;
-          heading.style.marginTop = '2rem';
+          heading.textContent    = `${subcatName} (${cardList.length})`;
+          heading.style.marginTop    = '2rem';
           heading.style.marginBottom = '1rem';
-          heading.style.color = 'var(--black)';
-          heading.style.fontSize = '1.5rem';
-          heading.style.borderLeft = '6px solid var(--gold)';
-          heading.style.paddingLeft = '1rem';
+          heading.style.color        = '#000';       /* black for the heading text */
+          heading.style.fontSize     = '1.5rem';
+          heading.style.borderLeft   = '6px solid #FFD700'; /* gold bar */
+          heading.style.paddingLeft  = '1rem';
           section.appendChild(heading);
 
-          // c) Create a flex container <div class="sport-grid">
-          //    All cloned cards will go here in a single horizontal row
+          // c) Create the flex container <div class="sport-grid">
           const grid = document.createElement('div');
           grid.classList.add('sport-grid');
 
-          // d) Clone each matching “news-card” into that flex container
+          // d) Clone & append each matching “news-card” into that flex container
           cardList.forEach(origCard => {
             const clone = origCard.cloneNode(true);
             grid.appendChild(clone);
