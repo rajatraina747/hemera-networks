@@ -270,7 +270,7 @@
 
           // b) Sub-section heading (e.g., "Football (3)")
           const heading = document.createElement('h3');
-          heading.textContent    = `${subcatName} (${cardList.length})`;
+          heading.textContent    = `${subcatName}`; // (${cardList.length})`; unnecessary.
           heading.style.marginTop    = '2rem';
           heading.style.marginBottom = '1rem';
           heading.style.color        = '#000';       /* black for the heading text */
