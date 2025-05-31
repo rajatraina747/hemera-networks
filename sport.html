@@ -6,39 +6,41 @@
 
   <title>Hemera Networks – Sport</title>
 
-  <!-- Inject shared head bits (favicon, main CSS, etc.) -->
+  <!-- ── Inject shared head bits (favicon, CSS links, etc.) ── -->
   <script>
     fetch('/head.html')
       .then(r => r.text())
       .then(fragment => {
+        // This fragment typically includes your <link rel="icon">, <link rel="stylesheet">, etc.
         document.head.insertAdjacentHTML('beforeend', fragment);
       })
       .catch(console.error);
   </script>
 
   <!-- 
-    Sport‐page-only overrides: 
-    1) Use flex-row with horizontal scroll instead of wrapping to next rows.
-    2) Keep the same card styling/spacing.
-    3) Provide a nicer custom scrollbar (optional).
+    ── Sport-page-only CSS overrides: 
+       1) Display each sub-category’s cards in a single flex row with horizontal scrolling
+       2) Force each “news-card” to a fixed width so they don’t wrap onto multiple lines
+       3) Add a thin custom scrollbar (WebKit browsers only)
+       4) Shrink each card on tablets/phones for responsiveness
   -->
   <style>
-    /* 1) Make each subsection container a flex row with horizontal overflow */
+    /* 1) Make each sub-section’s container a flex row that scrolls horizontally */
     #sport-subsections .sport-section .sport-grid {
       display: flex !important;
-      flex-wrap: nowrap !important;       /* no wrapping onto new lines */
-      overflow-x: auto !important;        /* enable horizontal scrolling */
-      gap: 1rem !important;               /* space between cards */
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      gap: 1rem !important;
       margin-bottom: 3rem !important;
-      padding-bottom: 0.5rem;             /* give room for scrollbar */
+      padding-bottom: 0.5rem; /* leave a little room for the scrollbar */
     }
 
-    /* 2) Force each card to be a fixed width so they line up neatly */
+    /* 2) Give each cloned “news-card” a fixed width so items never wrap */
     #sport-subsections .sport-section .sport-grid > * {
-      flex: 0 0 250px;                    /* each card is 250px wide */
+      flex: 0 0 250px;
     }
 
-    /* 3) Optional: custom horizontal scrollbar styling */
+    /* 3) Custom horizontal scrollbar styling (WebKit-only) */
     #sport-subsections .sport-section .sport-grid::-webkit-scrollbar {
       height: 8px;
     }
@@ -50,63 +52,78 @@
       background: transparent;
     }
 
-    /* 4) Responsive adjustments: on smaller screens, make cards narrower */
+    /* 4) Narrower card widths on smaller screens */
     @media (max-width: 768px) {
       #sport-subsections .sport-section .sport-grid > * {
-        flex: 0 0 200px;                  /* cards become 200px wide on tablet */
+        flex: 0 0 200px;
       }
     }
     @media (max-width: 480px) {
       #sport-subsections .sport-section .sport-grid > * {
-        flex: 0 0 150px;                  /* cards become 150px wide on mobile */
+        flex: 0 0 150px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header & footer get injected by script.js -->
+  <!-- These two divs are populated by script.js (header & footer injection) -->
   <div id="header-container"></div>
 
   <main class="main-content">
     <h2 class="section-title">Sport</h2>
 
-    <!-- Where subsections (e.g. Football, Premier League, Other) will be rendered -->
+    <!-- This is where we will inject one <section> per sub-category -->
     <div id="sport-subsections"></div>
   </main>
 
   <div id="footer-container"></div>
 
-  <!-- Core site script (header/footer, weather cards, map, etc.) -->
+  <!-- Core site script: inserts header & footer, handles weather map, mobile menu, etc. -->
   <script src="/script.js" defer></script>
 
-  <!-- Inline logic to build Sport subsections using each article’s <a class="category-tag">…</a> -->
+  <!-- 
+    Inline script to build each sports sub-section dynamically. 
+    Steps:
+      1) Fetch /news.html  
+      2) Find all <div class="news-card"> elements that have <span class="category-sports">  
+      3) For each such “news-card,” fetch its article page and extract <a class="category-tag">…</a>  
+      4) Bucket news-cards by those article-level tags (or “Other” if none)  
+      5) Sort buckets by descending size and render each as a single flex-row scroll container 
+  -->
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      // 1) Fetch index.html so we can collect all .sport-article cards
-      let indexText;
+      // 1) Fetch news.html
+      let newsText;
       try {
-        const resp = await fetch('/index.html');
-        indexText = await resp.text();
+        const resp = await fetch('/news.html');
+        newsText = await resp.text();
       } catch (err) {
-        console.error('Error fetching index.html:', err);
+        console.error('Error fetching news.html:', err);
         return;
       }
 
-      // 2) Parse index.html into a DOM
+      // 2) Parse news.html into a DOM
       const parser = new DOMParser();
-      const indexDoc = parser.parseFromString(indexText, 'text/html');
+      const newsDoc = parser.parseFromString(newsText, 'text/html');
 
-      // 3) Grab every .sport-article element from index.html
-      const sportCards = Array.from(indexDoc.querySelectorAll('.sport-article'));
+      // 3) Grab all <div class="news-card"> that contain <span class="category-sports">
+      const allNewsCards = Array.from(newsDoc.querySelectorAll('.news-card'));
+      const sportCards = allNewsCards.filter(card =>
+        card.querySelector('span.category-sports')
+      );
+      // If no <span.category-sports> is found, sportCards = []
 
-      // 4) Prepare a buckets object mapping tagName → [card, …]
+      // 4) Prepare a “buckets” object: { "Football": [card1,card2], "Cricket": [card3], …, "Other": [cardX] }
       const buckets = {};
 
-      // 5) For each .sport-article, fetch its article page to read <a class="category-tag">…</a>
+      // 5) For each sports-related card, fetch its linked article page and read <a class="category-tag">
       const tasks = sportCards.map(async card => {
-        const linkEl = card.querySelector('a');
+        // Each “news-card” contains <div class="news-details"> 
+        // with an <a href="…"><h3>…</h3></a> inside it.
+        const linkEl = card.querySelector('.news-details a');
         if (!linkEl) {
-          return { card, tags: [] }; // no link → treat as “Other”
+          // If no link, slot into “Other”
+          return { card, tags: [] };
         }
         const articleHref = linkEl.getAttribute('href');
         const articleURL = new URL(articleHref, window.location.origin).href;
@@ -114,9 +131,10 @@
         try {
           const artResp = await fetch(articleURL);
           const artText = await artResp.text();
-          const artDoc  = parser.parseFromString(artText, 'text/html');
-          const tagEls  = artDoc.querySelectorAll('a.category-tag');
-          const tags    = Array.from(tagEls).map(el => el.textContent.trim());
+          const artDoc = parser.parseFromString(artText, 'text/html');
+          // Extract any <a class="category-tag">…</a> inside the article
+          const tagEls = artDoc.querySelectorAll('a.category-tag');
+          const tags = Array.from(tagEls).map(el => el.textContent.trim());
           return { card, tags };
         } catch (err) {
           console.error(`Error fetching/parsing ${articleURL}:`, err);
@@ -124,26 +142,28 @@
         }
       });
 
-      // 6) Wait for all article-fetch tasks
+      // 6) Wait for all fetch+parse operations to finish
       const results = await Promise.all(tasks);
 
       // 7) Populate buckets
       results.forEach(({ card, tags }) => {
         if (tags.length > 0) {
+          // If the article had one or more <a.category-tag>, bucket under each tag
           tags.forEach(tagName => {
             if (!buckets[tagName]) buckets[tagName] = [];
             buckets[tagName].push(card);
           });
         } else {
+          // No <a.category-tag> → “Other”
           if (!buckets['Other']) buckets['Other'] = [];
           buckets['Other'].push(card);
         }
       });
 
-      // 8) Get the container for subsections
+      // 8) Reference the container where we’ll place each sub-section
       const container = document.getElementById('sport-subsections');
 
-      // 9) Sort by number of cards (descending) and render each subsection
+      // 9) Sort buckets by descending article count, then build each <section>
       Object.entries(buckets)
         .sort((a, b) => b[1].length - a[1].length)
         .forEach(([subcatName, cardList]) => {
@@ -151,7 +171,7 @@
           const section = document.createElement('section');
           section.classList.add('sport-section');
 
-          // b) Subsection heading <h3>
+          // b) Build a heading <h3> like “Football (3)”
           const heading = document.createElement('h3');
           heading.textContent = `${subcatName} (${cardList.length})`;
           heading.style.marginTop = '2rem';
@@ -162,11 +182,12 @@
           heading.style.paddingLeft = '1rem';
           section.appendChild(heading);
 
-          // c) Create a flex container for horizontal scrolling
+          // c) Create a flex container <div class="sport-grid">
+          //    All cloned cards will go here in a single horizontal row
           const grid = document.createElement('div');
           grid.classList.add('sport-grid');
 
-          // d) Clone & append each card into the flex container
+          // d) Clone each matching “news-card” into that flex container
           cardList.forEach(origCard => {
             const clone = origCard.cloneNode(true);
             grid.appendChild(clone);
