@@ -17,16 +17,49 @@
   </script>
 
   <!-- 
-    FORCE a 4-column grid for sport-page only.
-    We use a more specific selector (#sport-subsections .sport-grid) 
-    and !important so that it overrides the external style.css rule.
+    Sport‐page-only overrides: 
+    1) Use flex-row with horizontal scroll instead of wrapping to next rows.
+    2) Keep the same card styling/spacing.
+    3) Provide a nicer custom scrollbar (optional).
   -->
   <style>
+    /* 1) Make each subsection container a flex row with horizontal overflow */
     #sport-subsections .sport-section .sport-grid {
-      display: grid !important;
-      grid-template-columns: repeat(4, 1fr) !important;
-      gap: 1rem !important;
+      display: flex !important;
+      flex-wrap: nowrap !important;       /* no wrapping onto new lines */
+      overflow-x: auto !important;        /* enable horizontal scrolling */
+      gap: 1rem !important;               /* space between cards */
       margin-bottom: 3rem !important;
+      padding-bottom: 0.5rem;             /* give room for scrollbar */
+    }
+
+    /* 2) Force each card to be a fixed width so they line up neatly */
+    #sport-subsections .sport-section .sport-grid > * {
+      flex: 0 0 250px;                    /* each card is 250px wide */
+    }
+
+    /* 3) Optional: custom horizontal scrollbar styling */
+    #sport-subsections .sport-section .sport-grid::-webkit-scrollbar {
+      height: 8px;
+    }
+    #sport-subsections .sport-section .sport-grid::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+    #sport-subsections .sport-section .sport-grid::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* 4) Responsive adjustments: on smaller screens, make cards narrower */
+    @media (max-width: 768px) {
+      #sport-subsections .sport-section .sport-grid > * {
+        flex: 0 0 200px;                  /* cards become 200px wide on tablet */
+      }
+    }
+    @media (max-width: 480px) {
+      #sport-subsections .sport-section .sport-grid > * {
+        flex: 0 0 150px;                  /* cards become 150px wide on mobile */
+      }
     }
   </style>
 </head>
@@ -37,7 +70,7 @@
   <main class="main-content">
     <h2 class="section-title">Sport</h2>
 
-    <!-- Container where all subsections (e.g. Football, Premier League, Other) go -->
+    <!-- Where subsections (e.g. Football, Premier League, Other) will be rendered -->
     <div id="sport-subsections"></div>
   </main>
 
@@ -114,7 +147,7 @@
       Object.entries(buckets)
         .sort((a, b) => b[1].length - a[1].length)
         .forEach(([subcatName, cardList]) => {
-          // a) Create a <section class="sport-section">
+          // a) Create <section class="sport-section">
           const section = document.createElement('section');
           section.classList.add('sport-section');
 
@@ -129,11 +162,11 @@
           heading.style.paddingLeft = '1rem';
           section.appendChild(heading);
 
-          // c) Create a grid container for up to 4 columns
+          // c) Create a flex container for horizontal scrolling
           const grid = document.createElement('div');
           grid.classList.add('sport-grid');
 
-          // d) Clone & append each card into the grid
+          // d) Clone & append each card into the flex container
           cardList.forEach(origCard => {
             const clone = origCard.cloneNode(true);
             grid.appendChild(clone);
